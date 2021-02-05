@@ -1,0 +1,18 @@
+﻿@page
+@using System.Net
+@model RepositoryPattern.WithRepository.Pages.ProductsModel
+@{
+}
+
+<form method="post">
+    @Html.HiddenFor(x => x.ProductId, new { value = 5 })
+
+    @foreach (ProductViewModel product in Model.Products)
+    {
+        <div>
+            @product.Name
+
+            <button type="submit" value="Buy" onclick="$('#ProductId').value = @product.Id">Buy</button>
+        </div>
+    }
+</form>

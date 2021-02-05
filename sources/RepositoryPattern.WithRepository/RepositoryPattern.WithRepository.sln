@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryPattern.WithRepository", "RepositoryPattern.WithRepository\RepositoryPattern.WithRepository.csproj", "{FF12DF4C-0442-49E7-B9E8-81178D0BE709}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryPattern.WithRepository", "WithRepository\RepositoryPattern.WithRepository.csproj", "{FF12DF4C-0442-49E7-B9E8-81178D0BE709}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryPattern.WithRepository.DataAccess.InMemory", "RepositoryPattern.WithRepository.DataAccess.InMemory\RepositoryPattern.WithRepository.DataAccess.InMemory.csproj", "{F4B74982-C740-4B87-BC6A-6786D44D3DEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryPattern.WithRepository.DataAccess.InMemory", "WithRepository.DataAccess.InMemory\RepositoryPattern.WithRepository.DataAccess.InMemory.csproj", "{F4B74982-C740-4B87-BC6A-6786D44D3DEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryPattern.WithRepository.DataAccess.EntityFramework", "RepositoryPattern.WithRepository.DataAccess.EntityFramework\RepositoryPattern.WithRepository.DataAccess.EntityFramework.csproj", "{C7F5A64E-0684-443E-BA2F-9601CC3164E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryPattern.WithRepository.DataAccess.EntityFramework", "WithRepository.DataAccess.EntityFramework\RepositoryPattern.WithRepository.DataAccess.EntityFramework.csproj", "{C7F5A64E-0684-443E-BA2F-9601CC3164E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryPattern.WithRepository.Domain", "RepositoryPattern.WithRepository.Domain\RepositoryPattern.WithRepository.Domain.csproj", "{6D4F201F-DE54-47C3-8CE7-84BCDF44C993}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryPattern.WithRepository.Domain", "WithRepository.Domain\RepositoryPattern.WithRepository.Domain.csproj", "{6D4F201F-DE54-47C3-8CE7-84BCDF44C993}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryPattern.WithRepository.Application", "RepositoryPattern.WithRepository.Application\RepositoryPattern.WithRepository.Application.csproj", "{AFEC291A-12E9-4DA9-B204-3201B9C12E98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryPattern.WithRepository.Application", "WithRepository.Application\RepositoryPattern.WithRepository.Application.csproj", "{AFEC291A-12E9-4DA9-B204-3201B9C12E98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
