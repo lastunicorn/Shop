@@ -1,0 +1,11 @@
+﻿@page
+@model RepositoryPattern.WithRepository.Pages.ProductsModel
+@{
+}
+
+@foreach (ProductViewModel product in Model.Products)
+{
+    <div>
+        @product.Name
+    </div>
+}
