@@ -1,9 +1,11 @@
+using System.Reflection;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RepositoryPattern.WithRepository.Application.BuyProduct;
+using RepositoryPattern.WithRepository.Application.CreateSale;
 using RepositoryPattern.WithRepository.Application.GetProducts;
 using RepositoryPattern.WithRepository.DataAccess.EntityFramework;
 using RepositoryPattern.WithRepository.Domain.DataAccess;
@@ -24,14 +26,15 @@ namespace RepositoryPattern.WithRepository
         {
             services.AddRazorPages();
 
-            services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IPaymentRepository, PaymentRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<RepositoryPatternDbContext>();
 
-            services.AddTransient<BuyProductHandler>();
-            services.AddTransient<GetProductsHandler>();
+            services.AddTransient<CreateSaleRequestHandler>();
+            services.AddTransient<GetProductsRequestHandler>();
+
+            services.AddMediatR(typeof(GetProductsRequest).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

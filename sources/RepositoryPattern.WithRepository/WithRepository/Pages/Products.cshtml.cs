@@ -1,69 +1,57 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RepositoryPattern.WithRepository.Application.BuyProduct;
+using RepositoryPattern.WithRepository.Application.CreateSale;
 using RepositoryPattern.WithRepository.Application.GetProducts;
 using RepositoryPattern.WithRepository.Domain;
-using RepositoryPattern.WithRepository.Domain.DataAccess;
 
 namespace RepositoryPattern.WithRepository.Pages
 {
     public class ProductsModel : PageModel
     {
-        private readonly IUnitOfWork unitOfWork;
-        private readonly GetProductsHandler getProductsHandler;
-        private readonly BuyProductHandler buyProductHandler;
+        private readonly IMediator mediator;
 
         public List<ProductViewModel> Products { get; set; }
 
         [BindProperty]
         public int ProductId { get; set; }
 
-        public ProductsModel(IUnitOfWork unitOfWork, GetProductsHandler getProductsHandler, BuyProductHandler buyProductHandler)
+        public ProductsModel(IMediator mediator)
         {
-            this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
-            this.getProductsHandler = getProductsHandler ?? throw new ArgumentNullException(nameof(getProductsHandler));
-            this.buyProductHandler = buyProductHandler ?? throw new ArgumentNullException(nameof(buyProductHandler));
+            this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
-        public void OnGet()
+        public async Task OnGet()
         {
-            IEnumerable<Product> products = getProductsHandler.Execute();
+            GetProductsRequest request = new GetProductsRequest();
+            List<Product> products = await mediator.Send(request);
 
             Products = products
                 .Select(x => new ProductViewModel(x))
                 .ToList();
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost()
         {
-            BuyProductRequest request = new BuyProductRequest
+            try
             {
-                ProductId = 1
-            };
+                CreateSaleRequest request = new CreateSaleRequest
+                {
+                    ProductId = ProductId
+                };
 
-            BuyProductResponse response = buyProductHandler.Execute(request);
+                await mediator.Send(request);
 
-            switch (response.BuyState)
-            {
-                case BuyState.Unknown:
-                    break;
-
-                case BuyState.PaymentNeeded:
-                    // redirect to payment page
-                    return RedirectToPage("Payment", new { ProductId = response.ProductId });
-
-                case BuyState.Success:
-                    // display 
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException();
+                return RedirectToPage("Payment", new { ProductId });
             }
-
-            return BadRequest();
+            catch
+            {
+                return BadRequest();
+            }
         }
     }
 }

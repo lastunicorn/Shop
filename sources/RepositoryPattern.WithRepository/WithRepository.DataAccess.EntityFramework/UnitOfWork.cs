@@ -8,22 +8,11 @@ namespace RepositoryPattern.WithRepository.DataAccess.EntityFramework
         private readonly RepositoryPatternDbContext dbContext;
         private IPaymentRepository paymentRepository;
         private IProductRepository productRepository;
-        private IUserRepository userRepository;
+        private ISaleRepository saleRepository;
 
         public UnitOfWork(RepositoryPatternDbContext dbContext)
         {
             this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
-        }
-
-        public IUserRepository UserRepository
-        {
-            get
-            {
-                if (userRepository == null)
-                    userRepository = new UserRepository(dbContext);
-
-                return userRepository;
-            }
         }
 
         public IProductRepository ProductRepository
@@ -45,6 +34,17 @@ namespace RepositoryPattern.WithRepository.DataAccess.EntityFramework
                     paymentRepository = new PaymentRepository(dbContext);
 
                 return paymentRepository;
+            }
+        }
+
+        public ISaleRepository SaleRepository
+        {
+            get
+            {
+                if (saleRepository == null)
+                    saleRepository = new SaleRepository(dbContext);
+
+                return saleRepository;
             }
         }
 

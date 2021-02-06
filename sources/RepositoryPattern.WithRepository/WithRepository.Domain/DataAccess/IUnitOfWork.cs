@@ -2,11 +2,11 @@
 {
     public interface IUnitOfWork
     {
-        IUserRepository UserRepository { get; }
-
         IProductRepository ProductRepository { get; }
         
         IPaymentRepository PaymentRepository { get; }
+        
+        ISaleRepository SaleRepository { get; }
 
         void Complete();
     }

@@ -4,27 +4,16 @@ namespace RepositoryPattern.WithRepository.DataAccess.InMemory
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private IUserRepository userRepository;
         private IProductRepository productRepository;
         private IPaymentRepository paymentRepository;
-
-        public IUserRepository UserRepository
-        {
-            get
-            {
-                if (userRepository == null)
-                    userRepository = new UserRepository();
-
-                return userRepository;
-            }
-        }
+        private ISaleRepository saleRepository;
 
         public IProductRepository ProductRepository
         {
             get
             {
                 if (productRepository == null)
-                    productRepository = new ProductRepository();
+                    productRepository = new ProductRepository(InMemoryDatabase.Products);
 
                 return productRepository;
             }
@@ -35,9 +24,20 @@ namespace RepositoryPattern.WithRepository.DataAccess.InMemory
             get
             {
                 if (paymentRepository == null)
-                    paymentRepository = new PaymentRepository();
+                    paymentRepository = new PaymentRepository(InMemoryDatabase.Payments);
 
                 return paymentRepository;
+            }
+        }
+
+        public ISaleRepository SaleRepository
+        {
+            get
+            {
+                if (saleRepository == null)
+                    saleRepository = new SaleRepository(InMemoryDatabase.Sales);
+
+                return saleRepository;
             }
         }
 

@@ -47,35 +47,69 @@ namespace RepositoryPattern.WithRepository.DataAccess.EntityFramework.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Chocolate",
+                            Price = 12m,
+                            Quantity = 3
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Water",
+                            Price = 5m,
+                            Quantity = 10
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Chips",
+                            Price = 3m,
+                            Quantity = 15
+                        });
                 });
 
-            modelBuilder.Entity("RepositoryPattern.WithRepository.Domain.User", b =>
+            modelBuilder.Entity("RepositoryPattern.WithRepository.Domain.Sale", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("FirstName")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("LastName")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("Username")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("State")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Sale");
                 });
 
             modelBuilder.Entity("RepositoryPattern.WithRepository.Domain.Payment", b =>
+                {
+                    b.HasOne("RepositoryPattern.WithRepository.Domain.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("RepositoryPattern.WithRepository.Domain.Sale", b =>
                 {
                     b.HasOne("RepositoryPattern.WithRepository.Domain.Product", "Product")
                         .WithMany()

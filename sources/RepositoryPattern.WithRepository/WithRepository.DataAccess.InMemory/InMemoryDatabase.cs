@@ -7,35 +7,38 @@ namespace RepositoryPattern.WithRepository.DataAccess.InMemory
     {
         public static List<Product> Products { get; } = new List<Product>();
         
-        public static List<User> Users { get; } = new List<User>();
-        
         public static List<Payment> Payments { get; } = new List<Payment>();
+        
+        public static List<Sale> Sales { get; } = new List<Sale>();
 
         static InMemoryDatabase()
         {
-            Products.Add(new Product
+            Product[] products = new Product[]
             {
-                Id = 1,
-                Name = "Chocolate",
-                Price = 12,
-                Quantity = 3
-            });
+                new Product
+                {
+                    Id = 1,
+                    Name = "Chocolate",
+                    Price = 12,
+                    Quantity = 3
+                },
+                new Product
+                {
+                    Id = 2,
+                    Name = "Water",
+                    Price = 5,
+                    Quantity = 10
+                },
+                new Product
+                {
+                    Id = 3,
+                    Name = "Chips",
+                    Price = 3,
+                    Quantity = 15
+                }
+            };
 
-            Products.Add(new Product
-            {
-                Id = 2,
-                Name = "Water",
-                Price = 5,
-                Quantity = 10
-            });
-
-            Products.Add(new Product
-            {
-                Id = 3,
-                Name = "Chips",
-                Price = 3,
-                Quantity = 15
-            });
+            Products.AddRange(products);
         }
     }
 }

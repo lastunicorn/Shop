@@ -20,7 +20,7 @@ namespace RepositoryPattern.WithRepository.Pages
 
         public void OnGet(int productId)
         {
-            Product product = 
+            //Product product = 
         }
     }
 }
