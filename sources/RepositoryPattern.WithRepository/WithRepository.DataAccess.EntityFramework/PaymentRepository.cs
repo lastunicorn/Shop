@@ -11,10 +11,17 @@ namespace Shop.WithRepository.DataAccess.EntityFramework
         {
         }
 
-        public Payment GetOneForProduct(int productId)
+        public Payment Get(int id)
         {
-            return DbContext.Payments
-                .FirstOrDefault(x => x.Product.Id == productId);
+            return DbContext.Payments.Find(id);
+        }
+
+        public void Remove(int id)
+        {
+            Payment payment = DbContext.Payments.Find(id);
+
+            if (payment != null)
+                DbContext.Payments.Remove(payment);
         }
     }
 }

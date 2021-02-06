@@ -14,11 +14,6 @@ namespace Shop.WithRepository.DataAccess.EntityFramework
             DbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
-        public T Get(int id)
-        {
-            return DbContext.Set<T>().Find(id);
-        }
-
         public IEnumerable<T> GetAll()
         {
             return DbContext.Set<T>();
@@ -36,14 +31,6 @@ namespace Shop.WithRepository.DataAccess.EntityFramework
             if (entities == null) throw new ArgumentNullException(nameof(entities));
 
             DbContext.Set<T>().AddRange(entities);
-        }
-
-        public void Remove(int id)
-        {
-            T entity = DbContext.Set<T>().Find(id);
-
-            if (entity != null)
-                DbContext.Set<T>().Remove(entity);
         }
 
         public void Remove(T entity)

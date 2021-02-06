@@ -7,18 +7,18 @@ using MediatR;
 using Shop.WithRepository.Domain;
 using Shop.WithRepository.Domain.DataAccess;
 
-namespace Shop.WithRepository.Application.CreateSale
+namespace Shop.WithRepository.Application.StartSale
 {
-    public class CreateSaleRequestHandler : IRequestHandler<CreateSaleRequest, Sale>
+    internal class StartSaleRequestHandler : IRequestHandler<StartSaleRequest, Sale>
     {
         private readonly IUnitOfWork unitOfWork;
 
-        public CreateSaleRequestHandler(IUnitOfWork unitOfWork)
+        public StartSaleRequestHandler(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
 
-        public Task<Sale> Handle(CreateSaleRequest request, CancellationToken cancellationToken)
+        public Task<Sale> Handle(StartSaleRequest request, CancellationToken cancellationToken)
         {
             return Task.Run(() =>
             {
@@ -27,7 +27,7 @@ namespace Shop.WithRepository.Application.CreateSale
                 if (product == null)
                     throw new Exception("There is no product with the specified id.");
 
-                List<Sale> inProgressSales = unitOfWork.SaleRepository.GetInProgressForProduct(product.Id).ToList();
+                List<Sale> inProgressSales = unitOfWork.SaleRepository.GetInProgress(product.Id).ToList();
 
                 int availableQuantity = product.Quantity - inProgressSales.Count;
 

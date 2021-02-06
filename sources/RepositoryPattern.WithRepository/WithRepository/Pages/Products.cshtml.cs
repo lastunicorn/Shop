@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shop.WithRepository.Application.CreateSale;
 using Shop.WithRepository.Application.GetProducts;
+using Shop.WithRepository.Application.StartSale;
 using Shop.WithRepository.Domain;
 
 namespace Shop.WithRepository.Pages
@@ -39,14 +39,14 @@ namespace Shop.WithRepository.Pages
         {
             try
             {
-                CreateSaleRequest request = new CreateSaleRequest
+                StartSaleRequest request = new StartSaleRequest
                 {
                     ProductId = ProductId
                 };
 
-                await mediator.Send(request);
+                Sale sale = await mediator.Send(request);
 
-                return RedirectToPage("Payment", new { ProductId });
+                return RedirectToPage("Payment", new { SaleId = sale.Id });
             }
             catch
             {

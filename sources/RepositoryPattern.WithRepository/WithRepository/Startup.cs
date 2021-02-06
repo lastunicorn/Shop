@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Shop.WithRepository.Application.CreateSale;
 using Shop.WithRepository.Application.GetProducts;
 using Shop.WithRepository.DataAccess.EntityFramework;
 using Shop.WithRepository.Domain.DataAccess;
@@ -29,9 +28,6 @@ namespace Shop.WithRepository
             services.AddTransient<IPaymentRepository, PaymentRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<RepositoryPatternDbContext>();
-
-            services.AddTransient<CreateSaleRequestHandler>();
-            services.AddTransient<GetProductsRequestHandler>();
 
             services.AddMediatR(typeof(GetProductsRequest).Assembly);
         }

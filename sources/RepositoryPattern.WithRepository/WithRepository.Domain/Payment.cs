@@ -1,11 +1,13 @@
-﻿namespace Shop.WithRepository.Domain
+﻿using System;
+
+namespace Shop.WithRepository.Domain
 {
     public class Payment
     {
         public int Id { get; set; }
 
-        public Product Product { get; set; }
+        public DateTime Date { get; set; }
 
-        public bool IsDelivered { get; set; }
+        public decimal Value { get; set; }
     }
 }

@@ -4,13 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RepositoryPattern.WithRepository.DataAccess.EntityFramework;
 using Shop.WithRepository.DataAccess.EntityFramework;
 
-namespace RepositoryPattern.WithRepository.DataAccess.EntityFramework.Migrations
+namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
 {
     [DbContext(typeof(RepositoryPatternDbContext))]
-    [Migration("20210206095333_Initial")]
+    [Migration("20210206121949_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,26 +18,24 @@ namespace RepositoryPattern.WithRepository.DataAccess.EntityFramework.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("RepositoryPattern.WithRepository.Domain.Payment", b =>
+            modelBuilder.Entity("Shop.WithRepository.Domain.Payment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("IsDelivered")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("INTEGER");
+                    b.Property<decimal>("Value")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("Payments");
                 });
 
-            modelBuilder.Entity("RepositoryPattern.WithRepository.Domain.Product", b =>
+            modelBuilder.Entity("Shop.WithRepository.Domain.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -81,7 +78,7 @@ namespace RepositoryPattern.WithRepository.DataAccess.EntityFramework.Migrations
                         });
                 });
 
-            modelBuilder.Entity("RepositoryPattern.WithRepository.Domain.Sale", b =>
+            modelBuilder.Entity("Shop.WithRepository.Domain.Sale", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -89,6 +86,9 @@ namespace RepositoryPattern.WithRepository.DataAccess.EntityFramework.Migrations
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
+
+                    b.Property<int?>("PaymentId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("ProductId")
                         .HasColumnType("INTEGER");
@@ -98,25 +98,24 @@ namespace RepositoryPattern.WithRepository.DataAccess.EntityFramework.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PaymentId");
+
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Sale");
+                    b.ToTable("Sales");
                 });
 
-            modelBuilder.Entity("RepositoryPattern.WithRepository.Domain.Payment", b =>
+            modelBuilder.Entity("Shop.WithRepository.Domain.Sale", b =>
                 {
-                    b.HasOne("RepositoryPattern.WithRepository.Domain.Product", "Product")
+                    b.HasOne("Shop.WithRepository.Domain.Payment", "Payment")
+                        .WithMany()
+                        .HasForeignKey("PaymentId");
+
+                    b.HasOne("Shop.WithRepository.Domain.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId");
 
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("RepositoryPattern.WithRepository.Domain.Sale", b =>
-                {
-                    b.HasOne("RepositoryPattern.WithRepository.Domain.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
+                    b.Navigation("Payment");
 
                     b.Navigation("Product");
                 });

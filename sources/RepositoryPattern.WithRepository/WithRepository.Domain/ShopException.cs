@@ -2,9 +2,9 @@
 
 namespace Shop.WithRepository.Domain
 {
-    public class RepositoryPatternException : Exception
+    public class ShopException : Exception
     {
-        public RepositoryPatternException(string message)
+        public ShopException(string message)
             : base(message)
         {
         }

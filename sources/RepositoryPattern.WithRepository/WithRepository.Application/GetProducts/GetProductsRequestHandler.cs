@@ -9,7 +9,7 @@ using Shop.WithRepository.Domain.DataAccess;
 
 namespace Shop.WithRepository.Application.GetProducts
 {
-    public class GetProductsRequestHandler : IRequestHandler<GetProductsRequest, List<Product>>
+    internal class GetProductsRequestHandler : IRequestHandler<GetProductsRequest, List<Product>>
     {
         private readonly IUnitOfWork unitOfWork;
 

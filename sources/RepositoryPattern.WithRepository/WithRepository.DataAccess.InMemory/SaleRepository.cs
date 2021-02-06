@@ -17,12 +17,17 @@ namespace Shop.WithRepository.DataAccess.InMemory
             return Collection.First(x => x.Id == id);
         }
 
+        public Sale GetFull(int id)
+        {
+            return Collection.First(x => x.Id == id);
+        }
+
         public void Remove(int id)
         {
             Collection.RemoveAll(x => x.Id == id);
         }
 
-        public IEnumerable<Sale> GetInProgressForProduct(int productId)
+        public IEnumerable<Sale> GetInProgress(int productId)
         {
             throw new System.NotImplementedException();
         }

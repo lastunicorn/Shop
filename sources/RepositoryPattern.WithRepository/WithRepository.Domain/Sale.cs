@@ -11,5 +11,7 @@ namespace Shop.WithRepository.Domain
         public Product Product { get; set; }
         
         public SaleState State { get; set; }
+        
+        public Payment Payment { get; set; }
     }
 }

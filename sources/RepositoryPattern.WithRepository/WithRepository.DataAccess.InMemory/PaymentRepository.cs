@@ -16,11 +16,6 @@ namespace Shop.WithRepository.DataAccess.InMemory
             return Collection.Find(x => x.Id == id);
         }
 
-        public Payment GetOneForProduct(int productId)
-        {
-            return Collection.Find(x => x.Product.Id == productId);
-        }
-
         public void Remove(int id)
         {
             Collection.RemoveAll(x => x.Id == id);

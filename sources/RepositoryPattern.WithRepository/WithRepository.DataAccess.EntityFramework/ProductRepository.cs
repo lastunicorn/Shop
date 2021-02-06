@@ -9,5 +9,18 @@ namespace Shop.WithRepository.DataAccess.EntityFramework
             : base(dbContext)
         {
         }
+
+        public Product Get(int id)
+        {
+            return DbContext.Products.Find(id);
+        }
+
+        public void Remove(int id)
+        {
+            Product product = DbContext.Products.Find(id);
+
+            if (product != null)
+                DbContext.Products.Remove(product);
+        }
     }
 }

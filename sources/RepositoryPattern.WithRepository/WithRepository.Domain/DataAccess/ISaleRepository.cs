@@ -6,8 +6,10 @@ namespace Shop.WithRepository.Domain.DataAccess
     {
         Sale Get(int id);
 
-        void Remove(int id);
+        Sale GetFull(int id);
 
-        IEnumerable<Sale> GetInProgressForProduct(int productId);
+        IEnumerable<Sale> GetInProgress(int productId);
+
+        void Remove(int id);
     }
 }

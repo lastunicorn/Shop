@@ -2,3 +2,19 @@
 @model Shop.WithRepository.Pages.PaymentModel
 @{
 }
+
+<form method="post">
+
+    You are about the pay for the following items:
+    <ul>
+        <li>@Model.ProductName</li>
+    </ul>
+
+    <div>
+        Total price: @Model.Price
+    </div>
+
+    <button type="submit">Pay</button>
+    <button type="button">Cancel</button>
+
+</form>
