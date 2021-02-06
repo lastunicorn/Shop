@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using RepositoryPattern.WithRepository.Domain;
+using Shop.WithRepository.Domain;
 
-namespace RepositoryPattern.WithRepository.DataAccess.InMemory
+namespace Shop.WithRepository.DataAccess.InMemory
 {
     internal static class InMemoryDatabase
     {

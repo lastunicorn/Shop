@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RepositoryPattern.WithRepository.Domain
+namespace Shop.WithRepository.Domain
 {
     public class RepositoryPatternException : Exception
     {

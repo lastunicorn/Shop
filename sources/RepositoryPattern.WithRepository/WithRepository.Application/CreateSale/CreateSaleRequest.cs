@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using RepositoryPattern.WithRepository.Domain;
+using Shop.WithRepository.Domain;
 
-namespace RepositoryPattern.WithRepository.Application.CreateSale
+namespace Shop.WithRepository.Application.CreateSale
 {
     public class CreateSaleRequest : IRequest<Sale>
     {

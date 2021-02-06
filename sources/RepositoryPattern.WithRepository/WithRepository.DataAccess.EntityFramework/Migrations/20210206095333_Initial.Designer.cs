@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepositoryPattern.WithRepository.DataAccess.EntityFramework;
+using Shop.WithRepository.DataAccess.EntityFramework;
 
 namespace RepositoryPattern.WithRepository.DataAccess.EntityFramework.Migrations
 {

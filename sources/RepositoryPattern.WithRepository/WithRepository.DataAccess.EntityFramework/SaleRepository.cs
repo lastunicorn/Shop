@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using RepositoryPattern.WithRepository.Domain;
-using RepositoryPattern.WithRepository.Domain.DataAccess;
+using Shop.WithRepository.Domain;
+using Shop.WithRepository.Domain.DataAccess;
 
-namespace RepositoryPattern.WithRepository.DataAccess.EntityFramework
+namespace Shop.WithRepository.DataAccess.EntityFramework
 {
     public class SaleRepository : Repository<Sale>, ISaleRepository
     {

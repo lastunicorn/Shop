@@ -1,4 +1,4 @@
-﻿namespace RepositoryPattern.WithRepository.Domain.DataAccess
+﻿namespace Shop.WithRepository.Domain.DataAccess
 {
     public interface IPaymentRepository
     {

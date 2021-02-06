@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RepositoryPattern.WithRepository.Domain.DataAccess
+namespace Shop.WithRepository.Domain.DataAccess
 {
     public class DataAccessException : Exception
     {

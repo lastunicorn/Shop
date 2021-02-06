@@ -1,6 +1,6 @@
-﻿using RepositoryPattern.WithRepository.Domain.DataAccess;
+﻿using Shop.WithRepository.Domain.DataAccess;
 
-namespace RepositoryPattern.WithRepository.DataAccess.InMemory
+namespace Shop.WithRepository.DataAccess.InMemory
 {
     public class UnitOfWork : IUnitOfWork
     {

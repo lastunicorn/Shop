@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using MediatR;
-using RepositoryPattern.WithRepository.Domain;
+using Shop.WithRepository.Domain;
 
-namespace RepositoryPattern.WithRepository.Application.GetProducts
+namespace Shop.WithRepository.Application.GetProducts
 {
     public class GetProductsRequest : IRequest<List<Product>>
     {

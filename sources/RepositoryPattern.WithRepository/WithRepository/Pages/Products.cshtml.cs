@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RepositoryPattern.WithRepository.Application.CreateSale;
-using RepositoryPattern.WithRepository.Application.GetProducts;
-using RepositoryPattern.WithRepository.Domain;
+using Shop.WithRepository.Application.CreateSale;
+using Shop.WithRepository.Application.GetProducts;
+using Shop.WithRepository.Domain;
 
-namespace RepositoryPattern.WithRepository.Pages
+namespace Shop.WithRepository.Pages
 {
     public class ProductsModel : PageModel
     {

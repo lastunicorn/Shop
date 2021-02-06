@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using RepositoryPattern.WithRepository.Domain;
-using RepositoryPattern.WithRepository.Domain.DataAccess;
+using Shop.WithRepository.Domain;
+using Shop.WithRepository.Domain.DataAccess;
 
-namespace RepositoryPattern.WithRepository.Application.CreateSale
+namespace Shop.WithRepository.Application.CreateSale
 {
     public class CreateSaleRequestHandler : IRequestHandler<CreateSaleRequest, Sale>
     {

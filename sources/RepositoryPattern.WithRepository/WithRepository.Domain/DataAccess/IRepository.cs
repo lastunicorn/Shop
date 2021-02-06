@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RepositoryPattern.WithRepository.Domain.DataAccess
+namespace Shop.WithRepository.Domain.DataAccess
 {
     public interface IRepository<T>
         where T : class

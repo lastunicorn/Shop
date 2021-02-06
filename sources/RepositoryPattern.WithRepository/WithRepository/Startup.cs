@@ -1,16 +1,15 @@
-using System.Reflection;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RepositoryPattern.WithRepository.Application.CreateSale;
-using RepositoryPattern.WithRepository.Application.GetProducts;
-using RepositoryPattern.WithRepository.DataAccess.EntityFramework;
-using RepositoryPattern.WithRepository.Domain.DataAccess;
+using Shop.WithRepository.Application.CreateSale;
+using Shop.WithRepository.Application.GetProducts;
+using Shop.WithRepository.DataAccess.EntityFramework;
+using Shop.WithRepository.Domain.DataAccess;
 
-namespace RepositoryPattern.WithRepository
+namespace Shop.WithRepository
 {
     public class Startup
     {
