@@ -29,7 +29,8 @@ namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: true),
                     Price = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false)
+                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
+                    Discriminator = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,18 +67,18 @@ namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "Name", "Price", "Quantity" },
-                values: new object[] { 1, "Chocolate", 12m, 3 });
+                columns: new[] { "Id", "Discriminator", "Name", "Price", "Quantity" },
+                values: new object[] { 1, "Product", "Chocolate", 12m, 3 });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "Name", "Price", "Quantity" },
-                values: new object[] { 2, "Water", 5m, 10 });
+                columns: new[] { "Id", "Discriminator", "Name", "Price", "Quantity" },
+                values: new object[] { 2, "Product", "Water", 5m, 10 });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "Name", "Price", "Quantity" },
-                values: new object[] { 3, "Chips", 3m, 15 });
+                columns: new[] { "Id", "Discriminator", "Name", "Price", "Quantity" },
+                values: new object[] { 3, "Product", "Chips", 3m, 15 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Sales_PaymentId",

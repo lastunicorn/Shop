@@ -9,7 +9,7 @@ using Shop.WithRepository.DataAccess.EntityFramework;
 namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
 {
     [DbContext(typeof(RepositoryPatternDbContext))]
-    [Migration("20210206121949_Initial")]
+    [Migration("20210207075658_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,6 +41,10 @@ namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
@@ -53,6 +57,8 @@ namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Product");
 
                     b.HasData(
                         new
@@ -103,6 +109,15 @@ namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Sales");
+                });
+
+            modelBuilder.Entity("Shop.WithRepository.Domain.ProductWithReservations2", b =>
+                {
+                    b.HasBaseType("Shop.WithRepository.Domain.Product");
+
+                    b.ToTable("Products");
+
+                    b.HasDiscriminator().HasValue("ProductWithReservations2");
                 });
 
             modelBuilder.Entity("Shop.WithRepository.Domain.Sale", b =>

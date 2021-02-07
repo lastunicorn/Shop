@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Shop.WithRepository.DataAccess.EntityFramework.Configurations;
 using Shop.WithRepository.Domain;
 
 namespace Shop.WithRepository.DataAccess.EntityFramework
@@ -20,32 +21,8 @@ namespace Shop.WithRepository.DataAccess.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            Product[] products = new Product[]
-            {
-                new Product
-                {
-                    Id = 1,
-                    Name = "Chocolate",
-                    Price = 12,
-                    Quantity = 3
-                },
-                new Product
-                {
-                    Id = 2,
-                    Name = "Water",
-                    Price = 5,
-                    Quantity = 10
-                },
-                new Product
-                {
-                    Id = 3,
-                    Name = "Chips",
-                    Price = 3,
-                    Quantity = 15
-                }
-            };
-
-            modelBuilder.Entity<Product>().HasData(products);
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductWithReservationsEntityTypeConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
