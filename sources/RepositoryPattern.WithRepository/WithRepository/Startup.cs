@@ -24,8 +24,6 @@ namespace Shop.WithRepository
         {
             services.AddRazorPages();
 
-            services.AddTransient<IProductRepository, ProductRepository>();
-            services.AddTransient<IPaymentRepository, PaymentRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<RepositoryPatternDbContext>();
 
