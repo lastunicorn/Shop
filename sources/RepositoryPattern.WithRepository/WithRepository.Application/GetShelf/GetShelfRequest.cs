@@ -4,7 +4,7 @@ using Shop.WithRepository.Domain;
 
 namespace Shop.WithRepository.Application.GetShelf
 {
-    public class GetShelfRequest : IRequest<List<Product>>
+    public class GetShelfRequest : IRequest<List<ProductWithReservations>>
     {
     }
 }

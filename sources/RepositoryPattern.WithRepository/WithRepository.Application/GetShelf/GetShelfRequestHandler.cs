@@ -9,7 +9,7 @@ using Shop.WithRepository.Domain.DataAccess;
 
 namespace Shop.WithRepository.Application.GetShelf
 {
-    internal class GetShelfRequestHandler : IRequestHandler<GetShelfRequest, List<Product>>
+    internal class GetShelfRequestHandler : IRequestHandler<GetShelfRequest, List<ProductWithReservations>>
     {
         private readonly IUnitOfWork unitOfWork;
 
@@ -18,21 +18,25 @@ namespace Shop.WithRepository.Application.GetShelf
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
 
-        public Task<List<Product>> Handle(GetShelfRequest request, CancellationToken cancellationToken)
+        public Task<List<ProductWithReservations>> Handle(GetShelfRequest request, CancellationToken cancellationToken)
         {
-            return Task.Run(() =>
+            return Task.Run(() => GetProductWithReservations().ToList(), cancellationToken);
+        }
+
+        private IEnumerable<ProductWithReservations> GetProductWithReservations()
+        {
+            List<Product> products = unitOfWork.ProductRepository.GetAvailable().ToList();
+
+            foreach (Product product in products)
             {
-                List<Product> products = unitOfWork.ProductRepository.GetAvailable().ToList();
+                IEnumerable<Sale> salesInProgress = unitOfWork.SaleRepository.GetInProgress(product.Id);
 
-                foreach (Product product in products)
+                yield return new ProductWithReservations
                 {
-                    int reservationCount = unitOfWork.SaleRepository.GetInProgress(product.Id).Count();
-
-                    product.Quantity -= reservationCount;
-                }
-
-                return products;
-            }, cancellationToken);
+                    Product = product,
+                    Reservations = salesInProgress.ToList()
+                };
+            }
         }
     }
 }

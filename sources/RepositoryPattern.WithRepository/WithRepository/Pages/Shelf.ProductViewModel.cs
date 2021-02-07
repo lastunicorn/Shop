@@ -1,5 +1,5 @@
 using System;
-using Shop.WithRepository.Domain;
+using Shop.WithRepository.Application.GetShelf;
 
 namespace Shop.WithRepository.Pages
 {
@@ -11,16 +11,22 @@ namespace Shop.WithRepository.Pages
 
         public decimal Price { get; set; }
 
-        public int Quantity { get; set; }
+        public int AvailableCount { get; set; }
 
-        public ProductViewModel(Product product)
+        public int ReservationCount { get; set; }
+
+        public bool CanBuy { get; set; }
+
+        public ProductViewModel(ProductWithReservations product)
         {
             if (product == null) throw new ArgumentNullException(nameof(product));
 
-            Id = product.Id;
-            Name = product.Name;
-            Price = product.Price;
-            Quantity = product.Quantity;
+            Id = product.Product.Id;
+            Name = product.Product.Name;
+            Price = product.Product.Price;
+            AvailableCount = product.Product.Quantity - product.Reservations.Count;
+            ReservationCount = product.Reservations.Count;
+            CanBuy = AvailableCount - ReservationCount > 0;
         }
     }
 }

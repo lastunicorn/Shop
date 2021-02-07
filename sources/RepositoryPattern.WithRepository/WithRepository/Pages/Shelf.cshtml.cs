@@ -28,7 +28,7 @@ namespace Shop.WithRepository.Pages
         public async Task OnGet()
         {
             GetShelfRequest request = new GetShelfRequest();
-            List<Product> products = await mediator.Send(request);
+            List<ProductWithReservations> products = await mediator.Send(request);
 
             Products = products
                 .Select(x => new ProductViewModel(x))

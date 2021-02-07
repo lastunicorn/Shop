@@ -11,7 +11,9 @@
         <tr>
             <th style="border: 1px solid black;">Product</th>
             <th style="border: 1px solid black;">Price</th>
-            <th style="border: 1px solid black;">Quantity</th>
+            <th style="border: 1px solid black;">Available</th>
+            <th style="border: 1px solid black;">Reserved</th>
+            <th style="border: 1px solid black;">Buy</th>
         </tr>
     </thead>
 
@@ -28,15 +30,22 @@
                 </td>
 
                 <td style="border: 1px solid black;">
-                    @product.Quantity
+                    @product.AvailableCount
                 </td>
 
                 <td style="border: 1px solid black;">
-                    <form method="post">
-                        @Html.Hidden("ProductId", product.Id)
+                    @product.ReservationCount
+                </td>
 
-                        <button type="submit" value="Buy">Buy</button>
-                    </form>
+                <td style="border: 1px solid black;">
+                    @if (product.CanBuy)
+                    {
+                        <form method="post">
+                            @Html.Hidden("ProductId", product.Id)
+
+                            <button type="submit" value="Buy">Buy</button>
+                        </form>
+                    }
                 </td>
             </tr>
         }
