@@ -2,7 +2,7 @@
 {
     public enum SaleState
     {
-        New = 0,
+        New,
         Payed,
         Done
     }

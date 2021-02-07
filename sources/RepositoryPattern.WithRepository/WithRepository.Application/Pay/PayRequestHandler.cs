@@ -25,7 +25,7 @@ namespace Shop.WithRepository.Application.Pay
                 if (sale == null)
                     throw new ShopException("Specified sale does not exist.");
 
-                // Here the application should call the bank and perform the money transfer.
+                // Here, the application should call the bank and perform the money transfer.
                 // Maybe a separate module will be created that encapsulates the details of accessing the bank's system.
 
                 Payment payment = new Payment
@@ -40,7 +40,6 @@ namespace Shop.WithRepository.Application.Pay
                 unitOfWork.PaymentRepository.Add(payment);
 
                 unitOfWork.Complete();
-
             }, cancellationToken);
         }
     }

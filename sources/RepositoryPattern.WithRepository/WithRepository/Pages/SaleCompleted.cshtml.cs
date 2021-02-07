@@ -3,18 +3,16 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Shop.WithRepository.Application.CompleteSale;
-using Shop.WithRepository.Application.GetPaymentDetails;
-using Shop.WithRepository.Domain;
 
 namespace Shop.WithRepository.Pages
 {
-    public class PaymentSuccessfulModel : PageModel
+    public class SaleCompletedModel : PageModel
     {
         private readonly IMediator mediator;
 
         public string ProductName { get; set; }
 
-        public PaymentSuccessfulModel(IMediator mediator)
+        public SaleCompletedModel(IMediator mediator)
         {
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }

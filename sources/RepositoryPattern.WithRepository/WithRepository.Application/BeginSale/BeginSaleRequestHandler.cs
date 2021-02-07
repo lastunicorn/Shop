@@ -7,18 +7,18 @@ using MediatR;
 using Shop.WithRepository.Domain;
 using Shop.WithRepository.Domain.DataAccess;
 
-namespace Shop.WithRepository.Application.StartSale
+namespace Shop.WithRepository.Application.BeginSale
 {
-    internal class StartSaleRequestHandler : IRequestHandler<StartSaleRequest, Sale>
+    internal class BeginSaleRequestHandler : IRequestHandler<BeginSaleRequest, Sale>
     {
         private readonly IUnitOfWork unitOfWork;
 
-        public StartSaleRequestHandler(IUnitOfWork unitOfWork)
+        public BeginSaleRequestHandler(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
 
-        public Task<Sale> Handle(StartSaleRequest request, CancellationToken cancellationToken)
+        public Task<Sale> Handle(BeginSaleRequest request, CancellationToken cancellationToken)
         {
             return Task.Run(() =>
             {

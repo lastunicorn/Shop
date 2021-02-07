@@ -7,11 +7,11 @@ namespace Shop.WithRepository.Domain
         public int Id { get; set; }
 
         public DateTime Date { get; set; }
-        
+
         public Product Product { get; set; }
-        
+
         public SaleState State { get; set; }
-        
+
         public Payment Payment { get; set; }
     }
 }

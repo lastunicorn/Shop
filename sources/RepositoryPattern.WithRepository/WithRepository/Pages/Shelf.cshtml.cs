@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shop.WithRepository.Application.GetProducts;
-using Shop.WithRepository.Application.StartSale;
+using Shop.WithRepository.Application.BeginSale;
+using Shop.WithRepository.Application.GetShelf;
 using Shop.WithRepository.Domain;
 
 namespace Shop.WithRepository.Pages
 {
-    public class ProductsModel : PageModel
+    public class ShelfModel : PageModel
     {
         private readonly IMediator mediator;
 
@@ -20,14 +20,14 @@ namespace Shop.WithRepository.Pages
         [BindProperty]
         public int ProductId { get; set; }
 
-        public ProductsModel(IMediator mediator)
+        public ShelfModel(IMediator mediator)
         {
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         public async Task OnGet()
         {
-            GetProductsRequest request = new GetProductsRequest();
+            GetShelfRequest request = new GetShelfRequest();
             List<Product> products = await mediator.Send(request);
 
             Products = products
@@ -39,7 +39,7 @@ namespace Shop.WithRepository.Pages
         {
             try
             {
-                StartSaleRequest request = new StartSaleRequest
+                BeginSaleRequest request = new BeginSaleRequest
                 {
                     ProductId = ProductId
                 };

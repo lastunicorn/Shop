@@ -25,16 +25,28 @@ namespace Shop.WithRepository.Application.CompleteSale
                 if (sale == null)
                     throw new ShopException($"The specified sale ({request.SaleId}) does not exist.");
 
-                sale.Product.Quantity--;
-                sale.State = SaleState.Done;
-
-                unitOfWork.Complete();
-
-                return new CompleteSaleResponse
+                switch (sale.State)
                 {
-                    ProductName = sale.Product.Name
-                };
+                    case SaleState.New:
+                        throw new ShopException("The product must be payed first.");
 
+                    case SaleState.Payed:
+                        sale.Product.Quantity--;
+                        sale.State = SaleState.Done;
+
+                        unitOfWork.Complete();
+
+                        return new CompleteSaleResponse
+                        {
+                            ProductName = sale.Product.Name
+                        };
+
+                    case SaleState.Done:
+                        throw new ShopException("The product was already dispensed.");
+
+                    default:
+                        throw new ShopException("The sale object has an invalid state.");
+                }
             }, cancellationToken);
         }
     }

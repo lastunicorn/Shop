@@ -1,15 +1,17 @@
 ﻿@page
-@model Shop.WithRepository.Pages.ProductsModel
+@model Shop.WithRepository.Pages.ShelfModel
 @{
+    ViewData["Title"] = "Shelf";
 }
+<h1>@ViewData["Title"]</h1>
 
-<table>
+<table style="border: 1px solid black;">
 
     <thead>
         <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Quantity</th>
+            <th style="border: 1px solid black;">Product</th>
+            <th style="border: 1px solid black;">Price</th>
+            <th style="border: 1px solid black;">Quantity</th>
         </tr>
     </thead>
 
@@ -17,19 +19,19 @@
         @foreach (ProductViewModel product in Model.Products)
         {
             <tr>
-                <td>
+                <td style="border: 1px solid black;">
                     @product.Name
                 </td>
 
-                <td>
+                <td style="border: 1px solid black;">
                     @product.Price lei
                 </td>
 
-                <td>
+                <td style="border: 1px solid black;">
                     @product.Quantity
                 </td>
 
-                <td>
+                <td style="border: 1px solid black;">
                     <form method="post">
                         @Html.Hidden("ProductId", product.Id)
 

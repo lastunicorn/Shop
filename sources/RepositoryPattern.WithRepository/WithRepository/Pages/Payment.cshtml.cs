@@ -44,7 +44,7 @@ namespace Shop.WithRepository.Pages
 
             await mediator.Send(request);
 
-            return RedirectToPage("PaymentSuccessful", new { SaleId = saleId });
+            return RedirectToPage("SaleCompleted", new { SaleId = saleId });
         }
     }
 }

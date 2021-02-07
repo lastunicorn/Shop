@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace Shop.WithRepository.Domain.DataAccess
+﻿namespace Shop.WithRepository.Domain.DataAccess
 {
-    public class DataAccessException : Exception
+    public class DataAccessException : ShopException
     {
         public DataAccessException(string message)
             : base(message)
