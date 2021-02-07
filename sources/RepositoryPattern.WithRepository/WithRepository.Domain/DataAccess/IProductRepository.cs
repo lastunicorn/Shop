@@ -6,7 +6,7 @@ namespace Shop.WithRepository.Domain.DataAccess
     {
         Product Get(int id);
 
-        IEnumerable<Product> GetAvailable();
+        IEnumerable<ProductWithReservations> GetAvailable();
 
         void Remove(int id);
     }

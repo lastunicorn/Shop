@@ -20,23 +20,7 @@ namespace Shop.WithRepository.Application.GetShelf
 
         public Task<List<ProductWithReservations>> Handle(GetShelfRequest request, CancellationToken cancellationToken)
         {
-            return Task.Run(() => GetProductWithReservations().ToList(), cancellationToken);
-        }
-
-        private IEnumerable<ProductWithReservations> GetProductWithReservations()
-        {
-            List<Product> products = unitOfWork.ProductRepository.GetAvailable().ToList();
-
-            foreach (Product product in products)
-            {
-                IEnumerable<Sale> salesInProgress = unitOfWork.SaleRepository.GetInProgress(product.Id);
-
-                yield return new ProductWithReservations
-                {
-                    Product = product,
-                    Reservations = salesInProgress.ToList()
-                };
-            }
+            return Task.Run(() => unitOfWork.ProductRepository.GetAvailable().ToList(), cancellationToken);
         }
     }
 }

@@ -4,9 +4,9 @@ using Shop.WithRepository.Domain;
 
 namespace Shop.WithRepository.DataAccess.EntityFramework.Configurations
 {
-    public class ProductWithReservationsEntityTypeConfiguration : IEntityTypeConfiguration<ProductWithReservations2>
+    public class ProductWithReservationsEntityTypeConfiguration : IEntityTypeConfiguration<ProductWithReservations>
     {
-        public void Configure(EntityTypeBuilder<ProductWithReservations2> builder)
+        public void Configure(EntityTypeBuilder<ProductWithReservations> builder)
         {
             builder
                 .ToTable("Products")

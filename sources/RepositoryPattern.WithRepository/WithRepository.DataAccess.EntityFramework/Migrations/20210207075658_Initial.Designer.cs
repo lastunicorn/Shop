@@ -111,13 +111,13 @@ namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
                     b.ToTable("Sales");
                 });
 
-            modelBuilder.Entity("Shop.WithRepository.Domain.ProductWithReservations2", b =>
+            modelBuilder.Entity("Shop.WithRepository.Domain.ProductWithReservations", b =>
                 {
                     b.HasBaseType("Shop.WithRepository.Domain.Product");
 
                     b.ToTable("Products");
 
-                    b.HasDiscriminator().HasValue("ProductWithReservations2");
+                    b.HasDiscriminator().HasValue("ProductWithReservations");
                 });
 
             modelBuilder.Entity("Shop.WithRepository.Domain.Sale", b =>

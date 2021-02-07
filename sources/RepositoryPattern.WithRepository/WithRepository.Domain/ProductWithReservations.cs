@@ -1,6 +1,6 @@
 ﻿namespace Shop.WithRepository.Domain
 {
-    public class ProductWithReservations2 : Product
+    public class ProductWithReservations : Product
     {
         public int ReservationCount { get; set; }
     }

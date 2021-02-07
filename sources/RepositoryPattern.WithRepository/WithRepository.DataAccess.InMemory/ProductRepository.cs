@@ -17,10 +17,18 @@ namespace Shop.WithRepository.DataAccess.InMemory
             return Collection.Find(x => x.Id == id);
         }
 
-        public IEnumerable<Product> GetAvailable()
+        public IEnumerable<ProductWithReservations> GetAvailable()
         {
             return Collection
-                .Where(x => x.Quantity > 0);
+                .Where(x => x.Quantity > 0)
+                .Select(x => new ProductWithReservations
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Price = x.Price,
+                    Quantity = x.Quantity,
+                    ReservationCount = InMemoryDatabase.Sales.Count(z => z.Product == x && z.State != SaleState.Done)
+                });
         }
 
         public void Remove(int id)
