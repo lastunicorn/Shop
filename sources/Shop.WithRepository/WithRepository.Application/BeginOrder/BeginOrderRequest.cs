@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Shop.WithRepository.Domain;
 
-namespace Shop.WithRepository.Application.BeginSale
+namespace Shop.WithRepository.Application.BeginOrder
 {
-    public class BeginSaleRequest : IRequest<Sale>
+    public class BeginOrderRequest : IRequest<Order>
     {
         public int ProductId { get; set; }
     }

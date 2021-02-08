@@ -3,8 +3,8 @@ using Shop.WithRepository.Domain;
 
 namespace Shop.WithRepository.Application.BeginPayment
 {
-    public class BeginPaymentRequest : IRequest<Sale>
+    public class BeginPaymentRequest : IRequest<Order>
     {
-        public int SaleId { get; set; }
+        public int OrderId { get; set; }
     }
 }

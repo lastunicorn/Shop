@@ -6,7 +6,7 @@
 
         IPaymentRepository PaymentRepository { get; }
 
-        ISaleRepository SaleRepository { get; }
+        IOrderRepository OrderRepository { get; }
 
         void Complete();
     }

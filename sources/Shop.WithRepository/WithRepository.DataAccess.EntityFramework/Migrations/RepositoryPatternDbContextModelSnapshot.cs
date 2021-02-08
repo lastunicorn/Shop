@@ -16,6 +16,33 @@ namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.2");
 
+            modelBuilder.Entity("Shop.WithRepository.Domain.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("PaymentId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("State")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PaymentId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Orders");
+                });
+
             modelBuilder.Entity("Shop.WithRepository.Domain.Payment", b =>
                 {
                     b.Property<int>("Id")
@@ -82,33 +109,6 @@ namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Shop.WithRepository.Domain.Sale", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("PaymentId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("State")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PaymentId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Sales");
-                });
-
             modelBuilder.Entity("Shop.WithRepository.Domain.ProductWithReservations", b =>
                 {
                     b.HasBaseType("Shop.WithRepository.Domain.Product");
@@ -118,7 +118,7 @@ namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
                     b.HasDiscriminator().HasValue("ProductWithReservations");
                 });
 
-            modelBuilder.Entity("Shop.WithRepository.Domain.Sale", b =>
+            modelBuilder.Entity("Shop.WithRepository.Domain.Order", b =>
                 {
                     b.HasOne("Shop.WithRepository.Domain.Payment", "Payment")
                         .WithMany()

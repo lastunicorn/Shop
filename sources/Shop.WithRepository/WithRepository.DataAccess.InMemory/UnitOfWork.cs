@@ -6,7 +6,7 @@ namespace Shop.WithRepository.DataAccess.InMemory
     {
         private IProductRepository productRepository;
         private IPaymentRepository paymentRepository;
-        private ISaleRepository saleRepository;
+        private IOrderRepository orderRepository;
 
         public IProductRepository ProductRepository
         {
@@ -30,14 +30,14 @@ namespace Shop.WithRepository.DataAccess.InMemory
             }
         }
 
-        public ISaleRepository SaleRepository
+        public IOrderRepository OrderRepository
         {
             get
             {
-                if (saleRepository == null)
-                    saleRepository = new SaleRepository();
+                if (orderRepository == null)
+                    orderRepository = new OrderRepository();
 
-                return saleRepository;
+                return orderRepository;
             }
         }
 

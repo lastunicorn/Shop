@@ -10,7 +10,7 @@ namespace Shop.WithRepository.DataAccess.EntityFramework
 
         public DbSet<Payment> Payments { get; set; }
 
-        public DbSet<Sale> Sales { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

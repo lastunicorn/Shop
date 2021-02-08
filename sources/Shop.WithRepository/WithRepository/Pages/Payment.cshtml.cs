@@ -14,7 +14,7 @@ namespace Shop.WithRepository.Pages
         private readonly IMediator mediator;
 
         [BindProperty(SupportsGet = true)]
-        public int SaleId { get; set; }
+        public int OrderId { get; set; }
 
         public string ProductName { get; set; }
 
@@ -29,25 +29,25 @@ namespace Shop.WithRepository.Pages
         {
             BeginPaymentRequest request = new BeginPaymentRequest
             {
-                SaleId = SaleId
+                OrderId = OrderId
             };
 
-            Sale sale = await mediator.Send(request);
+            Order order = await mediator.Send(request);
 
-            ProductName = sale.Product.Name;
-            Price = sale.Product.Price;
+            ProductName = order.Product.Name;
+            Price = order.Product.Price;
         }
 
         public async Task<IActionResult> OnPostPay()
         {
             CompletePaymentRequest request = new CompletePaymentRequest
             {
-                SaleId = SaleId
+                OrderId = OrderId
             };
 
             await mediator.Send(request);
 
-            return RedirectToPage("Dispenser", new { SaleId = SaleId });
+            return RedirectToPage("Dispenser", new { OrderId = OrderId });
         }
 
         public Task<IActionResult> OnPostCancel()

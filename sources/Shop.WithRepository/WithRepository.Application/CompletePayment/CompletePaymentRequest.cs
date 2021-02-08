@@ -4,6 +4,6 @@ namespace Shop.WithRepository.Application.CompletePayment
 {
     public class CompletePaymentRequest : IRequest
     {
-        public int SaleId { get; set; }
+        public int OrderId { get; set; }
     }
 }
