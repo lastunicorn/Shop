@@ -26,7 +26,7 @@ namespace Shop.WithRepository.Pages
             Price = product.Price;
             AvailableCount = product.Quantity - product.ReservationCount;
             ReservationCount = product.ReservationCount;
-            CanBuy = AvailableCount - ReservationCount > 0;
+            CanBuy = AvailableCount > 0;
         }
     }
 }
