@@ -27,7 +27,7 @@ namespace Shop.WithRepository.DataAccess.InMemory
                     Name = x.Name,
                     Price = x.Price,
                     Quantity = x.Quantity,
-                    ReservationCount = InMemoryDatabase.Sales.Count(z => z.Product == x && z.State != SaleState.Done)
+                    ReservationCount = InMemoryDatabase.Sales.Count(z => z.Product == x && z.State != SaleState.Done && z.State != SaleState.Canceled)
                 });
         }
 
