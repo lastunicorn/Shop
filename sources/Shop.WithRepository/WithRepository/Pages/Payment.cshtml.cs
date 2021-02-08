@@ -13,6 +13,9 @@ namespace Shop.WithRepository.Pages
     {
         private readonly IMediator mediator;
 
+        [BindProperty(SupportsGet = true)]
+        public int SaleId { get; set; }
+
         public string ProductName { get; set; }
 
         public decimal Price { get; set; }
@@ -22,11 +25,11 @@ namespace Shop.WithRepository.Pages
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
-        public async Task OnGet(int saleId)
+        public async Task OnGet()
         {
             GetPaymentDetailsRequest request = new GetPaymentDetailsRequest
             {
-                SaleId = saleId
+                SaleId = SaleId
             };
 
             Sale sale = await mediator.Send(request);
@@ -35,16 +38,21 @@ namespace Shop.WithRepository.Pages
             Price = sale.Product.Price;
         }
 
-        public async Task<IActionResult> OnPost(int saleId)
+        public async Task<IActionResult> OnPostPay()
         {
             PayRequest request = new PayRequest
             {
-                SaleId = saleId
+                SaleId = SaleId
             };
 
             await mediator.Send(request);
 
-            return RedirectToPage("SaleCompleted", new { SaleId = saleId });
+            return RedirectToPage("SaleCompleted", new { SaleId = SaleId });
+        }
+
+        public async Task<IActionResult> OnPostCancel()
+        {
+            throw new NotImplementedException();
         }
     }
 }

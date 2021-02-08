@@ -6,6 +6,8 @@
 <h1>@ViewData["Title"]</h1>
 
 <form method="post">
+    
+    @Html.HiddenFor(x=>x.SaleId)
 
     You are about the pay for the following items:
     <ul>
@@ -16,7 +18,7 @@
         Total price: @Model.Price
     </div>
 
-    <button type="submit">Pay</button>
-    <button type="button">Cancel</button>
+    <input type="submit" name="pay" value="Pay" asp-page-handler="Pay" />
+    <input type="submit" name="cancel" value="Cancel" asp-page-handler="Cancel" />
 
 </form>
