@@ -25,6 +25,16 @@ namespace Shop.WithRepository.Application.BeginPayment
                 if (order == null)
                     throw new ShopException($"The specified order ({request.OrderId}) does not exist.");
 
+                switch (order.State)
+                {
+                    case OrderState.Payed:
+                    case OrderState.Done:
+                        throw new ShopException("The payment was already done.");
+
+                    case OrderState.Canceled:
+                        throw new ShopException("The order was canceled. Please make another order.");
+                }
+
                 return order;
             }, cancellationToken);
         }
