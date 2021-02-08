@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Shop.WithRepository.Application.CancelSale;
 using Shop.WithRepository.Application.GetPaymentDetails;
 using Shop.WithRepository.Application.Pay;
 using Shop.WithRepository.Domain;
@@ -52,7 +53,14 @@ namespace Shop.WithRepository.Pages
 
         public async Task<IActionResult> OnPostCancel()
         {
-            throw new NotImplementedException();
+            CancelSaleRequest request = new CancelSaleRequest
+            {
+                SaleId = SaleId
+            };
+
+            await mediator.Send(request);
+
+            return RedirectToPage("Shelf");
         }
     }
 }

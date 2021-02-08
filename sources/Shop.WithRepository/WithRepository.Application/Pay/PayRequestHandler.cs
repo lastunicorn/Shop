@@ -25,6 +25,16 @@ namespace Shop.WithRepository.Application.Pay
                 if (sale == null)
                     throw new ShopException("Specified sale does not exist.");
 
+                switch (sale.State)
+                {
+                    case SaleState.Payed:
+                    case SaleState.Done:
+                        throw new ShopException("The payment was already done.");
+
+                    case SaleState.Canceled:
+                        throw new ShopException("The sale was canceled. Please make another sale.");
+                }
+
                 // Here, the application should call the bank and perform the money transfer.
                 // Maybe a separate module will be created that encapsulates the details of accessing the bank's system.
 

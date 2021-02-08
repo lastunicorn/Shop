@@ -4,6 +4,7 @@
     {
         New,
         Payed,
-        Done
+        Done,
+        Canceled
     }
 }
