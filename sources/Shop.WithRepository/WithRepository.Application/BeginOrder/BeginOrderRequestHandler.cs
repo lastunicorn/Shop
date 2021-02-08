@@ -7,18 +7,18 @@ using MediatR;
 using Shop.WithRepository.Domain;
 using Shop.WithRepository.Domain.DataAccess;
 
-namespace Shop.WithRepository.Application.BeginSale
+namespace Shop.WithRepository.Application.BeginOrder
 {
-    internal class BeginSaleRequestHandler : IRequestHandler<BeginSaleRequest, Sale>
+    internal class BeginOrderRequestHandler : IRequestHandler<BeginOrderRequest, Order>
     {
         private readonly IUnitOfWork unitOfWork;
 
-        public BeginSaleRequestHandler(IUnitOfWork unitOfWork)
+        public BeginOrderRequestHandler(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
 
-        public Task<Sale> Handle(BeginSaleRequest request, CancellationToken cancellationToken)
+        public Task<Order> Handle(BeginOrderRequest request, CancellationToken cancellationToken)
         {
             return Task.Run(() =>
             {
@@ -27,25 +27,25 @@ namespace Shop.WithRepository.Application.BeginSale
                 if (product == null)
                     throw new Exception("There is no product with the specified id.");
 
-                List<Sale> inProgressSales = unitOfWork.SaleRepository.GetInProgress(product.Id).ToList();
+                List<Order> inProgressOrders = unitOfWork.OrderRepository.GetInProgress(product.Id).ToList();
 
-                int availableQuantity = product.Quantity - inProgressSales.Count;
+                int availableQuantity = product.Quantity - inProgressOrders.Count;
 
                 if (availableQuantity <= 0)
                     throw new Exception($"There is no more {product.Name}.");
 
-                Sale sale = new Sale
+                Order order = new Order
                 {
                     Date = DateTime.UtcNow,
                     Product = product,
-                    State = SaleState.New
+                    State = OrderState.New
                 };
 
-                unitOfWork.SaleRepository.Add(sale);
+                unitOfWork.OrderRepository.Add(order);
 
                 unitOfWork.Complete();
 
-                return sale;
+                return order;
             }, cancellationToken);
         }
     }

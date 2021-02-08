@@ -6,25 +6,25 @@ using Shop.WithRepository.Domain.DataAccess;
 
 namespace Shop.WithRepository.DataAccess.EntityFramework
 {
-    public class SaleRepository : Repository<Sale, int>, ISaleRepository
+    public class OrderRepository : Repository<Order, int>, IOrderRepository
     {
-        public SaleRepository(RepositoryPatternDbContext dbContext)
+        public OrderRepository(RepositoryPatternDbContext dbContext)
             : base(dbContext)
         {
         }
 
-        public Sale GetFull(int id)
+        public Order GetFull(int id)
         {
-            return DbContext.Sales
+            return DbContext.Orders
                 .Include(x => x.Product)
                 .FirstOrDefault(x => x.Id == id);
         }
 
-        public IEnumerable<Sale> GetInProgress(int productId)
+        public IEnumerable<Order> GetInProgress(int productId)
         {
-            return DbContext.Sales
+            return DbContext.Orders
                 .Include(x => x.Product)
-                .Where(x => x.Product.Id == productId && x.State != SaleState.Done && x.State != SaleState.Canceled);
+                .Where(x => x.Product.Id == productId && x.State != OrderState.Done && x.State != OrderState.Canceled);
         }
     }
 }

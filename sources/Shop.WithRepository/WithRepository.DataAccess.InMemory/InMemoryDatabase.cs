@@ -8,7 +8,7 @@ namespace Shop.WithRepository.DataAccess.InMemory
 
         public static PaymentCollection Payments { get; } = new PaymentCollection();
 
-        public static SaleCollection Sales { get; } = new SaleCollection();
+        public static OrderCollection Orders { get; } = new OrderCollection();
 
         static InMemoryDatabase()
         {

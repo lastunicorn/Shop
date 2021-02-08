@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shop.WithRepository.Application.CompleteSale;
+using Shop.WithRepository.Application.CompleteOrder;
 
 namespace Shop.WithRepository.Pages
 {
@@ -17,14 +17,14 @@ namespace Shop.WithRepository.Pages
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
-        public async Task OnGet(int saleId)
+        public async Task OnGet(int orderId)
         {
-            CompleteSaleRequest request = new CompleteSaleRequest
+            CompleteOrderRequest request = new CompleteOrderRequest
             {
-                SaleId = saleId
+                OrderId = orderId
             };
 
-            CompleteSaleResponse response = await mediator.Send(request);
+            CompleteOrderResponse response = await mediator.Send(request);
 
             ProductName = response.ProductName;
         }

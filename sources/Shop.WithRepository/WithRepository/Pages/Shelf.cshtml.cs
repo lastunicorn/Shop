@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shop.WithRepository.Application.BeginSale;
+using Shop.WithRepository.Application.BeginOrder;
 using Shop.WithRepository.Application.PresentShelf;
 using Shop.WithRepository.Domain;
 
@@ -39,14 +39,14 @@ namespace Shop.WithRepository.Pages
         {
             try
             {
-                BeginSaleRequest request = new BeginSaleRequest
+                BeginOrderRequest request = new BeginOrderRequest
                 {
                     ProductId = ProductId
                 };
 
-                Sale sale = await mediator.Send(request);
+                Order order = await mediator.Send(request);
 
-                return RedirectToPage("Payment", new { SaleId = sale.Id });
+                return RedirectToPage("Payment", new { OrderId = order.Id });
             }
             catch
             {

@@ -21,7 +21,7 @@ namespace Shop.WithRepository.DataAccess.EntityFramework
                     Name = x.Name,
                     Price = x.Price,
                     Quantity = x.Quantity,
-                    ReservationCount = DbContext.Sales.Count(z => z.Product == x && z.State != SaleState.Done && z.State != SaleState.Canceled)
+                    ReservationCount = DbContext.Orders.Count(z => z.Product == x && z.State != OrderState.Done && z.State != OrderState.Canceled)
                 });
 
             foreach (ProductWithReservations productWithReservations in query)

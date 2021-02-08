@@ -38,7 +38,7 @@ namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Sales",
+                name: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -50,15 +50,15 @@ namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Sales", x => x.Id);
+                    table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Sales_Payments_PaymentId",
+                        name: "FK_Orders_Payments_PaymentId",
                         column: x => x.PaymentId,
                         principalTable: "Payments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Sales_Products_ProductId",
+                        name: "FK_Orders_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
@@ -81,20 +81,20 @@ namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
                 values: new object[] { 3, "Product", "Chips", 3m, 15 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sales_PaymentId",
-                table: "Sales",
+                name: "IX_Orders_PaymentId",
+                table: "Orders",
                 column: "PaymentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sales_ProductId",
-                table: "Sales",
+                name: "IX_Orders_ProductId",
+                table: "Orders",
                 column: "ProductId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Sales");
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Payments");

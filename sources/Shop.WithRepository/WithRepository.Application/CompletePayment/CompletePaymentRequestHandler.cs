@@ -20,19 +20,19 @@ namespace Shop.WithRepository.Application.CompletePayment
         {
             return Task.Run(() =>
             {
-                Sale sale = unitOfWork.SaleRepository.GetFull(request.SaleId);
+                Order order = unitOfWork.OrderRepository.GetFull(request.OrderId);
 
-                if (sale == null)
-                    throw new ShopException("Specified sale does not exist.");
+                if (order == null)
+                    throw new ShopException("Specified order does not exist.");
 
-                switch (sale.State)
+                switch (order.State)
                 {
-                    case SaleState.Payed:
-                    case SaleState.Done:
+                    case OrderState.Payed:
+                    case OrderState.Done:
                         throw new ShopException("The payment was already done.");
 
-                    case SaleState.Canceled:
-                        throw new ShopException("The sale was canceled. Please make another sale.");
+                    case OrderState.Canceled:
+                        throw new ShopException("The order was canceled. Please make another order.");
                 }
 
                 // Here, the application should call the bank and perform the money transfer.
@@ -41,11 +41,11 @@ namespace Shop.WithRepository.Application.CompletePayment
                 Payment payment = new Payment
                 {
                     Date = DateTime.UtcNow,
-                    Value = sale.Product.Price
+                    Value = order.Product.Price
                 };
 
-                sale.Payment = payment;
-                sale.State = SaleState.Payed;
+                order.Payment = payment;
+                order.State = OrderState.Payed;
 
                 unitOfWork.PaymentRepository.Add(payment);
 

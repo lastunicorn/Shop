@@ -1,6 +1,6 @@
 ﻿namespace Shop.WithRepository.Domain
 {
-    public enum SaleState
+    public enum OrderState
     {
         New,
         Payed,

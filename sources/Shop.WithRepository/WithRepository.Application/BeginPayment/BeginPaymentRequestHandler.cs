@@ -7,7 +7,7 @@ using Shop.WithRepository.Domain.DataAccess;
 
 namespace Shop.WithRepository.Application.BeginPayment
 {
-    internal class BeginPaymentRequestHandler : IRequestHandler<BeginPaymentRequest, Sale>
+    internal class BeginPaymentRequestHandler : IRequestHandler<BeginPaymentRequest, Order>
     {
         private readonly IUnitOfWork unitOfWork;
 
@@ -16,16 +16,16 @@ namespace Shop.WithRepository.Application.BeginPayment
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
 
-        public Task<Sale> Handle(BeginPaymentRequest request, CancellationToken cancellationToken)
+        public Task<Order> Handle(BeginPaymentRequest request, CancellationToken cancellationToken)
         {
             return Task.Run(() =>
             {
-                Sale sale = unitOfWork.SaleRepository.GetFull(request.SaleId);
+                Order order = unitOfWork.OrderRepository.GetFull(request.OrderId);
 
-                if (sale == null)
-                    throw new ShopException($"The specified sale ({request.SaleId}) does not exist.");
+                if (order == null)
+                    throw new ShopException($"The specified order ({request.OrderId}) does not exist.");
 
-                return sale;
+                return order;
             }, cancellationToken);
         }
     }

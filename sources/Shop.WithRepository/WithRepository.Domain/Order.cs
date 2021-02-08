@@ -2,7 +2,7 @@
 
 namespace Shop.WithRepository.Domain
 {
-    public class Sale
+    public class Order
     {
         public int Id { get; set; }
 
@@ -10,7 +10,7 @@ namespace Shop.WithRepository.Domain
 
         public Product Product { get; set; }
 
-        public SaleState State { get; set; }
+        public OrderState State { get; set; }
 
         public Payment Payment { get; set; }
     }
