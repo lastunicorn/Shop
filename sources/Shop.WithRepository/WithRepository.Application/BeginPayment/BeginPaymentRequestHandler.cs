@@ -5,18 +5,18 @@ using MediatR;
 using Shop.WithRepository.Domain;
 using Shop.WithRepository.Domain.DataAccess;
 
-namespace Shop.WithRepository.Application.GetPaymentDetails
+namespace Shop.WithRepository.Application.BeginPayment
 {
-    internal class GetPaymentDetailsRequestHandler : IRequestHandler<GetPaymentDetailsRequest, Sale>
+    internal class BeginPaymentRequestHandler : IRequestHandler<BeginPaymentRequest, Sale>
     {
         private readonly IUnitOfWork unitOfWork;
 
-        public GetPaymentDetailsRequestHandler(IUnitOfWork unitOfWork)
+        public BeginPaymentRequestHandler(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
 
-        public Task<Sale> Handle(GetPaymentDetailsRequest request, CancellationToken cancellationToken)
+        public Task<Sale> Handle(BeginPaymentRequest request, CancellationToken cancellationToken)
         {
             return Task.Run(() =>
             {

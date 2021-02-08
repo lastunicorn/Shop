@@ -4,8 +4,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Shop.WithRepository.Application.CancelSale;
-using Shop.WithRepository.Application.GetPaymentDetails;
-using Shop.WithRepository.Application.Pay;
+using Shop.WithRepository.Application.BeginPayment;
+using Shop.WithRepository.Application.CompletePayment;
 using Shop.WithRepository.Domain;
 
 namespace Shop.WithRepository.Pages
@@ -28,7 +28,7 @@ namespace Shop.WithRepository.Pages
 
         public async Task OnGet()
         {
-            GetPaymentDetailsRequest request = new GetPaymentDetailsRequest
+            BeginPaymentRequest request = new BeginPaymentRequest
             {
                 SaleId = SaleId
             };
@@ -41,14 +41,14 @@ namespace Shop.WithRepository.Pages
 
         public async Task<IActionResult> OnPostPay()
         {
-            PayRequest request = new PayRequest
+            CompletePaymentRequest request = new CompletePaymentRequest
             {
                 SaleId = SaleId
             };
 
             await mediator.Send(request);
 
-            return RedirectToPage("SaleCompleted", new { SaleId = SaleId });
+            return RedirectToPage("Dispenser", new { SaleId = SaleId });
         }
 
         public async Task<IActionResult> OnPostCancel()

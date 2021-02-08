@@ -10,11 +10,6 @@ namespace Shop.WithRepository.DataAccess.EntityFramework
         private IProductRepository productRepository;
         private ISaleRepository saleRepository;
 
-        public UnitOfWork(RepositoryPatternDbContext dbContext)
-        {
-            this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
-        }
-
         public IProductRepository ProductRepository
         {
             get
@@ -46,6 +41,11 @@ namespace Shop.WithRepository.DataAccess.EntityFramework
 
                 return saleRepository;
             }
+        }
+
+        public UnitOfWork(RepositoryPatternDbContext dbContext)
+        {
+            this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public void Complete()

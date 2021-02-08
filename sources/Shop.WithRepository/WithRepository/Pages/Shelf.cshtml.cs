@@ -6,7 +6,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Shop.WithRepository.Application.BeginSale;
-using Shop.WithRepository.Application.GetShelf;
+using Shop.WithRepository.Application.PresentShelf;
 using Shop.WithRepository.Domain;
 
 namespace Shop.WithRepository.Pages
@@ -27,7 +27,7 @@ namespace Shop.WithRepository.Pages
 
         public async Task OnGet()
         {
-            GetShelfRequest request = new GetShelfRequest();
+            PresentShelfRequest request = new PresentShelfRequest();
             List<ProductWithReservations> products = await mediator.Send(request);
 
             Products = products

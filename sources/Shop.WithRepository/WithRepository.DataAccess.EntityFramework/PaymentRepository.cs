@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Shop.WithRepository.Domain;
+﻿using Shop.WithRepository.Domain;
 using Shop.WithRepository.Domain.DataAccess;
 
 namespace Shop.WithRepository.DataAccess.EntityFramework
