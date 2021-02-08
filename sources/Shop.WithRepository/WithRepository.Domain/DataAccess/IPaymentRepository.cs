@@ -1,9 +1,6 @@
 ﻿namespace Shop.WithRepository.Domain.DataAccess
 {
-    public interface IPaymentRepository : IRepository<Payment>
+    public interface IPaymentRepository : IRepository<Payment, int>
     {
-        Payment Get(int id);
-
-        void Remove(int id);
     }
 }

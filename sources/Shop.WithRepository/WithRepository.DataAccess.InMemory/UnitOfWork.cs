@@ -13,7 +13,7 @@ namespace Shop.WithRepository.DataAccess.InMemory
             get
             {
                 if (productRepository == null)
-                    productRepository = new ProductRepository(InMemoryDatabase.Products);
+                    productRepository = new ProductRepository();
 
                 return productRepository;
             }
@@ -24,7 +24,7 @@ namespace Shop.WithRepository.DataAccess.InMemory
             get
             {
                 if (paymentRepository == null)
-                    paymentRepository = new PaymentRepository(InMemoryDatabase.Payments);
+                    paymentRepository = new PaymentRepository();
 
                 return paymentRepository;
             }
@@ -35,7 +35,7 @@ namespace Shop.WithRepository.DataAccess.InMemory
             get
             {
                 if (saleRepository == null)
-                    saleRepository = new SaleRepository(InMemoryDatabase.Sales);
+                    saleRepository = new SaleRepository();
 
                 return saleRepository;
             }

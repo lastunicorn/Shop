@@ -4,8 +4,8 @@ using Shop.WithRepository.Domain.DataAccess;
 
 namespace Shop.WithRepository.DataAccess.EntityFramework
 {
-    public class Repository<T> : IRepository<T>
-        where T : class
+    public class Repository<TEntity, TId> : IRepository<TEntity, TId>
+        where TEntity : class
     {
         protected RepositoryPatternDbContext DbContext { get; }
 
@@ -14,37 +14,50 @@ namespace Shop.WithRepository.DataAccess.EntityFramework
             DbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
-        public IEnumerable<T> GetAll()
+        public TEntity Get(TId id)
         {
-            return DbContext.Set<T>();
+            return DbContext.Set<TEntity>().Find(id);
         }
 
-        public void Add(T entity)
+        public IEnumerable<TEntity> GetAll()
+        {
+            return DbContext.Set<TEntity>();
+        }
+
+        public void Add(TEntity entity)
         {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
 
-            DbContext.Set<T>().Add(entity);
+            DbContext.Set<TEntity>().Add(entity);
         }
 
-        public void AddBulk(IEnumerable<T> entities)
+        public void AddBulk(IEnumerable<TEntity> entities)
         {
             if (entities == null) throw new ArgumentNullException(nameof(entities));
 
-            DbContext.Set<T>().AddRange(entities);
+            DbContext.Set<TEntity>().AddRange(entities);
         }
 
-        public void Remove(T entity)
+        public void Remove(TId id)
+        {
+            TEntity entity = DbContext.Set<TEntity>().Find(id);
+
+            if (entity != null)
+                DbContext.Set<TEntity>().Remove(entity);
+        }
+
+        public void Remove(TEntity entity)
         {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
 
-            DbContext.Set<T>().Remove(entity);
+            DbContext.Set<TEntity>().Remove(entity);
         }
 
-        public void RemoveBulk(IEnumerable<T> entities)
+        public void RemoveBulk(IEnumerable<TEntity> entities)
         {
             if (entities == null) throw new ArgumentNullException(nameof(entities));
 
-            DbContext.Set<T>().RemoveRange(entities);
+            DbContext.Set<TEntity>().RemoveRange(entities);
         }
     }
 }

@@ -1,24 +1,18 @@
-﻿using System.Collections.Generic;
-using Shop.WithRepository.Domain;
+﻿using Shop.WithRepository.Domain;
 using Shop.WithRepository.Domain.DataAccess;
 
 namespace Shop.WithRepository.DataAccess.InMemory
 {
-    public class PaymentRepository : Repository<Payment>, IPaymentRepository
+    public class PaymentRepository : Repository<Payment, int>, IPaymentRepository
     {
-        public PaymentRepository(List<Payment> collection)
-            : base(collection)
+        public PaymentRepository()
+            : base(InMemoryDatabase.Payments)
         {
         }
 
-        public Payment Get(int id)
+        protected override int GetIdFor(Payment entity)
         {
-            return Collection.Find(x => x.Id == id);
-        }
-
-        public void Remove(int id)
-        {
-            Collection.RemoveAll(x => x.Id == id);
+            return entity.Id;
         }
     }
 }

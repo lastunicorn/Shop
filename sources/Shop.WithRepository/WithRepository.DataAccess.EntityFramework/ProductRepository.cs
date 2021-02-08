@@ -5,16 +5,11 @@ using Shop.WithRepository.Domain.DataAccess;
 
 namespace Shop.WithRepository.DataAccess.EntityFramework
 {
-    public class ProductRepository : Repository<Product>, IProductRepository
+    public class ProductRepository : Repository<Product, int>, IProductRepository
     {
         public ProductRepository(RepositoryPatternDbContext dbContext)
             : base(dbContext)
         {
-        }
-
-        public Product Get(int id)
-        {
-            return DbContext.Products.Find(id);
         }
 
         public IEnumerable<ProductWithReservations> GetAvailable()
@@ -34,14 +29,6 @@ namespace Shop.WithRepository.DataAccess.EntityFramework
                 DbContext.Set<ProductWithReservations>().Attach(productWithReservations);
                 yield return productWithReservations;
             }
-        }
-
-        public void Remove(int id)
-        {
-            Product product = DbContext.Products.Find(id);
-
-            if (product != null)
-                DbContext.Products.Remove(product);
         }
     }
 }

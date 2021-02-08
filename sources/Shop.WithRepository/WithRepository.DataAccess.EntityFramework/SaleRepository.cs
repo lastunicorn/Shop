@@ -6,17 +6,11 @@ using Shop.WithRepository.Domain.DataAccess;
 
 namespace Shop.WithRepository.DataAccess.EntityFramework
 {
-    public class SaleRepository : Repository<Sale>, ISaleRepository
+    public class SaleRepository : Repository<Sale, int>, ISaleRepository
     {
         public SaleRepository(RepositoryPatternDbContext dbContext)
             : base(dbContext)
         {
-        }
-
-        public Sale Get(int id)
-        {
-            return DbContext.Sales
-                .FirstOrDefault(x => x.Id == id);
         }
 
         public Sale GetFull(int id)
@@ -30,15 +24,7 @@ namespace Shop.WithRepository.DataAccess.EntityFramework
         {
             return DbContext.Sales
                 .Include(x => x.Product)
-                .Where(x => x.Product.Id == productId && x.State != SaleState.Done);
-        }
-
-        public void Remove(int id)
-        {
-            Sale sale = DbContext.Sales.Find(id);
-
-            if (sale != null)
-                DbContext.Sales.Remove(sale);
+                .Where(x => x.Product.Id == productId && (x.State != SaleState.Done || x.State != SaleState.Canceled));
         }
     }
 }
