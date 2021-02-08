@@ -5,31 +5,27 @@ using Shop.WithRepository.Domain.DataAccess;
 
 namespace Shop.WithRepository.DataAccess.InMemory
 {
-    public class SaleRepository : Repository<Sale>, ISaleRepository
+    public class SaleRepository : Repository<Sale, int>, ISaleRepository
     {
-        public SaleRepository(List<Sale> collection)
-            : base(collection)
+        public SaleRepository()
+            : base(InMemoryDatabase.Sales)
         {
         }
 
-        public Sale Get(int id)
+        protected override int GetIdFor(Sale entity)
         {
-            return Collection.First(x => x.Id == id);
+            return entity.Id;
         }
 
         public Sale GetFull(int id)
         {
-            return Collection.First(x => x.Id == id);
-        }
-
-        public void Remove(int id)
-        {
-            Collection.RemoveAll(x => x.Id == id);
+            return Collection.FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<Sale> GetInProgress(int productId)
         {
-            throw new System.NotImplementedException();
+            return Collection
+                .Where(x => x.Product.Id == productId && (x.State != SaleState.Done || x.State != SaleState.Canceled));
         }
     }
 }

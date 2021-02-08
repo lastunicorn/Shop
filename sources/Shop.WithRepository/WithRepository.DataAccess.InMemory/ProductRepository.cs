@@ -5,16 +5,16 @@ using Shop.WithRepository.Domain.DataAccess;
 
 namespace Shop.WithRepository.DataAccess.InMemory
 {
-    public class ProductRepository : Repository<Product>, IProductRepository
+    public class ProductRepository : Repository<Product, int>, IProductRepository
     {
-        public ProductRepository(List<Product> collection)
-            : base(collection)
+        public ProductRepository()
+            : base(InMemoryDatabase.Products)
         {
         }
 
-        public Product Get(int id)
+        protected override int GetIdFor(Product entity)
         {
-            return Collection.Find(x => x.Id == id);
+            return entity.Id;
         }
 
         public IEnumerable<ProductWithReservations> GetAvailable()
@@ -29,11 +29,6 @@ namespace Shop.WithRepository.DataAccess.InMemory
                     Quantity = x.Quantity,
                     ReservationCount = InMemoryDatabase.Sales.Count(z => z.Product == x && z.State != SaleState.Done && z.State != SaleState.Canceled)
                 });
-        }
-
-        public void Remove(int id)
-        {
-            Collection.RemoveAll(x => x.Id == id);
         }
     }
 }

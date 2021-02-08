@@ -2,15 +2,17 @@
 
 namespace Shop.WithRepository.Domain.DataAccess
 {
-    public interface IRepository<T>
-        where T : class
+    public interface IRepository<TEntity, in TId>
+        where TEntity : class
     {
-        IEnumerable<T> GetAll();
+        TEntity Get(TId id);
+        IEnumerable<TEntity> GetAll();
 
-        void Add(T entity);
-        void AddBulk(IEnumerable<T> entities);
+        void Add(TEntity entity);
+        void AddBulk(IEnumerable<TEntity> entities);
 
-        void Remove(T entity);
-        void RemoveBulk(IEnumerable<T> entities);
+        void Remove(TId id);
+        void Remove(TEntity entity);
+        void RemoveBulk(IEnumerable<TEntity> entities);
     }
 }

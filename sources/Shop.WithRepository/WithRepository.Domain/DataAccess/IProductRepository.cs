@@ -2,12 +2,8 @@
 
 namespace Shop.WithRepository.Domain.DataAccess
 {
-    public interface IProductRepository : IRepository<Product>
+    public interface IProductRepository : IRepository<Product, int>
     {
-        Product Get(int id);
-
         IEnumerable<ProductWithReservations> GetAvailable();
-
-        void Remove(int id);
     }
 }

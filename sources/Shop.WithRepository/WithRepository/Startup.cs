@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shop.WithRepository.Application.PresentShelf;
-using Shop.WithRepository.DataAccess.EntityFramework;
+using Shop.WithRepository.DataAccess.InMemory;
 using Shop.WithRepository.Domain.DataAccess;
 
 namespace Shop.WithRepository
@@ -25,7 +25,7 @@ namespace Shop.WithRepository
             services.AddRazorPages();
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddTransient<RepositoryPatternDbContext>();
+            //services.AddTransient<RepositoryPatternDbContext>();
 
             services.AddMediatR(typeof(PresentShelfRequest).Assembly);
         }

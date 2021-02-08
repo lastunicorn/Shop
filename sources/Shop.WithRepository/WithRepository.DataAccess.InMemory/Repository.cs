@@ -5,22 +5,29 @@ using Shop.WithRepository.Domain.DataAccess;
 
 namespace Shop.WithRepository.DataAccess.InMemory
 {
-    public class Repository<T>
-        where T : class
+    public abstract class Repository<TEntity, TId> : IRepository<TEntity, TId>
+        where TEntity : class
     {
-        protected List<T> Collection { get; }
+        protected IList<TEntity> Collection { get; }
 
-        public Repository(List<T> collection)
+        protected Repository(IList<TEntity> collection)
         {
             Collection = collection ?? throw new ArgumentNullException(nameof(collection));
         }
 
-        public IEnumerable<T> GetAll()
+        protected abstract TId GetIdFor(TEntity entity);
+
+        public TEntity Get(TId id)
+        {
+            return Collection.FirstOrDefault(x => Equals(GetIdFor(x), id));
+        }
+
+        public IEnumerable<TEntity> GetAll()
         {
             return Collection.ToList();
         }
 
-        public void Add(T item)
+        public void Add(TEntity item)
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
 
@@ -32,11 +39,11 @@ namespace Shop.WithRepository.DataAccess.InMemory
             Collection.Add(item);
         }
 
-        public void AddBulk(IEnumerable<T> items)
+        public void AddBulk(IEnumerable<TEntity> items)
         {
             if (items == null) throw new ArgumentNullException(nameof(items));
 
-            foreach (T item in items)
+            foreach (TEntity item in items)
             {
                 bool entityAlreadyExists = Collection.Any(x => x == item);
 
@@ -47,18 +54,26 @@ namespace Shop.WithRepository.DataAccess.InMemory
             }
         }
 
-        public void Remove(T item)
+        public void Remove(TId id)
+        {
+            TEntity entity = Collection.FirstOrDefault(x => Equals(GetIdFor(x), id));
+
+            if (entity != null)
+                Collection.Remove(entity);
+        }
+
+        public void Remove(TEntity item)
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
 
             Collection.Remove(item);
         }
 
-        public void RemoveBulk(IEnumerable<T> items)
+        public void RemoveBulk(IEnumerable<TEntity> items)
         {
             if (items == null) throw new ArgumentNullException(nameof(items));
 
-            foreach (T item in items)
+            foreach (TEntity item in items)
                 Collection.Remove(item);
         }
     }

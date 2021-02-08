@@ -1,44 +1,46 @@
-﻿using System.Collections.Generic;
-using Shop.WithRepository.Domain;
+﻿using Shop.WithRepository.Domain;
 
 namespace Shop.WithRepository.DataAccess.InMemory
 {
     internal static class InMemoryDatabase
     {
-        public static List<Product> Products { get; } = new List<Product>();
-        
-        public static List<Payment> Payments { get; } = new List<Payment>();
-        
-        public static List<Sale> Sales { get; } = new List<Sale>();
+        public static ProductCollection Products { get; } = new ProductCollection();
+
+        public static PaymentCollection Payments { get; } = new PaymentCollection();
+
+        public static SaleCollection Sales { get; } = new SaleCollection();
 
         static InMemoryDatabase()
+        {
+            PopulateDatabase();
+        }
+
+        private static void PopulateDatabase()
         {
             Product[] products = new Product[]
             {
                 new Product
                 {
-                    Id = 1,
                     Name = "Chocolate",
                     Price = 12,
                     Quantity = 3
                 },
                 new Product
                 {
-                    Id = 2,
                     Name = "Water",
                     Price = 5,
                     Quantity = 10
                 },
                 new Product
                 {
-                    Id = 3,
                     Name = "Chips",
                     Price = 3,
                     Quantity = 15
                 }
             };
 
-            Products.AddRange(products);
+            foreach (Product product in products)
+                Products.Add(product);
         }
     }
 }
