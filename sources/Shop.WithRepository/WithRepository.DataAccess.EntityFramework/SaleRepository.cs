@@ -24,7 +24,7 @@ namespace Shop.WithRepository.DataAccess.EntityFramework
         {
             return DbContext.Sales
                 .Include(x => x.Product)
-                .Where(x => x.Product.Id == productId && (x.State != SaleState.Done || x.State != SaleState.Canceled));
+                .Where(x => x.Product.Id == productId && x.State != SaleState.Done && x.State != SaleState.Canceled);
         }
     }
 }

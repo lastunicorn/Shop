@@ -25,7 +25,7 @@ namespace Shop.WithRepository.DataAccess.InMemory
         public IEnumerable<Sale> GetInProgress(int productId)
         {
             return Collection
-                .Where(x => x.Product.Id == productId && (x.State != SaleState.Done || x.State != SaleState.Canceled));
+                .Where(x => x.Product.Id == productId && x.State != SaleState.Done && x.State != SaleState.Canceled);
         }
     }
 }
