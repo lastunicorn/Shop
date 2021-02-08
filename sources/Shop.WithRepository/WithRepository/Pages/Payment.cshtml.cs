@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shop.WithRepository.Application.CancelSale;
 using Shop.WithRepository.Application.BeginPayment;
+using Shop.WithRepository.Application.CancelOrder;
 using Shop.WithRepository.Application.CompletePayment;
 using Shop.WithRepository.Domain;
 
@@ -53,9 +53,9 @@ namespace Shop.WithRepository.Pages
 
         public async Task<IActionResult> OnPostCancel()
         {
-            CancelSaleRequest request = new CancelSaleRequest
+            CancelOrderRequest request = new CancelOrderRequest
             {
-                SaleId = SaleId
+                OrderId = OrderId
             };
 
             await mediator.Send(request);
