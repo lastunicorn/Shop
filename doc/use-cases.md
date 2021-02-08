@@ -2,10 +2,9 @@
 
 1. Display the Shelf with Products
 2. Begin a new Sale
-3. Pay
-   - Display payment details
-   - Perform the payment
-4. Complete an existing Sale
+3. Begin a Payment
+4. Complete the Payment
+5. Complete an existing Sale (Dispense the Product)
 
 ## 1) Display the Shelf with Products
 
@@ -32,22 +31,22 @@
   - This action automatically reserves the product.
 - Redirects the user to the payment interface.
 
-## 3-a) Pay - Display payment details
+## 3) Begin the Payment
 
 **Actor**: user
 
-**Action**: Asks to see payment details for a specific Sale
+**Action**: Asks to see the payment details for a specific Sale in order to perform the payment.
 
 **Steps**:
 
 - Retrieve the Sale details from the data storage
 - Display the payment information (from the Sale)
 
-## 3-b) Pay - Perform the payment
+## 4) Complete the Payment
 
 **Actor**: user
 
-**Action**: Asks to pay for a specific Sale
+**Action**: Asks to pay for a specific Sale (perform the bank transfer)
 
 **Steps**:
 
@@ -56,11 +55,11 @@
 - Change state of Sale to Payed.
 - Redirect the user to the Complete Sale interface.
 
-## 4) Complete an existing Sale
+## 5) Complete an existing Sale (Dispense the Product)
 
 **Actor**: user
 
-**Action**: Asks to receive the product from the payed Sale
+**Action**: Asks to receive the product for the payed Sale
 
 **Steps**:
 

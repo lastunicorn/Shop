@@ -6,13 +6,13 @@ using Shop.WithRepository.Application.CompleteSale;
 
 namespace Shop.WithRepository.Pages
 {
-    public class SaleCompletedModel : PageModel
+    public class DispenserModel : PageModel
     {
         private readonly IMediator mediator;
 
         public string ProductName { get; set; }
 
-        public SaleCompletedModel(IMediator mediator)
+        public DispenserModel(IMediator mediator)
         {
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }

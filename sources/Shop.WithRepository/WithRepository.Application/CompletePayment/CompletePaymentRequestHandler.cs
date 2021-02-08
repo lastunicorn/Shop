@@ -5,18 +5,18 @@ using MediatR;
 using Shop.WithRepository.Domain;
 using Shop.WithRepository.Domain.DataAccess;
 
-namespace Shop.WithRepository.Application.Pay
+namespace Shop.WithRepository.Application.CompletePayment
 {
-    internal class PayRequestHandler : AsyncRequestHandler<PayRequest>
+    internal class CompletePaymentRequestHandler : AsyncRequestHandler<CompletePaymentRequest>
     {
         private readonly IUnitOfWork unitOfWork;
 
-        public PayRequestHandler(IUnitOfWork unitOfWork)
+        public CompletePaymentRequestHandler(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
 
-        protected override Task Handle(PayRequest request, CancellationToken cancellationToken)
+        protected override Task Handle(CompletePaymentRequest request, CancellationToken cancellationToken)
         {
             return Task.Run(() =>
             {

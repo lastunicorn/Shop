@@ -9,7 +9,7 @@ using Shop.WithRepository.DataAccess.EntityFramework;
 namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
 {
     [DbContext(typeof(RepositoryPatternDbContext))]
-    [Migration("20210207075658_Initial")]
+    [Migration("20210208142259_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

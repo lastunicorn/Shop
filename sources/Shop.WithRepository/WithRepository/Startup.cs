@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Shop.WithRepository.Application.GetShelf;
+using Shop.WithRepository.Application.PresentShelf;
 using Shop.WithRepository.DataAccess.EntityFramework;
 using Shop.WithRepository.Domain.DataAccess;
 
@@ -27,7 +27,7 @@ namespace Shop.WithRepository
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<RepositoryPatternDbContext>();
 
-            services.AddMediatR(typeof(GetShelfRequest).Assembly);
+            services.AddMediatR(typeof(PresentShelfRequest).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
