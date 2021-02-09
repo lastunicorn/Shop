@@ -25,14 +25,14 @@ namespace Shop.WithRepository.Application.BeginOrder
                 Product product = unitOfWork.ProductRepository.Get(request.ProductId);
 
                 if (product == null)
-                    throw new Exception("There is no product with the specified id.");
+                    throw new ProductMissingException(request.ProductId);
 
                 List<Order> inProgressOrders = unitOfWork.OrderRepository.GetInProgress(product.Id).ToList();
 
                 int availableQuantity = product.Quantity - inProgressOrders.Count;
 
                 if (availableQuantity <= 0)
-                    throw new Exception($"There is no more {product.Name}.");
+                    throw new ProductQuantityException(product.Name);
 
                 Order order = new Order
                 {

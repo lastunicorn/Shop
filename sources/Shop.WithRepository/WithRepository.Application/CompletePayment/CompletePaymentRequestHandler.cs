@@ -23,13 +23,13 @@ namespace Shop.WithRepository.Application.CompletePayment
                 Order order = unitOfWork.OrderRepository.GetFull(request.OrderId);
 
                 if (order == null)
-                    throw new ShopException("Specified order does not exist.");
+                    throw new OrderMissingException(request.OrderId);
 
                 switch (order.State)
                 {
                     case OrderState.Payed:
                     case OrderState.Done:
-                        throw new ShopException("The payment was already done.");
+                        throw new PaymentCompletedException(order.Id);
 
                     case OrderState.Canceled:
                         throw new ShopException("The order was canceled. Please make another order.");

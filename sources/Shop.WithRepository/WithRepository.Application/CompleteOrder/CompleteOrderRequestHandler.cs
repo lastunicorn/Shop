@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Shop.WithRepository.Application.BeginPayment;
 using Shop.WithRepository.Domain;
 using Shop.WithRepository.Domain.DataAccess;
 
@@ -23,7 +24,7 @@ namespace Shop.WithRepository.Application.CompleteOrder
                 Order order = unitOfWork.OrderRepository.GetFull(request.OrderId);
 
                 if (order == null)
-                    throw new ShopException($"The specified order ({request.OrderId}) does not exist.");
+                    throw new OrderMissingException(request.OrderId);
 
                 switch (order.State)
                 {
@@ -42,10 +43,10 @@ namespace Shop.WithRepository.Application.CompleteOrder
                         };
 
                     case OrderState.Done:
-                        throw new ShopException("The product was already dispensed.");
+                        throw new ProductAlreadyDispensedException(order.Product.Name);
 
                     default:
-                        throw new ShopException("The order object has an invalid state.");
+                        throw new InvalidOrderStateException(order.Id);
                 }
             }, cancellationToken);
         }

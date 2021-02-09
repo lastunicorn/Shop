@@ -23,7 +23,17 @@ namespace Shop.WithRepository.Application.CancelOrder
                 Order order = unitOfWork.OrderRepository.Get(request.OrderId);
 
                 if (order == null)
-                    throw new ShopException($"The order with id {request.OrderId} does not exist.");
+                    throw new OrderMissingException(request.OrderId);
+
+                switch (order.State)
+                {
+                    case OrderState.Payed:
+                    case OrderState.Done:
+                        throw new PaymentCompletedException(order.Id);
+
+                    case OrderState.Canceled:
+                        throw new OrderCanceledException(order.Id);
+                }
 
                 order.State = OrderState.Canceled;
 
