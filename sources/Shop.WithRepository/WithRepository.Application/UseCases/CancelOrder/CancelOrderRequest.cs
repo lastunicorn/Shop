@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Shop.WithRepository.Application.CancelOrder
+namespace Shop.WithRepository.Application.UseCases.CancelOrder
 {
     public class CancelOrderRequest : IRequest
     {

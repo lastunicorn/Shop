@@ -4,8 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Shop.WithRepository.Application.PresentShelf;
-using Shop.WithRepository.DataAccess.InMemory;
+using Shop.WithRepository.Application.UseCases.PresentShelf;
 using Shop.WithRepository.Domain.DataAccess;
 
 namespace Shop.WithRepository
@@ -24,10 +23,21 @@ namespace Shop.WithRepository
         {
             services.AddRazorPages();
 
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
-            //services.AddTransient<RepositoryPatternDbContext>();
+            AddInMemoryDataAccess(services);
+            //AddSqLiteDataAccess(services);
 
             services.AddMediatR(typeof(PresentShelfRequest).Assembly);
+        }
+
+        private static void AddInMemoryDataAccess(IServiceCollection services)
+        {
+            services.AddTransient<IUnitOfWork, Shop.WithRepository.DataAccess.EntityFramework.UnitOfWork>();
+            services.AddTransient<Shop.WithRepository.DataAccess.EntityFramework.RepositoryPatternDbContext>();
+        }
+
+        private static void AddSqLiteDataAccess(IServiceCollection services)
+        {
+            services.AddTransient<IUnitOfWork, Shop.WithRepository.DataAccess.InMemory.UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -7,7 +7,7 @@ using MediatR;
 using Shop.WithRepository.Domain;
 using Shop.WithRepository.Domain.DataAccess;
 
-namespace Shop.WithRepository.Application.PresentShelf
+namespace Shop.WithRepository.Application.UseCases.PresentShelf
 {
     internal class PresentShelfRequestHandler : IRequestHandler<PresentShelfRequest, List<ProductWithReservations>>
     {

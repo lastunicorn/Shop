@@ -2,7 +2,7 @@
 using MediatR;
 using Shop.WithRepository.Domain;
 
-namespace Shop.WithRepository.Application.PresentShelf
+namespace Shop.WithRepository.Application.UseCases.PresentShelf
 {
     public class PresentShelfRequest : IRequest<List<ProductWithReservations>>
     {

@@ -1,26 +1,26 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Shop.WithRepository.Domain;
 using Shop.WithRepository.Domain.DataAccess;
 
-namespace Shop.WithRepository.Application.CancelOrder
+namespace Shop.WithRepository.Application.UseCases.BeginPayment
 {
-    internal class CancelOrderRequestHandler : AsyncRequestHandler<CancelOrderRequest>
+    internal class BeginPaymentRequestHandler : IRequestHandler<BeginPaymentRequest, Order>
     {
         private readonly IUnitOfWork unitOfWork;
 
-        public CancelOrderRequestHandler(IUnitOfWork unitOfWork)
+        public BeginPaymentRequestHandler(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
 
-        protected override Task Handle(CancelOrderRequest request, CancellationToken cancellationToken)
+        public Task<Order> Handle(BeginPaymentRequest request, CancellationToken cancellationToken)
         {
             return Task.Run(() =>
             {
-                Order order = unitOfWork.OrderRepository.Get(request.OrderId);
+                Order order = unitOfWork.OrderRepository.GetFull(request.OrderId);
 
                 if (order == null)
                     throw new OrderMissingException(request.OrderId);
@@ -35,9 +35,7 @@ namespace Shop.WithRepository.Application.CancelOrder
                         throw new OrderCanceledException(order.Id);
                 }
 
-                order.State = OrderState.Canceled;
-
-                unitOfWork.Complete();
+                return order;
             }, cancellationToken);
         }
     }

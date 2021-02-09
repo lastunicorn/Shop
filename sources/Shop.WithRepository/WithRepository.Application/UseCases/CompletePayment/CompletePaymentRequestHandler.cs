@@ -5,7 +5,7 @@ using MediatR;
 using Shop.WithRepository.Domain;
 using Shop.WithRepository.Domain.DataAccess;
 
-namespace Shop.WithRepository.Application.CompletePayment
+namespace Shop.WithRepository.Application.UseCases.CompletePayment
 {
     internal class CompletePaymentRequestHandler : AsyncRequestHandler<CompletePaymentRequest>
     {
@@ -32,7 +32,7 @@ namespace Shop.WithRepository.Application.CompletePayment
                         throw new PaymentCompletedException(order.Id);
 
                     case OrderState.Canceled:
-                        throw new ShopException("The order was canceled. Please make another order.");
+                        throw new OrderCanceledException(order.Id);
                 }
 
                 // Here, the application should call the bank and perform the money transfer.

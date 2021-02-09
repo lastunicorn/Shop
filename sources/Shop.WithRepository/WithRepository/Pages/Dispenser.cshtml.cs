@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shop.WithRepository.Application.CompleteOrder;
+using Shop.WithRepository.Application.UseCases.CompleteOrder;
 
 namespace Shop.WithRepository.Pages
 {

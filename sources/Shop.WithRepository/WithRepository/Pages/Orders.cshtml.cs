@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shop.WithRepository.Application.CancelOrder;
-using Shop.WithRepository.Application.PresentOrders;
+using Shop.WithRepository.Application.UseCases.CancelOrder;
+using Shop.WithRepository.Application.UseCases.PresentOrders;
 using Shop.WithRepository.Domain;
 
 namespace Shop.WithRepository.Pages

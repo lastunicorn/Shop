@@ -7,7 +7,7 @@ using MediatR;
 using Shop.WithRepository.Domain;
 using Shop.WithRepository.Domain.DataAccess;
 
-namespace Shop.WithRepository.Application.BeginOrder
+namespace Shop.WithRepository.Application.UseCases.BeginOrder
 {
     internal class BeginOrderRequestHandler : IRequestHandler<BeginOrderRequest, Order>
     {

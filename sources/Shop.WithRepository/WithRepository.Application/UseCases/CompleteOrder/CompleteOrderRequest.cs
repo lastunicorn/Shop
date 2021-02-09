@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Shop.WithRepository.Application.CompleteOrder
+namespace Shop.WithRepository.Application.UseCases.CompleteOrder
 {
     public class CompleteOrderRequest : IRequest<CompleteOrderResponse>
     {

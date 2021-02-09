@@ -6,7 +6,7 @@ using MediatR;
 using Shop.WithRepository.Domain;
 using Shop.WithRepository.Domain.DataAccess;
 
-namespace Shop.WithRepository.Application.PresentOrders
+namespace Shop.WithRepository.Application.UseCases.PresentOrders
 {
     internal class PresentOrdersRequestHandler : IRequestHandler<PresentOrdersRequest, List<Order>>
     {

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="PresentShelf\ProductWithReservations.cs" />
+    <Compile Remove="UseCases\PresentShelf\ProductWithReservations.cs" />
   </ItemGroup>
 
   <ItemGroup>

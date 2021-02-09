@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shop.WithRepository.Application.BeginPayment;
-using Shop.WithRepository.Application.CancelOrder;
-using Shop.WithRepository.Application.CompletePayment;
+using Shop.WithRepository.Application.UseCases.BeginPayment;
+using Shop.WithRepository.Application.UseCases.CancelOrder;
+using Shop.WithRepository.Application.UseCases.CompletePayment;
 using Shop.WithRepository.Domain;
 
 namespace Shop.WithRepository.Pages

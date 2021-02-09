@@ -2,11 +2,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Shop.WithRepository.Application.BeginPayment;
 using Shop.WithRepository.Domain;
 using Shop.WithRepository.Domain.DataAccess;
 
-namespace Shop.WithRepository.Application.CompleteOrder
+namespace Shop.WithRepository.Application.UseCases.CompleteOrder
 {
     internal class CompleteOrderRequestHandler : IRequestHandler<CompleteOrderRequest, CompleteOrderResponse>
     {
@@ -29,7 +28,7 @@ namespace Shop.WithRepository.Application.CompleteOrder
                 switch (order.State)
                 {
                     case OrderState.New:
-                        throw new ShopException("The product must be payed first.");
+                        throw new OrderNotPayedException(order.Id);
 
                     case OrderState.Payed:
                         order.Product.Quantity--;

@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shop.WithRepository.Application.BeginOrder;
-using Shop.WithRepository.Application.PresentShelf;
+using Shop.WithRepository.Application.UseCases.BeginOrder;
+using Shop.WithRepository.Application.UseCases.PresentShelf;
 using Shop.WithRepository.Domain;
 
 namespace Shop.WithRepository.Pages
