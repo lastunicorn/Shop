@@ -13,5 +13,7 @@ namespace Shop.WithRepository.Domain
         public OrderState State { get; set; }
 
         public Payment Payment { get; set; }
+
+        public bool IsFinished => State == OrderState.Done || State == OrderState.Canceled;
     }
 }

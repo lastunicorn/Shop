@@ -6,6 +6,8 @@ namespace Shop.WithRepository.Domain.DataAccess
     {
         Order GetFull(int id);
 
+        List<Order> GetAllFull();
+
         IEnumerable<Order> GetInProgress(int productId);
     }
 }

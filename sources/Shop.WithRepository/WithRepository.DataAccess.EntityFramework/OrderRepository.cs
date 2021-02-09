@@ -17,7 +17,16 @@ namespace Shop.WithRepository.DataAccess.EntityFramework
         {
             return DbContext.Orders
                 .Include(x => x.Product)
+                .Include(x => x.Payment)
                 .FirstOrDefault(x => x.Id == id);
+        }
+
+        public List<Order> GetAllFull()
+        {
+            return DbContext.Orders
+                .Include(x => x.Product)
+                .Include(x => x.Payment)
+                .ToList();
         }
 
         public IEnumerable<Order> GetInProgress(int productId)

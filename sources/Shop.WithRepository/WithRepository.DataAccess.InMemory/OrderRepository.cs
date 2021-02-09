@@ -22,6 +22,11 @@ namespace Shop.WithRepository.DataAccess.InMemory
             return Collection.FirstOrDefault(x => x.Id == id);
         }
 
+        public List<Order> GetAllFull()
+        {
+            return Collection.ToList();
+        }
+
         public IEnumerable<Order> GetInProgress(int productId)
         {
             return Collection
