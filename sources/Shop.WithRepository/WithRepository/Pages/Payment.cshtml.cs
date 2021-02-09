@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Shop.WithRepository.Application.BeginPayment;
+using Shop.WithRepository.Application.CancelOrder;
 using Shop.WithRepository.Application.CompletePayment;
 using Shop.WithRepository.Domain;
 
@@ -50,9 +51,16 @@ namespace Shop.WithRepository.Pages
             return RedirectToPage("Dispenser", new { OrderId = OrderId });
         }
 
-        public Task<IActionResult> OnPostCancel()
+        public async Task<IActionResult> OnPostCancel()
         {
-            throw new NotImplementedException();
+            CancelOrderRequest request = new CancelOrderRequest
+            {
+                OrderId = OrderId
+            };
+
+            await mediator.Send(request);
+
+            return RedirectToPage("Shelf");
         }
     }
 }
