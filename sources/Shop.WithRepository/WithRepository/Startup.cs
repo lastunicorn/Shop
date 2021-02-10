@@ -29,13 +29,13 @@ namespace Shop.WithRepository
             services.AddMediatR(typeof(PresentShelfRequest).Assembly);
         }
 
-        private static void AddInMemoryDataAccess(IServiceCollection services)
+        private static void AddSqLiteDataAccess(IServiceCollection services)
         {
             services.AddTransient<IUnitOfWork, Shop.WithRepository.DataAccess.EntityFramework.UnitOfWork>();
             services.AddTransient<Shop.WithRepository.DataAccess.EntityFramework.RepositoryPatternDbContext>();
         }
 
-        private static void AddSqLiteDataAccess(IServiceCollection services)
+        private static void AddInMemoryDataAccess(IServiceCollection services)
         {
             services.AddTransient<IUnitOfWork, Shop.WithRepository.DataAccess.InMemory.UnitOfWork>();
         }
