@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shop.NoRepository.DataAccess.EntityFramework\Shop.NoRepository.DataAccess.EntityFramework.csproj" />
+    <ProjectReference Include="..\Shop.NoRepositories.DataAccess.EntityFramework\Shop.NoRepositories.DataAccess.EntityFramework.csproj" />
   </ItemGroup>
 
 </Project>

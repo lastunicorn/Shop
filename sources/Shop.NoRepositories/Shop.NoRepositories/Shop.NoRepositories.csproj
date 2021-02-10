@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shop.NoRepository.Application\Shop.NoRepository.Application.csproj" />
-    <ProjectReference Include="..\Shop.NoRepository.DataAccess.EntityFramework\Shop.NoRepository.DataAccess.EntityFramework.csproj" />
+    <ProjectReference Include="..\Shop.NoRepositories.Application\Shop.NoRepositories.Application.csproj" />
+    <ProjectReference Include="..\Shop.NoRepositories.DataAccess.EntityFramework\Shop.NoRepositories.DataAccess.EntityFramework.csproj" />
   </ItemGroup>
 
   <ItemGroup>

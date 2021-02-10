@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.NoRepositories", "Shop.NoRepositories\Shop.NoRepositories.csproj", "{9E88B76F-C51A-40B5-823E-F36F526594B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.NoRepository.Application", "Shop.NoRepository.Application\Shop.NoRepository.Application.csproj", "{D822FD83-922A-49B0-9761-167AC08C9EF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.NoRepositories.Application", "Shop.NoRepositories.Application\Shop.NoRepositories.Application.csproj", "{D822FD83-922A-49B0-9761-167AC08C9EF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.NoRepository.DataAccess.EntityFramework", "Shop.NoRepository.DataAccess.EntityFramework\Shop.NoRepository.DataAccess.EntityFramework.csproj", "{D65983A2-6939-444F-877E-9900FE23F938}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.NoRepositories.DataAccess.EntityFramework", "Shop.NoRepositories.DataAccess.EntityFramework\Shop.NoRepositories.DataAccess.EntityFramework.csproj", "{D65983A2-6939-444F-877E-9900FE23F938}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.NoRepository.Domain", "Shop.NoRepository.Domain\Shop.NoRepository.Domain.csproj", "{C539570D-5C73-4A6C-84E4-6562E091CD37}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.NoRepositories.Domain", "Shop.NoRepositories.Domain\Shop.NoRepositories.Domain.csproj", "{C539570D-5C73-4A6C-84E4-6562E091CD37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
