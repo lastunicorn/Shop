@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WithRepository.Domain\Shop.WithRepository.Domain.csproj" />
+    <ProjectReference Include="..\WithRepository.Domain\Shop.WithRepositories.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -13,10 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WithRepository.Application\Shop.WithRepository.Application.csproj" />
-    <ProjectReference Include="..\WithRepository.DataAccess.EntityFramework\Shop.WithRepository.DataAccess.EntityFramework.csproj" />
-    <ProjectReference Include="..\WithRepository.DataAccess.InMemory\Shop.WithRepository.DataAccess.InMemory.csproj" />
-    <ProjectReference Include="..\WithRepository.Domain\Shop.WithRepository.Domain.csproj" />
+    <ProjectReference Include="..\WithRepository.Application\Shop.WithRepositories.Application.csproj" />
+    <ProjectReference Include="..\WithRepository.DataAccess.EntityFramework\Shop.WithRepositories.DataAccess.EntityFramework.csproj" />
+    <ProjectReference Include="..\WithRepository.DataAccess.InMemory\Shop.WithRepositories.DataAccess.InMemory.csproj" />
+    <ProjectReference Include="..\WithRepository.Domain\Shop.WithRepositories.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
