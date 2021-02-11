@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shop.WithRepository.Application.UseCases.CancelOrder;
-using Shop.WithRepository.Application.UseCases.PresentOrders;
-using Shop.WithRepository.Domain;
+using Shop.WithRepositories.Application.UseCases.CancelOrder;
+using Shop.WithRepositories.Application.UseCases.PresentOrders;
+using Shop.WithRepositories.Domain;
 
-namespace Shop.WithRepository.Pages
+namespace Shop.WithRepositories.Pages
 {
     public class OrdersModel : PageModel
     {

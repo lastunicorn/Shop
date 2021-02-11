@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Shop.WithRepository.Domain;
+using Shop.WithRepositories.Domain;
 
-namespace Shop.WithRepository.Application.UseCases.BeginOrder
+namespace Shop.WithRepositories.Application.UseCases.BeginOrder
 {
     public class BeginOrderRequest : IRequest<Order>
     {

@@ -1,6 +1,6 @@
-﻿using Shop.WithRepository.Domain;
+﻿using Shop.WithRepositories.Domain;
 
-namespace Shop.WithRepository.DataAccess.InMemory
+namespace Shop.WithRepositories.DataAccess.InMemory
 {
     internal static class InMemoryDatabase
     {

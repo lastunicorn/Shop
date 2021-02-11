@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Shop.WithRepository.Domain.DataAccess;
+using Shop.WithRepositories.Domain.DataAccess;
 
-namespace Shop.WithRepository.DataAccess.EntityFramework
+namespace Shop.WithRepositories.DataAccess.EntityFramework
 {
     public class Repository<TEntity, TId> : IRepository<TEntity, TId>
         where TEntity : class

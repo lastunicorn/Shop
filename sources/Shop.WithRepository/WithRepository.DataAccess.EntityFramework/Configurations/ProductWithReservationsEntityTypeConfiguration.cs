@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Shop.WithRepository.Domain;
+using Shop.WithRepositories.Domain;
 
-namespace Shop.WithRepository.DataAccess.EntityFramework.Configurations
+namespace Shop.WithRepositories.DataAccess.EntityFramework.Configurations
 {
     public class ProductWithReservationsEntityTypeConfiguration : IEntityTypeConfiguration<ProductWithReservations>
     {

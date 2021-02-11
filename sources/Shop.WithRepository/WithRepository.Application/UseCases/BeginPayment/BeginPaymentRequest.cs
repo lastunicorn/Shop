@@ -1,7 +1,7 @@
 using MediatR;
-using Shop.WithRepository.Domain;
+using Shop.WithRepositories.Domain;
 
-namespace Shop.WithRepository.Application.UseCases.BeginPayment
+namespace Shop.WithRepositories.Application.UseCases.BeginPayment
 {
     public class BeginPaymentRequest : IRequest<Order>
     {

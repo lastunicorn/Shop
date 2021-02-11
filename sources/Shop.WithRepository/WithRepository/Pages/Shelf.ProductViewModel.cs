@@ -1,7 +1,7 @@
 using System;
-using Shop.WithRepository.Domain;
+using Shop.WithRepositories.Domain;
 
-namespace Shop.WithRepository.Pages
+namespace Shop.WithRepositories.Pages
 {
     public class ProductViewModel
     {

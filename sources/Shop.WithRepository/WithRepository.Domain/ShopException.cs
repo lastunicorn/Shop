@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Shop.WithRepository.Domain
+namespace Shop.WithRepositories.Domain
 {
     [Serializable]
     public class ShopException : Exception

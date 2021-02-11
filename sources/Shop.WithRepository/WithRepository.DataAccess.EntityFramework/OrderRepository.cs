@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Shop.WithRepository.Domain;
-using Shop.WithRepository.Domain.DataAccess;
+using Shop.WithRepositories.Domain;
+using Shop.WithRepositories.Domain.DataAccess;
 
-namespace Shop.WithRepository.DataAccess.EntityFramework
+namespace Shop.WithRepositories.DataAccess.EntityFramework
 {
     public class OrderRepository : Repository<Order, int>, IOrderRepository
     {

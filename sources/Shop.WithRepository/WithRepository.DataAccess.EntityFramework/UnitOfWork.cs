@@ -1,7 +1,7 @@
 ﻿using System;
-using Shop.WithRepository.Domain.DataAccess;
+using Shop.WithRepositories.Domain.DataAccess;
 
-namespace Shop.WithRepository.DataAccess.EntityFramework
+namespace Shop.WithRepositories.DataAccess.EntityFramework
 {
     public class UnitOfWork : IUnitOfWork
     {

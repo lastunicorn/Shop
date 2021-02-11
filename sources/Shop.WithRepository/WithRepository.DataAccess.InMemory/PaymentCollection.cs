@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using Shop.WithRepository.Domain;
+using Shop.WithRepositories.Domain;
 
-namespace Shop.WithRepository.DataAccess.InMemory
+namespace Shop.WithRepositories.DataAccess.InMemory
 {
     internal class PaymentCollection : Collection<Payment>
     {

@@ -2,9 +2,9 @@ using System;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shop.WithRepository.Application.UseCases.CompleteOrder;
+using Shop.WithRepositories.Application.UseCases.CompleteOrder;
 
-namespace Shop.WithRepository.Pages
+namespace Shop.WithRepositories.Pages
 {
     public class DispenserModel : PageModel
     {

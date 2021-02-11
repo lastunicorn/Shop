@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Shop.WithRepository.Domain;
-using Shop.WithRepository.Domain.DataAccess;
+using Shop.WithRepositories.Domain;
+using Shop.WithRepositories.Domain.DataAccess;
 
-namespace Shop.WithRepository.Application.UseCases.BeginOrder
+namespace Shop.WithRepositories.Application.UseCases.BeginOrder
 {
     internal class BeginOrderRequestHandler : IRequestHandler<BeginOrderRequest, Order>
     {

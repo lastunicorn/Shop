@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Shop.WithRepository.Domain;
-using Shop.WithRepository.Domain.DataAccess;
+using Shop.WithRepositories.Domain;
+using Shop.WithRepositories.Domain.DataAccess;
 
-namespace Shop.WithRepository.DataAccess.InMemory
+namespace Shop.WithRepositories.DataAccess.InMemory
 {
     public class ProductRepository : Repository<Product, int>, IProductRepository
     {

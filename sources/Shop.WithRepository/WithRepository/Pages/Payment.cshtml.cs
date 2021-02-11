@@ -3,12 +3,12 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shop.WithRepository.Application.UseCases.BeginPayment;
-using Shop.WithRepository.Application.UseCases.CancelOrder;
-using Shop.WithRepository.Application.UseCases.CompletePayment;
-using Shop.WithRepository.Domain;
+using Shop.WithRepositories.Application.UseCases.BeginPayment;
+using Shop.WithRepositories.Application.UseCases.CancelOrder;
+using Shop.WithRepositories.Application.UseCases.CompletePayment;
+using Shop.WithRepositories.Domain;
 
-namespace Shop.WithRepository.Pages
+namespace Shop.WithRepositories.Pages
 {
     public class PaymentModel : PageModel
     {

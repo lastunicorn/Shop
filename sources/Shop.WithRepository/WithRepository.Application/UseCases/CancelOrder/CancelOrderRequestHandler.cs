@@ -2,10 +2,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Shop.WithRepository.Domain;
-using Shop.WithRepository.Domain.DataAccess;
+using Shop.WithRepositories.Domain;
+using Shop.WithRepositories.Domain.DataAccess;
 
-namespace Shop.WithRepository.Application.UseCases.CancelOrder
+namespace Shop.WithRepositories.Application.UseCases.CancelOrder
 {
     internal class CancelOrderRequestHandler : AsyncRequestHandler<CancelOrderRequest>
     {

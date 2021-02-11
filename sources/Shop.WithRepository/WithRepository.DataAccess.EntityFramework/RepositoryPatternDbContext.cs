@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Shop.WithRepository.DataAccess.EntityFramework.Configurations;
-using Shop.WithRepository.Domain;
+using Shop.WithRepositories.DataAccess.EntityFramework.Configurations;
+using Shop.WithRepositories.Domain;
 
-namespace Shop.WithRepository.DataAccess.EntityFramework
+namespace Shop.WithRepositories.DataAccess.EntityFramework
 {
     public class RepositoryPatternDbContext : DbContext
     {

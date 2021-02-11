@@ -1,4 +1,4 @@
-﻿namespace Shop.WithRepository.Domain
+﻿namespace Shop.WithRepositories.Domain
 {
     public enum OrderState
     {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using MediatR;
-using Shop.WithRepository.Domain;
+using Shop.WithRepositories.Domain;
 
-namespace Shop.WithRepository.Application.UseCases.PresentShelf
+namespace Shop.WithRepositories.Application.UseCases.PresentShelf
 {
     public class PresentShelfRequest : IRequest<List<ProductWithReservations>>
     {
