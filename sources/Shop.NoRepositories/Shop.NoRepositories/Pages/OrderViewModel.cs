@@ -1,5 +1,5 @@
 using System;
-using Shop.NoRepository.Domain;
+using Shop.NoRepositories.Domain;
 
 namespace Shop.NoRepositories.Pages
 {

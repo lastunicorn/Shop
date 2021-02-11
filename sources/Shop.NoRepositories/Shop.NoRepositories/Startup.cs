@@ -10,7 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Shop.NoRepository.Application.UseCases.PresentShelf;
+using Shop.NoRepositories.Application.UseCases.PresentShelf;
+using Shop.NoRepositories.DataAccess.EntityFramework;
 using Shop.NoRepository.DataAccess.EntityFramework;
 
 namespace Shop.NoRepositories

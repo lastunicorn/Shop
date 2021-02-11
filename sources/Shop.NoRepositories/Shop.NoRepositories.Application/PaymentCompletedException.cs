@@ -1,8 +1,8 @@
 using System;
 using System.Runtime.Serialization;
-using Shop.NoRepository.Domain;
+using Shop.NoRepositories.Domain;
 
-namespace Shop.NoRepository.Application
+namespace Shop.NoRepositories.Application
 {
     [Serializable]
     public class PaymentCompletedException : ShopException

@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Shop.NoRepository.Domain;
+using Shop.NoRepositories.Domain;
 
-namespace Shop.NoRepository.DataAccess.EntityFramework
+namespace Shop.NoRepositories.DataAccess.EntityFramework
 {
     public interface IShopDbContext
     {

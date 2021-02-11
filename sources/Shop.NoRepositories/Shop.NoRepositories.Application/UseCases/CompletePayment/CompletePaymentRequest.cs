@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Shop.NoRepository.Application.UseCases.CompletePayment
+namespace Shop.NoRepositories.Application.UseCases.CompletePayment
 {
     public class CompletePaymentRequest : IRequest
     {

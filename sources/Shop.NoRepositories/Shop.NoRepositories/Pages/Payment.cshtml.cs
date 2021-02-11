@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shop.NoRepository.Application.UseCases.BeginPayment;
-using Shop.NoRepository.Application.UseCases.CancelOrder;
-using Shop.NoRepository.Application.UseCases.CompletePayment;
-using Shop.NoRepository.Domain;
+using Shop.NoRepositories.Application.UseCases.BeginPayment;
+using Shop.NoRepositories.Application.UseCases.CancelOrder;
+using Shop.NoRepositories.Application.UseCases.CompletePayment;
+using Shop.NoRepositories.Domain;
 
 namespace Shop.NoRepositories.Pages
 {

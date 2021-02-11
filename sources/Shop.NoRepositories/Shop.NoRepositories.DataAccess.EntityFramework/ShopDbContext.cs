@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Shop.NoRepository.DataAccess.EntityFramework.Configurations;
-using Shop.NoRepository.Domain;
+using Shop.NoRepositories.DataAccess.EntityFramework.Configurations;
+using Shop.NoRepositories.Domain;
 
-namespace Shop.NoRepository.DataAccess.EntityFramework
+namespace Shop.NoRepositories.DataAccess.EntityFramework
 {
     public class ShopDbContext : DbContext, IShopDbContext
     {

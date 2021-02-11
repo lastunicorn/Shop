@@ -1,4 +1,4 @@
-﻿namespace Shop.NoRepository.Application.UseCases.CompleteOrder
+﻿namespace Shop.NoRepositories.Application.UseCases.CompleteOrder
 {
     public class CompleteOrderResponse
     {

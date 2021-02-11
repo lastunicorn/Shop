@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Shop.NoRepository.DataAccess.EntityFramework;
-using Shop.NoRepository.Domain;
+using Shop.NoRepositories.DataAccess.EntityFramework;
+using Shop.NoRepositories.Domain;
 
-namespace Shop.NoRepository.Application.UseCases.PresentShelf
+namespace Shop.NoRepositories.Application.UseCases.PresentShelf
 {
     internal class PresentShelfRequestHandler : IRequestHandler<PresentShelfRequest, List<ProductWithReservations>>
     {

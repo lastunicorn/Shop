@@ -5,10 +5,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Shop.NoRepository.DataAccess.EntityFramework;
-using Shop.NoRepository.Domain;
+using Shop.NoRepositories.DataAccess.EntityFramework;
+using Shop.NoRepositories.Domain;
 
-namespace Shop.NoRepository.Application.UseCases.PresentOrders
+namespace Shop.NoRepositories.Application.UseCases.PresentOrders
 {
     internal class PresentOrdersRequestHandler : IRequestHandler<PresentOrdersRequest, List<Order>>
     {

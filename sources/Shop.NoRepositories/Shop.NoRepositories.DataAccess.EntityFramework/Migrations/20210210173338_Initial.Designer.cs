@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Shop.NoRepositories.DataAccess.EntityFramework;
 using Shop.NoRepository.DataAccess.EntityFramework;
 
 namespace Shop.NoRepository.DataAccess.EntityFramework.Migrations

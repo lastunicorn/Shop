@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shop.NoRepository.Domain
+namespace Shop.NoRepositories.Domain
 {
     public class Order
     {

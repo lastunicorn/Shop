@@ -4,10 +4,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Shop.NoRepository.DataAccess.EntityFramework;
-using Shop.NoRepository.Domain;
+using Shop.NoRepositories.DataAccess.EntityFramework;
+using Shop.NoRepositories.Domain;
 
-namespace Shop.NoRepository.Application.UseCases.CompletePayment
+namespace Shop.NoRepositories.Application.UseCases.CompletePayment
 {
     internal class CompletePaymentRequestHandler : AsyncRequestHandler<CompletePaymentRequest>
     {
