@@ -1,5 +1,5 @@
 ﻿@page
-@model Shop.WithRepository.Pages.PaymentModel
+@model Shop.WithRepositories.Pages.PaymentModel
 @{
     ViewData["Title"] = "Payment";
 }
@@ -18,7 +18,7 @@
         Total price: @Model.Price
     </div>
 
-    <input type="submit" value="Pay" asp-page-handler="Pay"/>
-    <input type="submit" value="Cancel" asp-page-handler="Cancel"/>
+    <input type="submit" value="Pay" asp-page-handler="Pay" />
+    <input type="submit" value="Cancel" asp-page-handler="Cancel" />
 
 </form>
