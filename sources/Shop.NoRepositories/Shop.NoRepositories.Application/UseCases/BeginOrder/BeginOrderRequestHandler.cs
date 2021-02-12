@@ -24,17 +24,13 @@ namespace Shop.NoRepositories.Application.UseCases.BeginOrder
             return Task.Run(() =>
             {
                 // todo: query
-                Product product = shopDbContext.Products
-                    .FirstOrDefault(x => x.Id == request.ProductId);
+                Product product = shopDbContext.Products.GetById(request.ProductId);
 
                 if (product == null)
                     throw new ProductMissingException(request.ProductId);
 
                 // todo: query
-                List<Order> inProgressOrders = shopDbContext.Orders
-                    .Include(x => x.Product)
-                    .Where(x => x.Product.Id == request.ProductId && x.State != OrderState.Done && x.State != OrderState.Canceled)
-                    .ToList();
+                List<Order> inProgressOrders = shopDbContext.Orders.GetInProgress(request.ProductId);
 
                 int availableQuantity = product.Quantity - inProgressOrders.Count;
 
