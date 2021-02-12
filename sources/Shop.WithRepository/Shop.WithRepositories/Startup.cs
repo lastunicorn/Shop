@@ -30,15 +30,15 @@ namespace Shop.WithRepositories
             services.AddMediatR(typeof(PresentShelfRequest).Assembly);
         }
 
+        private static void AddInMemoryDataAccess(IServiceCollection services)
+        {
+            services.AddTransient<IUnitOfWork, DataAccess.InMemory.UnitOfWork>();
+        }
+
         private static void AddSqLiteDataAccess(IServiceCollection services)
         {
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<RepositoryPatternDbContext>();
-        }
-
-        private static void AddInMemoryDataAccess(IServiceCollection services)
-        {
-            services.AddTransient<IUnitOfWork, DataAccess.InMemory.UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

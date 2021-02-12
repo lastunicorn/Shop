@@ -4,7 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Shop.WithRepositories.Application.UseCases.CompleteOrder;
 
-namespace Shop.WithRepositories.Pages
+namespace Shop.WithRepositories.Presentation.Pages
 {
     public class DispenserModel : PageModel
     {
