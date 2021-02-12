@@ -17,9 +17,9 @@ else
 
             <thead>
                 <tr>
-                    <th style="border: 1px solid black;">Date</th>
-                    <th style="border: 1px solid black;">Product</th>
-                    <th style="border: 1px solid black;">Actions</th>
+                    <th>Date</th>
+                    <th>Product</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
 
@@ -27,15 +27,15 @@ else
                 @foreach (OrderViewModel order in Model.Orders)
                 {
                     <tr>
-                        <td style="border: 1px solid black;">
+                        <td >
                             @order.Date
                         </td>
 
-                        <td style="border: 1px solid black;">
+                        <td >
                             @order.ProductName
                         </td>
 
-                        <td style="border: 1px solid black;">
+                        <td >
                             @if (order.ShowCloseButton)
                             {
                                 <input type="submit" value="Close" asp-page-handler="Close" asp-route-orderid="@order.Id" />

@@ -6,15 +6,15 @@
 <h1>@ViewData["Title"]</h1>
 
 <form method="post">
-    <table style="border: 1px solid black;">
+    <table class="full-width">
 
-        <thead>
-            <tr>
-                <th style="border: 1px solid black;">Product</th>
-                <th style="border: 1px solid black;">Price</th>
-                <th style="border: 1px solid black;">Available</th>
-                <th style="border: 1px solid black;">Reserved</th>
-                <th style="border: 1px solid black;">Buy</th>
+        <thead >
+            <tr class="header-bgr">
+                <th class="padding-15 table-header">Product</th>
+                <th class="padding-15 table-header">Price</th>
+                <th class="padding-15 table-header">Available</th>
+                <th class="padding-15 table-header">Reserved</th>
+                <th class="padding-15 table-header">Buy</th>
             </tr>
         </thead>
 
@@ -22,26 +22,26 @@
             @foreach (ProductViewModel product in Model.Products)
             {
                 <tr>
-                    <td style="border: 1px solid black;">
+                    <td class="padding-15 table-cell">
                         @product.Name
                     </td>
 
-                    <td style="border: 1px solid black;">
+                    <td class="padding-15 table-cell">
                         @product.Price lei
                     </td>
 
-                    <td style="border: 1px solid black;">
+                    <td class="padding-15 table-cell">
                         @product.AvailableCount
                     </td>
 
-                    <td style="border: 1px solid black;">
+                    <td class="padding-15 table-cell">
                         @product.ReservationCount
                     </td>
 
-                    <td style="border: 1px solid black;">
+                    <td class="padding-15 table-cell">
                         @if (product.CanBuy)
                         {
-                            <input type="submit" value="Buy" asp-route-productid="@product.Id" />
+                            <input class="btn btn-primary" type="submit" value="Buy" asp-route-productid="@product.Id" />
                         }
                         else
                         {

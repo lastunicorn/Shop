@@ -1,6 +1,5 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -68,4 +67,77 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+/*
+    Page styles
+*/
+
+:root {
+    --bg-color: #cae0f0;
+    --header-color: #7798d3;
+    --text-color: #536f24;
+    --hover-color: #eff2ff;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
+.full-width {
+    width: 100%;
+    border: 0.2rem solid var(--bg-color)
+}
+
+.header-bgr {
+    background: var(--header-color);
+}
+
+.padding-15 {
+    padding: 15px;
+}
+
+.table-header {
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.table-cell {
+    color: var(--text-color);
+    font-weight: 700;
+    background: white;
+    border-top: 0.05rem solid var(--bg-color);
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.btn {
+    border: none;
+    background: none;
+    font-size: 1.6rem;
+}
+
+.btn-primary {
+    border: 1px solid var(--header-color);
+    background: white;
+    color: var(--header-color);
+    font-weight: 700;
+    padding: 4px 24px;
+}
+
+.btn-primary:hover {
+    background: var(--header-color);
+    color: white;
+}
+
+.nav-link {
+    font-size: 1.6rem;
+    color: var(--header-color);
+    font-weight: 600;
 }
