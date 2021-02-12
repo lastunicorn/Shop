@@ -2,8 +2,11 @@
 
 ## What is a Repository?
 
-> “A Repository mediates between the domain and data mapping layers, acting like an in-memory domain object collection.” (Martin Fowler)
+> 
 >
+> “A Repository mediates between the domain and data mapping layers, acting like an in-memory domain object collection.” (Martin Fowler) 
+>
+> 
 
 ![Repository](repository.drawio.png)
 

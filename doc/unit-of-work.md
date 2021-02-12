@@ -2,7 +2,10 @@
 
 ## What is a Unit of Work?
 
+>
+>
 > “The Unit of Work maintains a list of objects affected by a business transaction and coordinates the writing out of changes.” (Martin Fowler)
+>
 >
 
 ![Unit if Work](unit-of-work.drawio.png)
