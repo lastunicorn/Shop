@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -19,7 +20,12 @@ namespace Shop.WithRepositories.Application.UseCases.PresentOrders
 
         public Task<List<Order>> Handle(PresentOrdersRequest request, CancellationToken cancellationToken)
         {
-            return Task.Run(() => unitOfWork.OrderRepository.GetAllFull(), cancellationToken);
+            return Task.Run(() =>
+            {
+                return unitOfWork.OrderRepository.GetAllFull()
+                    .OrderByDescending(x => x.Date)
+                    .ToList();
+            }, cancellationToken);
         }
     }
 }
