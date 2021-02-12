@@ -35,12 +35,20 @@ namespace Shop.WithRepositories.Pages
 
         public async Task OnPostClose(int orderId)
         {
-            CancelOrderRequest request = new CancelOrderRequest
+            CancelOrderRequest cancelOrderRequest = new CancelOrderRequest
             {
                 OrderId = orderId
             };
 
-            await mediator.Send(request);
+            await mediator.Send(cancelOrderRequest);
+
+            PresentOrdersRequest presentOrdersRequest = new PresentOrdersRequest();
+
+            List<Order> orders = await mediator.Send(presentOrdersRequest);
+
+            Orders = orders
+                .Select(x => new OrderViewModel(x))
+                .ToList();
         }
 
         public IActionResult OnPostPay(int orderId)

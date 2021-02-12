@@ -60,7 +60,7 @@ namespace Shop.WithRepositories.Pages
 
             await mediator.Send(request);
 
-            return RedirectToPage("Shelf");
+            return RedirectToPage("Index");
         }
     }
 }
