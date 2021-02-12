@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.WithRepositories", "WithRepository\Shop.WithRepositories.csproj", "{FF12DF4C-0442-49E7-B9E8-81178D0BE709}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.WithRepositories", "Shop.WithRepositories\Shop.WithRepositories.csproj", "{FF12DF4C-0442-49E7-B9E8-81178D0BE709}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.WithRepositories.DataAccess.InMemory", "WithRepository.DataAccess.InMemory\Shop.WithRepositories.DataAccess.InMemory.csproj", "{F4B74982-C740-4B87-BC6A-6786D44D3DEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.WithRepositories.DataAccess.InMemory", "Shop.WithRepositories.DataAccess.InMemory\Shop.WithRepositories.DataAccess.InMemory.csproj", "{F4B74982-C740-4B87-BC6A-6786D44D3DEF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.WithRepositories.DataAccess.EntityFramework", "WithRepository.DataAccess.EntityFramework\Shop.WithRepositories.DataAccess.EntityFramework.csproj", "{C7F5A64E-0684-443E-BA2F-9601CC3164E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.WithRepositories.DataAccess.EntityFramework", "Shop.WithRepositories.DataAccess.EntityFramework\Shop.WithRepositories.DataAccess.EntityFramework.csproj", "{C7F5A64E-0684-443E-BA2F-9601CC3164E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.WithRepositories.Domain", "WithRepository.Domain\Shop.WithRepositories.Domain.csproj", "{6D4F201F-DE54-47C3-8CE7-84BCDF44C993}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.WithRepositories.Domain", "Shop.WithRepositories.Domain\Shop.WithRepositories.Domain.csproj", "{6D4F201F-DE54-47C3-8CE7-84BCDF44C993}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.WithRepositories.Application", "WithRepository.Application\Shop.WithRepositories.Application.csproj", "{AFEC291A-12E9-4DA9-B204-3201B9C12E98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.WithRepositories.Application", "Shop.WithRepositories.Application\Shop.WithRepositories.Application.csproj", "{AFEC291A-12E9-4DA9-B204-3201B9C12E98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

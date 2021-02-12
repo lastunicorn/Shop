@@ -69,3 +69,125 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/*
+    Page styles
+*/
+
+:root {
+    --bg-color: #cae0f0;
+    --header-color: #7798d3;
+    --text-color: #536f24;
+    --page-text-color: #637f34;
+    --hover-color: #eff2ff;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
+h1 {
+    padding: 2rem 0 0.5rem 0;
+}
+
+h2 {
+    padding: 2rem 0 0.5rem 0;
+    border-bottom: 0.05rem solid #e0e0e0;
+}
+
+.page-description {
+    background: #f5f5f5;
+    border-radius: 0.5rem;
+    padding: 2rem 3rem;
+    margin: 1rem 0 3rem 0;
+    color: var(--text-color);
+}
+
+.quote {
+    margin: 2rem 1rem;
+    padding: 1rem 2rem;
+    border-left: 0.5rem solid #e5e5e5;
+    color: #777;
+}
+
+    .quote .author {
+        margin: 0.5rem 0 0 0;
+    }
+
+.tbl {
+    width: 100%;
+    border: 0.2rem solid var(--bg-color)
+}
+
+    .tbl thead tr {
+        background: var(--header-color);
+    }
+
+        .tbl thead tr th {
+            padding: 1.5rem;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+    .tbl td {
+        padding: 1.5rem;
+        color: var(--text-color);
+        font-weight: 700;
+        background: white;
+        border-top: 0.05rem solid var(--bg-color);
+        text-align: center;
+        font-size: 1.6rem;
+    }
+
+.btn {
+    border: none;
+    background: none;
+    font-size: 1.6rem;
+    min-width: 10rem;
+}
+
+.btn-primary {
+    border: 1px solid var(--header-color);
+    background: white;
+    color: var(--header-color);
+    font-weight: 700;
+    padding: 4px 24px;
+}
+
+    .btn-primary:hover {
+        background: var(--header-color);
+        color: white;
+    }
+
+.btn-bar {
+    margin: 2rem 0;
+    padding: 2rem 3rem;
+    background: #f5f5f5;
+    border-radius: 0.5rem;
+}
+
+    .btn-bar .btn {
+        margin: 0 0.8rem 0 0;
+    }
+
+.navbar {
+    padding: 1rem 0.16rem;
+}
+
+.nav-link {
+    font-size: 1.6rem;
+    color: var(--header-color);
+    font-weight: 600;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    color: var(--header-color);
+    font-weight: 600;
+}

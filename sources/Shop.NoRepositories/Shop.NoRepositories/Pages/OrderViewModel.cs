@@ -11,7 +11,7 @@ namespace Shop.NoRepositories.Pages
 
         public string ProductName { get; set; }
 
-        public OrderState State { get; set; }
+        public string State { get; set; }
 
         public bool ShowCloseButton { get; set; }
         
@@ -22,9 +22,30 @@ namespace Shop.NoRepositories.Pages
             Id = order.Id;
             Date = order.Date;
             ProductName = order.Product?.Name;
-            State = order.State;
+            State = CalculateStateText(order);
             ShowCloseButton = !order.IsFinished;
             ShowPaymentButton = order.State == OrderState.New;
+        }
+
+        private static string CalculateStateText(Order order)
+        {
+            switch (order.State)
+            {
+                case OrderState.New:
+                    return "New";
+
+                case OrderState.Payed:
+                    return "Payed";
+
+                case OrderState.Done:
+                    return "Completed";
+
+                case OrderState.Canceled:
+                    return "Canceled";
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

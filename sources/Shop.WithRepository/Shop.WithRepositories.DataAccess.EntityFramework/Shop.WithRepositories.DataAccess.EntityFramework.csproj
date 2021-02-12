@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WithRepository.Domain\Shop.WithRepositories.Domain.csproj" />
+    <ProjectReference Include="..\Shop.WithRepositories.Domain\Shop.WithRepositories.Domain.csproj" />
   </ItemGroup>
 
 </Project>
