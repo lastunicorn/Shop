@@ -22,31 +22,48 @@ namespace Shop.WithRepositories.Application.UseCases.BeginOrder
         {
             return Task.Run(() =>
             {
-                Product product = unitOfWork.ProductRepository.Get(request.ProductId);
-
-                if (product == null)
-                    throw new ProductMissingException(request.ProductId);
-
-                List<Order> inProgressOrders = unitOfWork.OrderRepository.GetInProgress(product.Id).ToList();
-
-                int availableQuantity = product.Quantity - inProgressOrders.Count;
-
-                if (availableQuantity <= 0)
-                    throw new ProductQuantityException(product.Name);
-
-                Order order = new Order
-                {
-                    Date = DateTime.UtcNow,
-                    Product = product,
-                    State = OrderState.New
-                };
-
-                unitOfWork.OrderRepository.Add(order);
+                Product product = RetrieveProduct(request);
+                ValidateProductQuantity(product);
+                Order order = CreateNewOrder(product);
 
                 unitOfWork.Complete();
 
                 return order;
             }, cancellationToken);
+        }
+
+        private Product RetrieveProduct(BeginOrderRequest request)
+        {
+            Product product = unitOfWork.ProductRepository.Get(request.ProductId);
+
+            if (product == null)
+                throw new ProductMissingException(request.ProductId);
+
+            return product;
+        }
+
+        private void ValidateProductQuantity(Product product)
+        {
+            List<Order> inProgressOrders = unitOfWork.OrderRepository.GetInProgress(product.Id).ToList();
+
+            int availableQuantity = product.Quantity - inProgressOrders.Count;
+
+            if (availableQuantity <= 0)
+                throw new ProductQuantityException(product.Name);
+        }
+
+        private Order CreateNewOrder(Product product)
+        {
+            Order order = new Order
+            {
+                Date = DateTime.UtcNow,
+                Product = product,
+                State = OrderState.New
+            };
+
+            unitOfWork.OrderRepository.Add(order);
+
+            return order;
         }
     }
 }

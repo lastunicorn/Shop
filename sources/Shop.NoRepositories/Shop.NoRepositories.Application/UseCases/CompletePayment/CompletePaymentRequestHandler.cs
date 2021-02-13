@@ -22,41 +22,67 @@ namespace Shop.NoRepositories.Application.UseCases.CompletePayment
         {
             return Task.Run(() =>
             {
-                // todo: query
-                Order order = shopDbContext.Orders
-                    .Include(x => x.Product)
-                    .Include(x => x.Payment)
-                    .FirstOrDefault(x => x.Id == request.OrderId);
+                Order order = RetrieveOrder(request);
+                ValidateOrderIsReadyForPayment(order);
 
-                if (order == null)
-                    throw new OrderMissingException(request.OrderId);
-
-                switch (order.State)
-                {
-                    case OrderState.Payed:
-                    case OrderState.Done:
-                        throw new PaymentCompletedException(order.Id);
-
-                    case OrderState.Canceled:
-                        throw new OrderCanceledException(order.Id);
-                }
-
-                // Here, the application should call the bank and perform the money transfer.
-                // Maybe a separate module will be created that encapsulates the details of accessing the bank's system.
-
-                Payment payment = new Payment
-                {
-                    Date = DateTime.UtcNow,
-                    Value = order.Product.Price
-                };
-
-                order.Payment = payment;
-                order.State = OrderState.Payed;
-
-                shopDbContext.Payments.Add(payment);
+                PerformPay(order);
+                SetOrderAsPayed(order);
 
                 shopDbContext.SaveChanges();
             }, cancellationToken);
+        }
+
+        private Order RetrieveOrder(CompletePaymentRequest request)
+        {
+            // todo: query
+            Order order = shopDbContext.Orders
+                .Include(x => x.Product)
+                .Include(x => x.Payment)
+                .FirstOrDefault(x => x.Id == request.OrderId);
+
+            if (order == null)
+                throw new OrderMissingException(request.OrderId);
+
+            return order;
+        }
+
+        private static void ValidateOrderIsReadyForPayment(Order order)
+        {
+            switch (order.State)
+            {
+                case OrderState.Payed:
+                case OrderState.Done:
+                    throw new PaymentCompletedException(order.Id);
+
+                case OrderState.Canceled:
+                    throw new OrderCanceledException(order.Id);
+
+                case OrderState.New:
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private void PerformPay(Order order)
+        {
+            // Here, the application should call the bank and perform the money transfer.
+            // Maybe a separate module will be created that encapsulates the details of accessing the bank's system.
+        }
+
+        private void SetOrderAsPayed(Order order)
+        {
+            Payment payment = new Payment
+            {
+                Date = DateTime.UtcNow,
+                Value = order.Product.Price
+            };
+
+            order.Payment = payment;
+            order.State = OrderState.Payed;
+
+            shopDbContext.Payments.Add(payment);
         }
     }
 }

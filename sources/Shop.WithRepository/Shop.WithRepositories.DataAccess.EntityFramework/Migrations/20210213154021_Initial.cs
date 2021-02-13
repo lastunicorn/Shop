@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
+namespace Shop.WithRepositories.DataAccess.EntityFramework.Migrations
 {
     public partial class Initial : Migration
     {

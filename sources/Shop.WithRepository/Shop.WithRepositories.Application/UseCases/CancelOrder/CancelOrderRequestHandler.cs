@@ -20,25 +20,47 @@ namespace Shop.WithRepositories.Application.UseCases.CancelOrder
         {
             return Task.Run(() =>
             {
-                Order order = unitOfWork.OrderRepository.Get(request.OrderId);
+                Order order = RetrieveOrder(request);
+                ValidateOrderIsReadyForCanceling(order);
 
-                if (order == null)
-                    throw new OrderMissingException(request.OrderId);
-
-                switch (order.State)
-                {
-                    case OrderState.Payed:
-                    case OrderState.Done:
-                        throw new PaymentCompletedException(order.Id);
-
-                    case OrderState.Canceled:
-                        throw new OrderCanceledException(order.Id);
-                }
-
-                order.State = OrderState.Canceled;
+                CancelOrder(order);
 
                 unitOfWork.Complete();
             }, cancellationToken);
+        }
+
+        private Order RetrieveOrder(CancelOrderRequest request)
+        {
+            Order order = unitOfWork.OrderRepository.Get(request.OrderId);
+
+            if (order == null)
+                throw new OrderMissingException(request.OrderId);
+
+            return order;
+        }
+
+        private static void ValidateOrderIsReadyForCanceling(Order order)
+        {
+            switch (order.State)
+            {
+                case OrderState.Payed:
+                case OrderState.Done:
+                    throw new PaymentCompletedException(order.Id);
+
+                case OrderState.Canceled:
+                    throw new OrderCanceledException(order.Id);
+
+                case OrderState.New:
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private static void CancelOrder(Order order)
+        {
+            order.State = OrderState.Canceled;
         }
     }
 }

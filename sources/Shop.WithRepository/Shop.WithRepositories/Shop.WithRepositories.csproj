@@ -19,10 +19,4 @@
     <ProjectReference Include="..\Shop.WithRepositories.Presentation\Shop.WithRepositories.Presentation.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="sqlite.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

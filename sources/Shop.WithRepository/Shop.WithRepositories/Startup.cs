@@ -24,8 +24,8 @@ namespace Shop.WithRepositories
         {
             services.AddRazorPages();
 
-            AddInMemoryDataAccess(services);
-            //AddSqLiteDataAccess(services);
+            //AddInMemoryDataAccess(services);
+            AddSqLiteDataAccess(services);
 
             services.AddMediatR(typeof(PresentShelfRequest).Assembly);
         }
