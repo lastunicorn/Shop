@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Shop.NoRepositories.Pages
+namespace Shop.NoRepositories.Presentation.Pages
 {
     public class AboutModel : PageModel
     {

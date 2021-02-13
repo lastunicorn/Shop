@@ -1,5 +1,6 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+
 a.navbar-brand {
     white-space: normal;
     text-align: center;
@@ -129,13 +130,13 @@ h2 {
         background: var(--header-color);
     }
 
-        .tbl thead tr th {
-            padding: 1.5rem;
-            color: white;
-            font-weight: 600;
-            text-align: center;
-            font-size: 1.8rem;
-        }
+    .tbl thead th {
+        padding: 1.5rem;
+        color: white;
+        font-weight: 600;
+        text-align: center;
+        font-size: 1.8rem;
+    }
 
     .tbl td {
         padding: 1.5rem;
@@ -144,7 +145,7 @@ h2 {
         background: white;
         border-top: 0.05rem solid var(--bg-color);
         text-align: center;
-        font-size: 1.6rem;
+        font-size: 1.7rem;
     }
 
 .btn {
@@ -188,6 +189,8 @@ h2 {
     font-weight: 600;
 }
 
-.navbar-brand.nav-link {
+.navbar-brand {
     font-size: 2rem;
+    color: var(--header-color);
+    font-weight: 600;
 }

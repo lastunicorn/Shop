@@ -8,7 +8,7 @@ using Shop.NoRepositories.Application.UseCases.CancelOrder;
 using Shop.NoRepositories.Application.UseCases.CompletePayment;
 using Shop.NoRepositories.Domain;
 
-namespace Shop.NoRepositories.Pages
+namespace Shop.NoRepositories.Presentation.Pages
 {
     public class PaymentModel : PageModel
     {

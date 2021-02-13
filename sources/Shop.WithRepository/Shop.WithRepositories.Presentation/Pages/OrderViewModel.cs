@@ -29,23 +29,14 @@ namespace Shop.WithRepositories.Presentation.Pages
 
         private static string CalculateStateText(Order order)
         {
-            switch (order.State)
+            return order.State switch
             {
-                case OrderState.New:
-                    return "New";
-                
-                case OrderState.Payed:
-                    return "Payed";
-
-                case OrderState.Done:
-                    return "Completed";
-
-                case OrderState.Canceled:
-                    return "Canceled";
-
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+                OrderState.New => "New",
+                OrderState.Payed => "Payed",
+                OrderState.Done => "Completed",
+                OrderState.Canceled => "Canceled",
+                _ => throw new ArgumentOutOfRangeException()
+            };
         }
     }
 }

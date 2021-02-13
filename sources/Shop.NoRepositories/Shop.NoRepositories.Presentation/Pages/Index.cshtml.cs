@@ -9,7 +9,7 @@ using Shop.NoRepositories.Application.UseCases.BeginOrder;
 using Shop.NoRepositories.Application.UseCases.PresentShelf;
 using Shop.NoRepositories.Domain;
 
-namespace Shop.NoRepositories.Pages
+namespace Shop.NoRepositories.Presentation.Pages
 {
     public class IndexModel : PageModel
     {

@@ -9,7 +9,7 @@ using Shop.NoRepositories.Application.UseCases.CancelOrder;
 using Shop.NoRepositories.Application.UseCases.PresentOrders;
 using Shop.NoRepositories.Domain;
 
-namespace Shop.NoRepositories.Pages
+namespace Shop.NoRepositories.Presentation.Pages
 {
     public class OrdersModel : PageModel
     {

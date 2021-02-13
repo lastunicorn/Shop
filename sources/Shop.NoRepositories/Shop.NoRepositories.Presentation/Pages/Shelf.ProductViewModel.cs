@@ -1,7 +1,7 @@
 using System;
 using Shop.NoRepositories.Domain;
 
-namespace Shop.NoRepositories.Pages
+namespace Shop.NoRepositories.Presentation.Pages
 {
     public class ProductViewModel
     {
