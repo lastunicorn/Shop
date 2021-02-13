@@ -5,7 +5,7 @@ namespace Shop.WithRepositories.DataAccess.EntityFramework
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly RepositoryPatternDbContext dbContext;
+        private readonly ShopDbContext dbContext;
         private IPaymentRepository paymentRepository;
         private IProductRepository productRepository;
         private IOrderRepository orderRepository;
@@ -43,7 +43,7 @@ namespace Shop.WithRepositories.DataAccess.EntityFramework
             }
         }
 
-        public UnitOfWork(RepositoryPatternDbContext dbContext)
+        public UnitOfWork(ShopDbContext dbContext)
         {
             this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }

@@ -7,9 +7,9 @@ namespace Shop.WithRepositories.DataAccess.EntityFramework
     public class Repository<TEntity, TId> : IRepository<TEntity, TId>
         where TEntity : class
     {
-        protected RepositoryPatternDbContext DbContext { get; }
+        protected ShopDbContext DbContext { get; }
 
-        public Repository(RepositoryPatternDbContext dbContext)
+        public Repository(ShopDbContext dbContext)
         {
             DbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }

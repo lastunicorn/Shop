@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,7 +24,11 @@ namespace Shop.NoRepositories
         {
             services.AddRazorPages();
 
-            services.AddTransient<ShopDbContext>();
+            services.AddDbContext<ShopDbContext>(options =>
+            {
+                string connectionString = Configuration.GetConnectionString("ShopDatabase");
+                options.UseSqlite(connectionString);
+            });
 
             services.AddMediatR(typeof(PresentShelfRequest).Assembly);
         }

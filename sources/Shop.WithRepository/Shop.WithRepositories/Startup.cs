@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -35,10 +36,15 @@ namespace Shop.WithRepositories
             services.AddTransient<IUnitOfWork, DataAccess.InMemory.UnitOfWork>();
         }
 
-        private static void AddSqLiteDataAccess(IServiceCollection services)
+        private void AddSqLiteDataAccess(IServiceCollection services)
         {
             services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddTransient<RepositoryPatternDbContext>();
+
+            services.AddDbContext<ShopDbContext>(options =>
+            {
+                string connectionString = Configuration.GetConnectionString("ShopDatabase");
+                options.UseSqlite(connectionString);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

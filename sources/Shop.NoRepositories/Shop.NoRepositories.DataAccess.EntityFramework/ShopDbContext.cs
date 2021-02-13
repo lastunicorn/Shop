@@ -4,7 +4,7 @@ using Shop.NoRepositories.Domain;
 
 namespace Shop.NoRepositories.DataAccess.EntityFramework
 {
-    public class ShopDbContext : DbContext, IShopDbContext
+    public class ShopDbContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
 
@@ -12,11 +12,9 @@ namespace Shop.NoRepositories.DataAccess.EntityFramework
 
         public DbSet<Order> Orders { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public ShopDbContext(DbContextOptions<ShopDbContext> options)
+            : base(options)
         {
-            optionsBuilder.UseSqlite("Data Source=sqlite.db");
-
-            base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
