@@ -8,7 +8,7 @@ using Shop.WithRepositories.DataAccess.EntityFramework;
 
 namespace Shop.WithRepositories.DataAccess.EntityFramework.Migrations
 {
-    [DbContext(typeof(RepositoryPatternDbContext))]
+    [DbContext(typeof(ShopDbContext))]
     [Migration("20210213154021_Initial")]
     partial class Initial
     {

@@ -5,7 +5,7 @@ namespace Shop.WithRepositories.DataAccess.EntityFramework
 {
     public class PaymentRepository : Repository<Payment, int>, IPaymentRepository
     {
-        public PaymentRepository(RepositoryPatternDbContext dbContext)
+        public PaymentRepository(ShopDbContext dbContext)
             : base(dbContext)
         {
         }

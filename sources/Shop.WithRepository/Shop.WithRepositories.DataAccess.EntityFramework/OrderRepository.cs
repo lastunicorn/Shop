@@ -8,7 +8,7 @@ namespace Shop.WithRepositories.DataAccess.EntityFramework
 {
     public class OrderRepository : Repository<Order, int>, IOrderRepository
     {
-        public OrderRepository(RepositoryPatternDbContext dbContext)
+        public OrderRepository(ShopDbContext dbContext)
             : base(dbContext)
         {
         }

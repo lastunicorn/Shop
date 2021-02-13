@@ -7,7 +7,7 @@ namespace Shop.WithRepositories.DataAccess.EntityFramework
 {
     public class ProductRepository : Repository<Product, int>, IProductRepository
     {
-        public ProductRepository(RepositoryPatternDbContext dbContext)
+        public ProductRepository(ShopDbContext dbContext)
             : base(dbContext)
         {
         }

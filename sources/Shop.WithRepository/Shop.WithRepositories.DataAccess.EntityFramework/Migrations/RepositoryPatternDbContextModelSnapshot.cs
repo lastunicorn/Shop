@@ -7,7 +7,7 @@ using Shop.WithRepositories.DataAccess.EntityFramework;
 
 namespace Shop.WithRepositories.DataAccess.EntityFramework.Migrations
 {
-    [DbContext(typeof(RepositoryPatternDbContext))]
+    [DbContext(typeof(ShopDbContext))]
     partial class RepositoryPatternDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
