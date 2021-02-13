@@ -4,10 +4,10 @@ This is an example of using Repository Pattern and Unit of Work Pattern with Ent
 
 # Architecture
 
-## With Repositories
+## With Repositories and Unit of Work
 
 ![Architecture Diagram](doc/architecture.drawio.png)
 
-## No Repositories
+## No Repositories, No Unit of Work
 
 ![Architecture Diagram](doc/architecture-no-repositories.drawio.png)
