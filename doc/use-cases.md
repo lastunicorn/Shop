@@ -8,8 +8,7 @@
 
 **Steps**:
 
-- Retrieve all products from the storage that have quantity greater than 0
-- Remove the already reserved products.
+- Retrieve all products from the storage that have quantity greater than 0 and are not reserved for other orders.
 - Display the list of products to the user.
 
 ## 2) Begin a new Order
@@ -20,11 +19,19 @@
 
 **Steps**:
 
-- Checks that the Product exists in the data storage
-- Checks the availability of the Product (the quantity and if the product is already reserved by other Orders)
+- Retrieve product from data storage.
+- Checks the availability of the Product
+  - The quantity minus the products that are already reserved by other Orders must be greater or equal to 1
 - Create a new Order for the product with state New.
   - This action automatically reserves the product.
 - Redirects the user to the payment interface.
+
+**Alternate flows**:
+
+- If product does not exist
+  - Display "Product missing" error to the user.
+- If available product quantity is 0
+  - Display "Insufficient quantity" error to the user.
 
 ## 3) Begin a Payment
 
@@ -34,8 +41,19 @@
 
 **Steps**:
 
-- Retrieve the Order details from the data storage.
+- Retrieve the Order from the data storage.
+- Validate that the order is ready for payment
+  - Must be in state New.
 - Display the payment information (from the Order)
+
+**Alternate flows**:
+
+- If specified order does not exist
+  - Display "Order missing" error to the user.
+- If order is in state Payed or Done
+  - Display "Payment already completed" error to the user.
+- If order is in state Cancelled
+  - Display "Payment was cancelled" error to the user.
 
 ## 4) Complete the Payment
 
@@ -45,10 +63,21 @@
 
 **Steps**:
 
-- Check that the specified Order exists in the data storage
+- Retrieve the Order from the data storage.
+- Validate that the order is ready for payment
+  - Must be in state New.
 - Perform the payment (maybe call an external service to perform the bank transfer)
 - Change state of Order to Payed.
 - Redirect the user to the Complete Sale interface.
+
+**Alternate flows**:
+
+- If specified order does not exist
+  - Display "Order missing" error to the user.
+- If order is in state Payed or Done
+  - Display "Payment already completed" error to the user.
+- If order is in state Cancelled
+  - Display "Payment was cancelled" error to the user.
 
 ## 5) Cancel Order
 
@@ -58,10 +87,20 @@
 
 **Steps**:
 
-- Check that the specified Order exists in the data storage
-- Check that the order was not payed yet.
-- Check that the order was not canceled.
-- Change state of Order to Canceled.
+- Retrieve the Order from the data storage.
+- Validate that the order is ready for payment
+  - Must be in state New.
+- Change state of Order to Cancelled.
+
+**Alternate flows**:
+
+- If specified order does not exist
+  - Display "Order missing" error to the user.
+
+- If order is in state Payed or Done
+  - Display "Payment already completed" error to the user.
+- If order is in state Cancelled
+  - Display "Payment was cancelled" error to the user.
 
 ## 6) Complete an existing Order (Dispense the Product)
 
@@ -71,10 +110,24 @@
 
 **Steps**:
 
-- Check that the specified Order exists in the data storage
-- Check that the payment was completed.
+- Retrieve the Order from the data storage.
+- Validate that the order is ready for payment
+  - Must be in state Payed.
 - Dispense the product.
-- Change state of Order to Complete.
+  - Decrement quantity
+- Change state of Order to Done.
+
+**Alternate flows**:
+
+- If specified order does not exist
+  - Display "Order missing" error to the user.
+
+- If order is in state New
+  - Display "Order not payed" error to the user.
+- If order is in state Done
+  - Display "Product already dispensed" error to the user.
+- If order is in state Cancelled
+  - Display "Payment was cancelled" error to the user.
 
 ## 7) Display the list of orders
 
@@ -84,5 +137,5 @@
 
 **Steps**:
 
-- Retrieve the list of orders from the data storage
+- Retrieve the list of orders from the data storage.
 - Display the list of orders to the user.

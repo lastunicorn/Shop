@@ -5,12 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shop.WithRepositories.DataAccess.EntityFramework;
-using Shop.WithRepository.DataAccess.EntityFramework;
 
-namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
+namespace Shop.WithRepositories.DataAccess.EntityFramework.Migrations
 {
     [DbContext(typeof(RepositoryPatternDbContext))]
-    [Migration("20210208184410_Initial")]
+    [Migration("20210213154021_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,7 +18,7 @@ namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("Shop.WithRepository.Domain.Order", b =>
+            modelBuilder.Entity("Shop.WithRepositories.Domain.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,7 +45,7 @@ namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Shop.WithRepository.Domain.Payment", b =>
+            modelBuilder.Entity("Shop.WithRepositories.Domain.Payment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +62,7 @@ namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
                     b.ToTable("Payments");
                 });
 
-            modelBuilder.Entity("Shop.WithRepository.Domain.Product", b =>
+            modelBuilder.Entity("Shop.WithRepositories.Domain.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -112,22 +111,22 @@ namespace Shop.WithRepository.DataAccess.EntityFramework.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Shop.WithRepository.Domain.ProductWithReservations", b =>
+            modelBuilder.Entity("Shop.WithRepositories.Domain.ProductWithReservations", b =>
                 {
-                    b.HasBaseType("Shop.WithRepository.Domain.Product");
+                    b.HasBaseType("Shop.WithRepositories.Domain.Product");
 
                     b.ToTable("Products");
 
                     b.HasDiscriminator().HasValue("ProductWithReservations");
                 });
 
-            modelBuilder.Entity("Shop.WithRepository.Domain.Order", b =>
+            modelBuilder.Entity("Shop.WithRepositories.Domain.Order", b =>
                 {
-                    b.HasOne("Shop.WithRepository.Domain.Payment", "Payment")
+                    b.HasOne("Shop.WithRepositories.Domain.Payment", "Payment")
                         .WithMany()
                         .HasForeignKey("PaymentId");
 
-                    b.HasOne("Shop.WithRepository.Domain.Product", "Product")
+                    b.HasOne("Shop.WithRepositories.Domain.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId");
 

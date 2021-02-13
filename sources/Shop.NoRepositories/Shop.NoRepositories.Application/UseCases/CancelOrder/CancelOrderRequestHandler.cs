@@ -21,27 +21,49 @@ namespace Shop.NoRepositories.Application.UseCases.CancelOrder
         {
             return Task.Run(() =>
             {
-                // todo: query
-                Order order = shopDbContext.Orders
-                    .FirstOrDefault(x => x.Id == request.OrderId);
+                Order order = RetrieveOrder(request);
+                ValidateOrderIsReadyForCanceling(order);
 
-                if (order == null)
-                    throw new OrderMissingException(request.OrderId);
-
-                switch (order.State)
-                {
-                    case OrderState.Payed:
-                    case OrderState.Done:
-                        throw new PaymentCompletedException(order.Id);
-
-                    case OrderState.Canceled:
-                        throw new OrderCanceledException(order.Id);
-                }
-
-                order.State = OrderState.Canceled;
+                CancelOrder(order);
 
                 shopDbContext.SaveChanges();
             }, cancellationToken);
+        }
+
+        private Order RetrieveOrder(CancelOrderRequest request)
+        {
+            // todo: query
+            Order order = shopDbContext.Orders
+                .FirstOrDefault(x => x.Id == request.OrderId);
+
+            if (order == null)
+                throw new OrderMissingException(request.OrderId);
+
+            return order;
+        }
+
+        private static void ValidateOrderIsReadyForCanceling(Order order)
+        {
+            switch (order.State)
+            {
+                case OrderState.Payed:
+                case OrderState.Done:
+                    throw new PaymentCompletedException(order.Id);
+
+                case OrderState.Canceled:
+                    throw new OrderCanceledException(order.Id);
+
+                case OrderState.New:
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private static void CancelOrder(Order order)
+        {
+            order.State = OrderState.Canceled;
         }
     }
 }

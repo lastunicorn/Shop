@@ -20,23 +20,40 @@ namespace Shop.WithRepositories.Application.UseCases.BeginPayment
         {
             return Task.Run(() =>
             {
-                Order order = unitOfWork.OrderRepository.GetFull(request.OrderId);
-
-                if (order == null)
-                    throw new OrderMissingException(request.OrderId);
-
-                switch (order.State)
-                {
-                    case OrderState.Payed:
-                    case OrderState.Done:
-                        throw new PaymentCompletedException(order.Id);
-
-                    case OrderState.Canceled:
-                        throw new OrderCanceledException(order.Id);
-                }
+                Order order = RetrieveOrder(request);
+                ValidateOrderIsReadyForPayment(order);
 
                 return order;
             }, cancellationToken);
+        }
+
+        private Order RetrieveOrder(BeginPaymentRequest request)
+        {
+            Order order = unitOfWork.OrderRepository.GetFull(request.OrderId);
+
+            if (order == null)
+                throw new OrderMissingException(request.OrderId);
+
+            return order;
+        }
+
+        private static void ValidateOrderIsReadyForPayment(Order order)
+        {
+            switch (order.State)
+            {
+                case OrderState.Payed:
+                case OrderState.Done:
+                    throw new PaymentCompletedException(order.Id);
+
+                case OrderState.Canceled:
+                    throw new OrderCanceledException(order.Id);
+
+                case OrderState.New:
+                    break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }
