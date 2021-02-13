@@ -1,0 +1,31 @@
+﻿@page
+@model PaymentModel
+@{
+    ViewData["Title"] = "Payment";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="page-description">
+    You are about to pay for the order: @Model.OrderId
+</div>
+
+<form method="post">
+
+    @Html.HiddenFor(x => x.OrderId)
+
+    <div>
+        <div>
+            Product: @Model.ProductName
+        </div>
+
+        <div>
+            Total price: @Model.Price lei
+        </div>
+    </div>
+
+    <div class="btn-bar">
+        <input class="btn btn-primary" type="submit" value="Pay" asp-page-handler="Pay" />
+        <input class="btn btn-primary" type="submit" value="Cancel Order" asp-page-handler="Cancel" />
+    </div>
+
+</form>

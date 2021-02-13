@@ -6,16 +6,17 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.3">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shop.NoRepositories.Application\Shop.NoRepositories.Application.csproj" />
-    <ProjectReference Include="..\Shop.NoRepositories.DataAccess.EntityFramework\Shop.NoRepositories.DataAccess.EntityFramework.csproj" />
-    <ProjectReference Include="..\Shop.NoRepositories.Presentation\Shop.NoRepositories.Presentation.csproj" />
+    <ProjectReference Include="..\Shop.WithRepositories.DataAccess.EntityFramework\Shop.WithRepositories.DataAccess.EntityFramework.csproj" />
+    <ProjectReference Include="..\Shop.WithRepositories.DataAccess.InMemory\Shop.WithRepositories.DataAccess.InMemory.csproj" />
+    <ProjectReference Include="..\Shop.WithRepositories.Domain\Shop.WithRepositories.Domain.csproj" />
+    <ProjectReference Include="..\Shop.WithRepositories.Presentation\Shop.WithRepositories.Presentation.csproj" />
   </ItemGroup>
 
   <ItemGroup>

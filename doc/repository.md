@@ -2,8 +2,11 @@
 
 ## What is a Repository?
 
-> “A Repository mediates between the domain and data mapping layers, acting like an in-memory domain object collection.” (Martin Fowler)
+> 
 >
+> “A Repository mediates between the domain and data mapping layers, acting like an in-memory domain object collection.” (Martin Fowler) 
+>
+> 
 
 ![Repository](repository.drawio.png)
 
@@ -17,6 +20,7 @@ Each Repository class must contain a single type of domain entity. In other word
 
 - **Use the storage like an in-memory collection**
   - Allows the rest of the application to work with the data as it would be an in-memory collection.
+  - "A Repository [...] provides a more object-oriented view of the persistence layer. (Martin Fowler)"
   - The repository should provide `Get`, `Add`, `Remove`, but no `Update` method.
   - No `Save` method, also.
     - The `Save` method should be present in the `UnitOfWork` class.

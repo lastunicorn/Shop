@@ -27,6 +27,7 @@ namespace Shop.NoRepositories.Application.UseCases.PresentOrders
                 return shopDbContext.Orders
                     .Include(x => x.Product)
                     .Include(x => x.Payment)
+                    .OrderByDescending(x => x.Date)
                     .ToList();
             }, cancellationToken);
         }

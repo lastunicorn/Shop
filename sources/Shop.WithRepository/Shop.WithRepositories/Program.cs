@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Shop.NoRepositories
+namespace Shop.WithRepositories
 {
     public class Program
     {

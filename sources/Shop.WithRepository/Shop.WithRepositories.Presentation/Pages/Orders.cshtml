@@ -1,0 +1,71 @@
+﻿@page
+@using Shop.WithRepositories.Presentation.Pages
+@model OrdersModel
+@{
+    ViewData["Title"] = "Order History";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="page-description">
+    This is the list of all orders created over the time.<br />
+    Some of them are completed, some of them not yet.
+</div>
+
+@if (Model.Orders == null || Model.Orders.Count == 0)
+{
+    <text>There are no orders yet.</text>
+}
+else
+{
+    <form method="post">
+        
+        <table class="tbl">
+
+            <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Date</th>
+                    <th>Product</th>
+                    <th>State</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (OrderViewModel order in Model.Orders)
+                {
+                    <tr>
+                        <td>
+                            @order.Id
+                        </td>
+
+                        <td>
+                            @order.Date
+                        </td>
+
+                        <td>
+                            @order.ProductName
+                        </td>
+
+                        <td>
+                            @order.State
+                        </td>
+
+                        <td style="min-width: 30rem;">
+                            @if (order.ShowPaymentButton)
+                            {
+                                <input class="btn btn-primary" type="submit" value="Pay..." asp-page-handler="Pay" asp-route-orderid="@order.Id" />
+                            }
+                            @if (order.ShowCloseButton)
+                            {
+                                <input class="btn btn-primary" type="submit" value="Cancel" asp-page-handler="Close" asp-route-orderid="@order.Id" />
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </form>
+}
