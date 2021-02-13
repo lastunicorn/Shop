@@ -13,9 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shop.NoRepositories.Application\Shop.NoRepositories.Application.csproj" />
-    <ProjectReference Include="..\Shop.NoRepositories.DataAccess.EntityFramework\Shop.NoRepositories.DataAccess.EntityFramework.csproj" />
-    <ProjectReference Include="..\Shop.NoRepositories.Presentation\Shop.NoRepositories.Presentation.csproj" />
+    <ProjectReference Include="..\Shop.NoRepositories.Application\Shop.NoRepositories.Application.csproj" PrivateAssets="All" />
+    <ProjectReference Include="..\Shop.NoRepositories.DataAccess.EntityFramework\Shop.NoRepositories.DataAccess.EntityFramework.csproj" PrivateAssets="All" />
+    <ProjectReference Include="..\Shop.NoRepositories.Presentation\Shop.NoRepositories.Presentation.csproj" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>

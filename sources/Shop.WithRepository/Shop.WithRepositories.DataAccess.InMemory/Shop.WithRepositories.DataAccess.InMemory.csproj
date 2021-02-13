@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shop.WithRepositories.Domain\Shop.WithRepositories.Domain.csproj" />
+    <ProjectReference Include="..\Shop.WithRepositories.Domain\Shop.WithRepositories.Domain.csproj" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>

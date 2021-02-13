@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shop.WithRepositories.Application\Shop.WithRepositories.Application.csproj" />
-    <ProjectReference Include="..\Shop.WithRepositories.Domain\Shop.WithRepositories.Domain.csproj" />
+    <ProjectReference Include="..\Shop.WithRepositories.Application\Shop.WithRepositories.Application.csproj" PrivateAssets="All" />
+    <ProjectReference Include="..\Shop.WithRepositories.Domain\Shop.WithRepositories.Domain.csproj" PrivateAssets="All" />
   </ItemGroup>
 
 
