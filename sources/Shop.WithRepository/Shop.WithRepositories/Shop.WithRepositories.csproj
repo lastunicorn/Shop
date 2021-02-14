@@ -13,6 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\Shop.WithRepositories.Application\Shop.WithRepositories.Application.csproj" />
         <ProjectReference Include="..\Shop.WithRepositories.DataAccess.EntityFramework\Shop.WithRepositories.DataAccess.EntityFramework.csproj" PrivateAssets="All" />
         <ProjectReference Include="..\Shop.WithRepositories.DataAccess.InMemory\Shop.WithRepositories.DataAccess.InMemory.csproj" PrivateAssets="All" />
         <ProjectReference Include="..\Shop.WithRepositories.Domain\Shop.WithRepositories.Domain.csproj" PrivateAssets="All" />
