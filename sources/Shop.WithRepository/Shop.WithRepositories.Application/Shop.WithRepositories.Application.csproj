@@ -1,19 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="UseCases\PresentShelf\ProductWithReservations.cs" />
-  </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="UseCases\PresentShelf\ProductWithReservations.cs" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MediatR" Version="9.0.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="MediatR" Version="9.0.0" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Shop.WithRepositories.Domain\Shop.WithRepositories.Domain.csproj" PrivateAssets="All" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Shop.WithRepositories.Domain\Shop.WithRepositories.Domain.csproj" PrivateAssets="All" />
+    </ItemGroup>
 
 </Project>

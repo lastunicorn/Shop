@@ -1,16 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MediatR" Version="9.0.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="MediatR" Version="9.0.0" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Shop.NoRepositories.DataAccess.EntityFramework\Shop.NoRepositories.DataAccess.EntityFramework.csproj" PrivateAssets="All" />
-    <ProjectReference Include="..\Shop.NoRepositories.Domain\Shop.NoRepositories.Domain.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Shop.NoRepositories.DataAccess.EntityFramework\Shop.NoRepositories.DataAccess.EntityFramework.csproj" PrivateAssets="All" />
+        <ProjectReference Include="..\Shop.NoRepositories.Domain\Shop.NoRepositories.Domain.csproj" PrivateAssets="All" />
+    </ItemGroup>
 
 </Project>
