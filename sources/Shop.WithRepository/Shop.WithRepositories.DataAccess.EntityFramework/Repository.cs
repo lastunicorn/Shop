@@ -31,7 +31,7 @@ namespace Shop.WithRepositories.DataAccess.EntityFramework
             DbContext.Set<TEntity>().Add(entity);
         }
 
-        public void AddBulk(IEnumerable<TEntity> entities)
+        public void AddRange(IEnumerable<TEntity> entities)
         {
             if (entities == null) throw new ArgumentNullException(nameof(entities));
 
@@ -53,7 +53,7 @@ namespace Shop.WithRepositories.DataAccess.EntityFramework
             DbContext.Set<TEntity>().Remove(entity);
         }
 
-        public void RemoveBulk(IEnumerable<TEntity> entities)
+        public void RemoveRange(IEnumerable<TEntity> entities)
         {
             if (entities == null) throw new ArgumentNullException(nameof(entities));
 
