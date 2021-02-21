@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -12,6 +13,8 @@ namespace Shop.NoRepositories.Presentation.Pages
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
+        public string ExceptionMessage { get; set; }
+
         private readonly ILogger<ErrorModel> _logger;
 
         public ErrorModel(ILogger<ErrorModel> logger)
@@ -22,6 +25,9 @@ namespace Shop.NoRepositories.Presentation.Pages
         public void OnGet()
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+
+            IExceptionHandlerPathFeature exceptionHandlerPathFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+            ExceptionMessage = exceptionHandlerPathFeature?.Error.Message;
         }
     }
 }
