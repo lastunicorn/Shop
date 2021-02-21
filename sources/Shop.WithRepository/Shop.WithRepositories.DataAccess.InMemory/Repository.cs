@@ -39,7 +39,7 @@ namespace Shop.WithRepositories.DataAccess.InMemory
             Collection.Add(item);
         }
 
-        public void AddBulk(IEnumerable<TEntity> items)
+        public void AddRange(IEnumerable<TEntity> items)
         {
             if (items == null) throw new ArgumentNullException(nameof(items));
 
@@ -69,7 +69,7 @@ namespace Shop.WithRepositories.DataAccess.InMemory
             Collection.Remove(item);
         }
 
-        public void RemoveBulk(IEnumerable<TEntity> items)
+        public void RemoveRange(IEnumerable<TEntity> items)
         {
             if (items == null) throw new ArgumentNullException(nameof(items));
 
