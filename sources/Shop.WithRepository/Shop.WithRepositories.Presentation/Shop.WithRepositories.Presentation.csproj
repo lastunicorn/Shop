@@ -1,22 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MediatR" Version="9.0.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="MediatR" Version="9.0.0" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Shop.WithRepositories.Application\Shop.WithRepositories.Application.csproj" />
-    <ProjectReference Include="..\Shop.WithRepositories.Domain\Shop.WithRepositories.Domain.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Shop.WithRepositories.Application\Shop.WithRepositories.Application.csproj" PrivateAssets="All" />
+        <ProjectReference Include="..\Shop.WithRepositories.Domain\Shop.WithRepositories.Domain.csproj" PrivateAssets="All" />
+    </ItemGroup>
 
 
 </Project>

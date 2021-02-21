@@ -62,7 +62,7 @@ namespace Shop.WithRepositories.Application.UseCases.BeginOrder
             };
 
             unitOfWork.OrderRepository.Add(order);
-
+            
             return order;
         }
     }
