@@ -47,6 +47,8 @@ namespace Shop.NoRepositories
                 app.UseHsts();
             }
 
+            app.UseStatusCodePages();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
