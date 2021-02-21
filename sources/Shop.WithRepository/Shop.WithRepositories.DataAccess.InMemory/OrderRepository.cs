@@ -1,23 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Shop.WithRepositories.Domain;
 using Shop.WithRepositories.Domain.DataAccess;
 
 namespace Shop.WithRepositories.DataAccess.InMemory
 {
-    public class OrderRepository : Repository<Order, int>, IOrderRepository
+    public class OrderRepository : Repository<Order, Guid>, IOrderRepository
     {
         public OrderRepository()
             : base(InMemoryDatabase.Orders)
         {
         }
 
-        protected override int GetIdFor(Order entity)
+        protected override Guid GetIdFor(Order entity)
         {
             return entity.Id;
         }
 
-        public Order GetFull(int id)
+        public Order GetFull(Guid id)
         {
             return Collection.FirstOrDefault(x => x.Id == id);
         }
@@ -27,7 +28,7 @@ namespace Shop.WithRepositories.DataAccess.InMemory
             return Collection.ToList();
         }
 
-        public IEnumerable<Order> GetInProgress(int productId)
+        public IEnumerable<Order> GetInProgressFor(int productId)
         {
             return Collection
                 .Where(x => x.Product.Id == productId && x.State != OrderState.Done && x.State != OrderState.Canceled);

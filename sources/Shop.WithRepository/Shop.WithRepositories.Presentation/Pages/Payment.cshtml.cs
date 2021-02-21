@@ -15,7 +15,7 @@ namespace Shop.WithRepositories.Presentation.Pages
         private readonly IMediator mediator;
 
         [BindProperty(SupportsGet = true)]
-        public int OrderId { get; set; }
+        public Guid OrderId { get; set; }
 
         public string ProductName { get; set; }
 

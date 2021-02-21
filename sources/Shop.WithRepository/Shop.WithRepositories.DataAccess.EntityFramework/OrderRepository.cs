@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Shop.WithRepositories.Domain;
@@ -6,14 +7,14 @@ using Shop.WithRepositories.Domain.DataAccess;
 
 namespace Shop.WithRepositories.DataAccess.EntityFramework
 {
-    public class OrderRepository : Repository<Order, int>, IOrderRepository
+    public class OrderRepository : Repository<Order, Guid>, IOrderRepository
     {
         public OrderRepository(ShopDbContext dbContext)
             : base(dbContext)
         {
         }
 
-        public Order GetFull(int id)
+        public Order GetFull(Guid id)
         {
             return DbContext.Orders
                 .Include(x => x.Product)
@@ -29,7 +30,7 @@ namespace Shop.WithRepositories.DataAccess.EntityFramework
                 .ToList();
         }
 
-        public IEnumerable<Order> GetInProgress(int productId)
+        public IEnumerable<Order> GetInProgressFor(int productId)
         {
             return DbContext.Orders
                 .Include(x => x.Product)

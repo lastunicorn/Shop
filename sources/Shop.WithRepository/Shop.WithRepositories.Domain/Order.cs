@@ -4,7 +4,7 @@ namespace Shop.WithRepositories.Domain
 {
     public class Order
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public DateTime Date { get; set; }
 

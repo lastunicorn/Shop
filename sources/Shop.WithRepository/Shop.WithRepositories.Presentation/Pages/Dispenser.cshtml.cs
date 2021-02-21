@@ -17,7 +17,7 @@ namespace Shop.WithRepositories.Presentation.Pages
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
-        public async Task OnGet(int orderId)
+        public async Task OnGet(Guid orderId)
         {
             CompleteOrderRequest request = new CompleteOrderRequest
             {

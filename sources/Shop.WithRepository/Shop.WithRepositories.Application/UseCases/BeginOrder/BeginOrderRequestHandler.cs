@@ -44,7 +44,7 @@ namespace Shop.WithRepositories.Application.UseCases.BeginOrder
 
         private void ValidateProductQuantity(Product product)
         {
-            List<Order> inProgressOrders = unitOfWork.OrderRepository.GetInProgress(product.Id).ToList();
+            List<Order> inProgressOrders = unitOfWork.OrderRepository.GetInProgressFor(product.Id).ToList();
 
             int availableQuantity = product.Quantity - inProgressOrders.Count;
 
