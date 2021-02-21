@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Shop.WithRepositories.Domain.DataAccess
 {
-    public interface IOrderRepository : IRepository<Order, int>
+    public interface IOrderRepository : IRepository<Order, Guid>
     {
-        Order GetFull(int id);
+        Order GetFull(Guid id);
 
-        List<Order> GetAllFull();
+        List<Order> GetAllFullByDate();
 
-        IEnumerable<Order> GetInProgress(int productId);
+        IEnumerable<Order> GetInProgressFor(int productId);
     }
 }

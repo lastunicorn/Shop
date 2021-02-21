@@ -9,12 +9,12 @@ namespace Shop.WithRepositories.Application
     {
         private const string MessageTemplate = "The order with id {0} was canceled.";
 
-        public OrderCanceledException(int orderId)
+        public OrderCanceledException(Guid orderId)
             : base(string.Format(MessageTemplate, orderId))
         {
         }
 
-        public OrderCanceledException(int orderId, Exception inner)
+        public OrderCanceledException(Guid orderId, Exception inner)
             : base(string.Format(MessageTemplate, orderId), inner)
         {
         }

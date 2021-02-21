@@ -33,7 +33,7 @@ namespace Shop.NoRepositories.Presentation.Pages
                 .ToList();
         }
 
-        public async Task OnPostClose(int orderId)
+        public async Task OnPostClose(Guid orderId)
         {
             CancelOrderRequest request = new CancelOrderRequest
             {
@@ -41,9 +41,17 @@ namespace Shop.NoRepositories.Presentation.Pages
             };
 
             await mediator.Send(request);
+
+            PresentOrdersRequest presentOrdersRequest = new PresentOrdersRequest();
+
+            List<Order> orders = await mediator.Send(presentOrdersRequest);
+
+            Orders = orders
+                .Select(x => new OrderViewModel(x))
+                .ToList();
         }
 
-        public IActionResult OnPostPay(int orderId)
+        public IActionResult OnPostPay(Guid orderId)
         {
             return RedirectToPage("Payment", new { OrderId = orderId });
         }

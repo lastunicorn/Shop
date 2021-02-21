@@ -33,7 +33,7 @@ namespace Shop.WithRepositories.Presentation.Pages
                 .ToList();
         }
 
-        public async Task OnPostClose(int orderId)
+        public async Task OnPostClose(Guid orderId)
         {
             CancelOrderRequest cancelOrderRequest = new CancelOrderRequest
             {
@@ -51,7 +51,7 @@ namespace Shop.WithRepositories.Presentation.Pages
                 .ToList();
         }
 
-        public IActionResult OnPostPay(int orderId)
+        public IActionResult OnPostPay(Guid orderId)
         {
             return RedirectToPage("Payment", new { OrderId = orderId });
         }

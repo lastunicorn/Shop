@@ -9,12 +9,12 @@ namespace Shop.WithRepositories.Application
     {
         private const string MessageTemplate = "The payment for order {0} was already completed.";
 
-        public PaymentCompletedException(int orderId)
+        public PaymentCompletedException(Guid orderId)
             : base(string.Format(MessageTemplate, orderId))
         {
         }
 
-        public PaymentCompletedException(int orderId, Exception inner)
+        public PaymentCompletedException(Guid orderId, Exception inner)
             : base(string.Format(MessageTemplate, orderId), inner)
         {
         }

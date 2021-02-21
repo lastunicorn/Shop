@@ -9,12 +9,12 @@ namespace Shop.WithRepositories.Application
     {
         private const string MessageTemplate = "The order with id ({0}) is not payed.";
 
-        public OrderNotPayedException(int orderId)
+        public OrderNotPayedException(Guid orderId)
             : base(string.Format(MessageTemplate, orderId))
         {
         }
 
-        public OrderNotPayedException(int orderId, Exception inner)
+        public OrderNotPayedException(Guid orderId, Exception inner)
             : base(string.Format(MessageTemplate, orderId), inner)
         {
         }

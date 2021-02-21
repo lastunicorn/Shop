@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shop.WithRepositories.DataAccess.EntityFramework;
 
 namespace Shop.WithRepositories.DataAccess.EntityFramework.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
-    partial class RepositoryPatternDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210221140046_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -18,9 +20,9 @@ namespace Shop.WithRepositories.DataAccess.EntityFramework.Migrations
 
             modelBuilder.Entity("Shop.WithRepositories.Domain.Order", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
