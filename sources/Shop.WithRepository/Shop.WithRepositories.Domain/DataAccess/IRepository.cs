@@ -9,10 +9,10 @@ namespace Shop.WithRepositories.Domain.DataAccess
         IEnumerable<TEntity> GetAll();
 
         void Add(TEntity entity);
-        void AddBulk(IEnumerable<TEntity> entities);
+        void AddRange(IEnumerable<TEntity> entities);
 
         void Remove(TId id);
         void Remove(TEntity entity);
-        void RemoveBulk(IEnumerable<TEntity> entities);
+        void RemoveRange(IEnumerable<TEntity> entities);
     }
 }

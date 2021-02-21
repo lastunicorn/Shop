@@ -2,7 +2,7 @@
 
 namespace Shop.WithRepositories.Domain.DataAccess
 {
-    public interface IOrderRepository : IRepository<Order, int>
+    public interface IOrderRepository
     {
         Order GetFull(int id);
 
