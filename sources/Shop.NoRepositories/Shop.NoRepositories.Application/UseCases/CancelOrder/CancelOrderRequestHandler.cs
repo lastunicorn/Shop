@@ -33,8 +33,7 @@ namespace Shop.NoRepositories.Application.UseCases.CancelOrder
         private Order RetrieveOrder(CancelOrderRequest request)
         {
             // todo: query
-            Order order = shopDbContext.Orders
-                .FirstOrDefault(x => x.Id == request.OrderId);
+            Order order = shopDbContext.Orders.Get(request.OrderId);
 
             if (order == null)
                 throw new OrderMissingException(request.OrderId);

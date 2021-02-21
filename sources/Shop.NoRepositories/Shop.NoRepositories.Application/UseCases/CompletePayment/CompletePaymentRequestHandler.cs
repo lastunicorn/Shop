@@ -35,10 +35,7 @@ namespace Shop.NoRepositories.Application.UseCases.CompletePayment
         private Order RetrieveOrder(CompletePaymentRequest request)
         {
             // todo: query
-            Order order = shopDbContext.Orders
-                .Include(x => x.Product)
-                .Include(x => x.Payment)
-                .FirstOrDefault(x => x.Id == request.OrderId);
+            Order order = shopDbContext.Orders.GetFull(request.OrderId);
 
             if (order == null)
                 throw new OrderMissingException(request.OrderId);

@@ -21,15 +21,8 @@ namespace Shop.NoRepositories.Application.UseCases.PresentOrders
 
         public Task<List<Order>> Handle(PresentOrdersRequest request, CancellationToken cancellationToken)
         {
-            return Task.Run(() =>
-            {
-                // todo: query
-                return shopDbContext.Orders
-                    .Include(x => x.Product)
-                    .Include(x => x.Payment)
-                    .OrderByDescending(x => x.Date)
-                    .ToList();
-            }, cancellationToken);
+            // todo: query
+            return Task.Run(() => shopDbContext.Orders.GetAllFullByDate(), cancellationToken);
         }
     }
 }
