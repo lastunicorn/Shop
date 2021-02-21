@@ -7,7 +7,7 @@ namespace Shop.WithRepositories.Application
     [Serializable]
     public class InvalidOrderStateException : ShopException
     {
-        private const string MessageTemplate = "The order with id {0:D} has an invalid state.";
+        private const string MessageTemplate = "The order with id {0} has an invalid state.";
 
         public InvalidOrderStateException(Guid orderId)
             : base(string.Format(MessageTemplate, orderId))

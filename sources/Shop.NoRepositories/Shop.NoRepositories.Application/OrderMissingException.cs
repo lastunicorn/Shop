@@ -9,12 +9,12 @@ namespace Shop.NoRepositories.Application
     {
         private const string MessageTemplate = "The order with id ({0}) does not exist.";
 
-        public OrderMissingException(int orderId)
+        public OrderMissingException(Guid orderId)
             : base(string.Format(MessageTemplate, orderId))
         {
         }
 
-        public OrderMissingException(int orderId, Exception inner)
+        public OrderMissingException(Guid orderId, Exception inner)
             : base(string.Format(MessageTemplate, orderId), inner)
         {
         }

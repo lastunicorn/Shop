@@ -7,7 +7,7 @@ namespace Shop.WithRepositories.Application
     [Serializable]
     public class OrderCanceledException : ShopException
     {
-        private const string MessageTemplate = "The order with id {0:D} was canceled.";
+        private const string MessageTemplate = "The order with id {0} was canceled.";
 
         public OrderCanceledException(Guid orderId)
             : base(string.Format(MessageTemplate, orderId))

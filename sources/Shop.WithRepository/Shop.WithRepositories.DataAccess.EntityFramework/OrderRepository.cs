@@ -22,11 +22,12 @@ namespace Shop.WithRepositories.DataAccess.EntityFramework
                 .FirstOrDefault(x => x.Id == id);
         }
 
-        public List<Order> GetAllFull()
+        public List<Order> GetAllFullByDate()
         {
             return DbContext.Orders
                 .Include(x => x.Product)
                 .Include(x => x.Payment)
+                .OrderByDescending(x => x.Date)
                 .ToList();
         }
 

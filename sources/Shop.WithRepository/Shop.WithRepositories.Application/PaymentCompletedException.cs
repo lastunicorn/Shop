@@ -7,7 +7,7 @@ namespace Shop.WithRepositories.Application
     [Serializable]
     public class PaymentCompletedException : ShopException
     {
-        private const string MessageTemplate = "The payment for order {0:D} was already completed.";
+        private const string MessageTemplate = "The payment for order {0} was already completed.";
 
         public PaymentCompletedException(Guid orderId)
             : base(string.Format(MessageTemplate, orderId))

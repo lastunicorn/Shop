@@ -7,7 +7,7 @@ namespace Shop.WithRepositories.Domain.DataAccess
     {
         Order GetFull(Guid id);
 
-        List<Order> GetAllFull();
+        List<Order> GetAllFullByDate();
 
         IEnumerable<Order> GetInProgressFor(int productId);
     }

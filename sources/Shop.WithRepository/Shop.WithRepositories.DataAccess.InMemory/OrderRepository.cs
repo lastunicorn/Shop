@@ -23,9 +23,11 @@ namespace Shop.WithRepositories.DataAccess.InMemory
             return Collection.FirstOrDefault(x => x.Id == id);
         }
 
-        public List<Order> GetAllFull()
+        public List<Order> GetAllFullByDate()
         {
-            return Collection.ToList();
+            return Collection
+                .OrderByDescending(x => x.Date)
+                .ToList();
         }
 
         public IEnumerable<Order> GetInProgressFor(int productId)

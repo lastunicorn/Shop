@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Shop.NoRepository.DataAccess.EntityFramework.Migrations
+namespace Shop.NoRepositories.DataAccess.EntityFramework.Migrations
 {
     public partial class Initial : Migration
     {
@@ -41,8 +41,7 @@ namespace Shop.NoRepository.DataAccess.EntityFramework.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Date = table.Column<DateTime>(type: "TEXT", nullable: false),
                     ProductId = table.Column<int>(type: "INTEGER", nullable: true),
                     State = table.Column<int>(type: "INTEGER", nullable: false),
