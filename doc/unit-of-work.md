@@ -15,5 +15,5 @@
 - **Provides a business transaction**
   - Ensures data consistency
   - When modifications are performed on multiple repositories, the Unit of Work is ensuring that all the changes, from all the repositories, are ether all successfully saved, or none are saved into the data storage.
-
-  - Allows “rollback” of the unsaved modifications
+- Allows “rollback” of the unsaved modifications.
+    - By discarding and not persisting them at the end.

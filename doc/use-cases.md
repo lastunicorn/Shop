@@ -1,6 +1,6 @@
 # Use Cases
 
-## 1) Present Shelf with Products
+## 1) Present the Shelf with Products
 
 **Actor**: user
 
@@ -33,7 +33,7 @@
 - If available product quantity is 0
   - Display "Insufficient quantity" error to the user.
 
-## 3) Begin a Payment
+## 3) Begin a Payment for an Order
 
 **Actor**: user
 
@@ -55,7 +55,7 @@
 - If order is in state Cancelled
   - Display "Payment was cancelled" error to the user.
 
-## 4) Complete the Payment
+## 4) Complete a Payment
 
 **Actor**: user
 
@@ -79,7 +79,7 @@
 - If order is in state Cancelled
   - Display "Payment was cancelled" error to the user.
 
-## 5) Cancel Order
+## 5) Cancel an Order
 
 **Actor**: user
 
@@ -129,7 +129,7 @@
 - If order is in state Cancelled
   - Display "Payment was cancelled" error to the user.
 
-## 7) Display the list of orders
+## 7) Present the list of Orders
 
 **Actor**: user
 
