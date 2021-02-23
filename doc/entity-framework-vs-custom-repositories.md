@@ -21,11 +21,11 @@ This is a decision that must be taken by each team on each project, but please, 
 
 Here are some advantages and disadvantages that I can think of for creating custom Repository and Unit of Work classes.
 
-## Custom Repository and Unit of Work
+## Custom Repositories and Unit of Work
 
 ### Advantages
 
-- **Encapsulates (hides) the usage (reference) of Entity Framework.**
+- **Encapsulates (hides) the usage of Entity Framework.**
   - Entity Framework is a detail of the Data Access Layer. None of the other modules of the application should be aware of its existence. They should not be able to tell if Entity Framework, NHibernate, Dapper, ADO.NET or any other data access technology is used.
   - By doing so, it allows us to easily test the other modules, update the Entity Framework to a new version or replace it with another mechanism.
 

@@ -8,7 +8,7 @@ As a software developer, I am sure that you asked yourself this question at leas
 
 Computers and software are a recent thing in our human world. They were invented in the last 100 years. They must be completely different from what already existed in our human world for hundreds or even thousands of years, isn't it?
 
-They are a new invention that has nothing to do with how our human world was structured until now. Or is it?
+They are a new invention that has nothing to do with how our human world was structured until now. Or has it?
 
 Let's have a look.
 
@@ -48,7 +48,7 @@ Let's take each block, one by one, and talk about it.
 
 - This is the God.
 - In the beginning He created the world by putting all the pieces together. He blew on them, to give them life and then He stepped aside.
-- Nobody saw the God (no reference to it) and nobody from this world can say for sure He ever existed, but the world had to be created by someone... or something, isn't it?
+- Nobody saw the God (no reference to Him) and nobody from this world can say for sure He ever existed, but the world had to be created by someone... or something, isn't it?
 
 ### Domain
 
