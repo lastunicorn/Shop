@@ -81,27 +81,75 @@ We have to agree it is a lot shorter, easier to write and understand. But, <u>is
 
 Does the disadvantages mentioned before disappeared just because we are using Linq?
 
-### Example of data access details in Business
+### Query created in Business Layer
 
 The following code will **crush at runtime** because of particularities of the Entity Framework's Linq. The method `NameIsBoston` cannot be translated into SQL.
 
+Do we want this type of concern to be handled in the Business Layer or in Data Access Layer?
+
+[Business Layer]
+
 ```csharp
-private void DoSomething()
+protected class SomeUseCase
 {
-    using (DbContext dbContext = new DbContext())
+    private void DoSomething()
     {
-        List<Program> programs dbContext.Programs
+        List<Program> programs = ProgramRepository.GetAll()
             .Where(x => NameIsBoston(x))
             .ToList();
-        
+
         // Do something with the programs.
     }
-}
 
-private bool NameIsBoston(Program program)
-{
-    return program.Name == "Boston Program";
+    private bool NameIsBoston(Program program)
+    {
+        return program.Name == "Boston Program";
+    }
 }
 ```
 
-Do we want this type of concern to be 
+[Data Access Layer]
+
+```csharp
+public class ProgramRepository
+{
+	public IQueriable<Program> GetAll()
+    {
+        return dbContext.Programs;
+    }
+}
+```
+
+But, this is unexpected to happen in Business Layer. Here, there is no concept of SQL Database, Entity Framework and Linq on `IQueriable`. The use case should be able to asks for some data from the repository and it should be free to do whatever it wants with that data, without the concerns of some specific database details.
+
+### Query created in Data Access Layer
+
+[Business Layer]
+
+```csharp
+protected class SomeUseCase
+{
+    private void DoSomething()
+    {
+        List<Program> programs = ProgramRepository.GetAllInBoston()
+            .ToList();
+
+        // Do something with the programs.
+    }
+}
+```
+
+[Data Access Layer]
+
+```csharp
+public class ProgramRepository
+{
+	public IEnumerable<Program> GetAllInBoston()
+    {
+        return dbContext.Programs
+            .Where(x => x.Name == "Boston Program");
+    }
+}
+```
+
+### 
