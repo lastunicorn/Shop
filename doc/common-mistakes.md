@@ -93,6 +93,6 @@ public IEnumerable<Order> GetOrders()
 }
 ```
 
-By returning `IEnumerable`, all the subsequent Linq queries that may be written by the caller will be executed on the collection in memory.
+By returning `IEnumerable`, all the subsequent Linq queries that may be written by the caller (business) will be executed on the collection in memory.
 
 In this way, all the Linq queries that are executed on the database as SQL are encapsulated into the `Repository` class (Data Access Layer). No data access logic is leaking into the other layers of the application.
