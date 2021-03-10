@@ -2,7 +2,7 @@ using System;
 using System.Runtime.Serialization;
 using Shop.NoRepositories.Domain;
 
-namespace Shop.NoRepositories.Application
+namespace Shop.NoRepositories.Application.UseCases.BeginOrder
 {
     [Serializable]
     public class ProductQuantityException : ShopException
