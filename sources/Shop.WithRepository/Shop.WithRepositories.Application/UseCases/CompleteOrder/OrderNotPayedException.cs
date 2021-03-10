@@ -1,8 +1,8 @@
 using System;
 using System.Runtime.Serialization;
-using Shop.NoRepositories.Domain;
+using Shop.WithRepositories.Domain;
 
-namespace Shop.NoRepositories.Application
+namespace Shop.WithRepositories.Application.UseCases.CompleteOrder
 {
     [Serializable]
     public class OrderNotPayedException : ShopException
