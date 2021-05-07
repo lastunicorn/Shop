@@ -16,17 +16,14 @@ namespace Shop.WithRepositories.Application.UseCases.CancelOrder
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
 
-        protected override Task Handle(CancelOrderRequest request, CancellationToken cancellationToken)
+        protected override async Task Handle(CancelOrderRequest request, CancellationToken cancellationToken)
         {
-            return Task.Run(() =>
-            {
-                Order order = RetrieveOrder(request);
-                ValidateOrderIsReadyForCanceling(order);
+            Order order = RetrieveOrder(request);
+            ValidateOrderIsReadyForCanceling(order);
 
-                CancelOrder(order);
+            CancelOrder(order);
 
-                unitOfWork.Complete();
-            }, cancellationToken);
+            await unitOfWork.CompleteAsync(cancellationToken);
         }
 
         private Order RetrieveOrder(CancelOrderRequest request)

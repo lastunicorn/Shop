@@ -18,13 +18,10 @@ namespace Shop.WithRepositories.Application.UseCases.BeginPayment
 
         public Task<Order> Handle(BeginPaymentRequest request, CancellationToken cancellationToken)
         {
-            return Task.Run(() =>
-            {
-                Order order = RetrieveOrder(request);
-                ValidateOrderIsReadyForPayment(order);
+            Order order = RetrieveOrder(request);
+            ValidateOrderIsReadyForPayment(order);
 
-                return order;
-            }, cancellationToken);
+            return Task.FromResult(order);
         }
 
         private Order RetrieveOrder(BeginPaymentRequest request)
@@ -50,7 +47,7 @@ namespace Shop.WithRepositories.Application.UseCases.BeginPayment
 
                 case OrderState.New:
                     break;
-                
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }

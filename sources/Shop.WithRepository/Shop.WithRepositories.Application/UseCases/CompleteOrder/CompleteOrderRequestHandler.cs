@@ -16,15 +16,18 @@ namespace Shop.WithRepositories.Application.UseCases.CompleteOrder
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
 
-        public Task<CompleteOrderResponse> Handle(CompleteOrderRequest request, CancellationToken cancellationToken)
+        public async Task<CompleteOrderResponse> Handle(CompleteOrderRequest request, CancellationToken cancellationToken)
         {
-            return Task.Run(() =>
-            {
-                Order order = RetrieveOrder(request);
-                ValidateOrderIsReadyForCompletion(order);
+            Order order = RetrieveOrder(request);
+            ValidateOrderIsReadyForCompletion(order);
+            CompleteOrder(order);
 
-                return CompleteOrder(order);
-            }, cancellationToken);
+            await unitOfWork.CompleteAsync(cancellationToken);
+
+            return new CompleteOrderResponse
+            {
+                ProductName = order.Product.Name
+            };
         }
 
         private Order RetrieveOrder(CompleteOrderRequest request)
@@ -58,17 +61,10 @@ namespace Shop.WithRepositories.Application.UseCases.CompleteOrder
             }
         }
 
-        private CompleteOrderResponse CompleteOrder(Order order)
+        private static void CompleteOrder(Order order)
         {
             order.Product.Quantity--;
             order.State = OrderState.Done;
-
-            unitOfWork.Complete();
-
-            return new CompleteOrderResponse
-            {
-                ProductName = order.Product.Name
-            };
         }
     }
 }

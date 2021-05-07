@@ -18,18 +18,15 @@ namespace Shop.WithRepositories.Application.UseCases.BeginOrder
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
 
-        public Task<Order> Handle(BeginOrderRequest request, CancellationToken cancellationToken)
+        public async Task<Order> Handle(BeginOrderRequest request, CancellationToken cancellationToken)
         {
-            return Task.Run(() =>
-            {
-                Product product = RetrieveProduct(request);
-                ValidateProductQuantity(product);
-                Order order = CreateNewOrder(product);
+            Product product = RetrieveProduct(request);
+            ValidateProductQuantity(product);
+            Order order = CreateNewOrderFor(product);
 
-                unitOfWork.Complete();
+            await unitOfWork.CompleteAsync(cancellationToken);
 
-                return order;
-            }, cancellationToken);
+            return order;
         }
 
         private Product RetrieveProduct(BeginOrderRequest request)
@@ -52,7 +49,7 @@ namespace Shop.WithRepositories.Application.UseCases.BeginOrder
                 throw new ProductQuantityException(product.Name);
         }
 
-        private Order CreateNewOrder(Product product)
+        private Order CreateNewOrderFor(Product product)
         {
             Order order = new Order
             {
@@ -62,7 +59,7 @@ namespace Shop.WithRepositories.Application.UseCases.BeginOrder
             };
 
             unitOfWork.OrderRepository.Add(order);
-            
+
             return order;
         }
     }

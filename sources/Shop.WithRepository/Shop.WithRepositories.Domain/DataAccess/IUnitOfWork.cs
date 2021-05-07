@@ -1,4 +1,7 @@
-﻿namespace Shop.WithRepositories.Domain.DataAccess
+﻿using System.Threading;
+using System.Threading.Tasks;
+
+namespace Shop.WithRepositories.Domain.DataAccess
 {
     public interface IUnitOfWork
     {
@@ -9,5 +12,7 @@
         IOrderRepository OrderRepository { get; }
 
         void Complete();
+
+        Task CompleteAsync(CancellationToken cancellationToken = default);
     }
 }

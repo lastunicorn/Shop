@@ -19,7 +19,8 @@ namespace Shop.WithRepositories.Application.UseCases.PresentOrders
 
         public Task<List<Order>> Handle(PresentOrdersRequest request, CancellationToken cancellationToken)
         {
-            return Task.Run(() => unitOfWork.OrderRepository.GetAllFullByDate(), cancellationToken);
+            List<Order> orders = unitOfWork.OrderRepository.GetAllFullByDate();
+            return Task.FromResult(orders);
         }
     }
 }

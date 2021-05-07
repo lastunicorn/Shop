@@ -16,18 +16,15 @@ namespace Shop.WithRepositories.Application.UseCases.CompletePayment
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
 
-        protected override Task Handle(CompletePaymentRequest request, CancellationToken cancellationToken)
+        protected override async Task Handle(CompletePaymentRequest request, CancellationToken cancellationToken)
         {
-            return Task.Run(() =>
-            {
-                Order order = RetrieveOrder(request);
-                ValidateOrderIsReadyForPayment(order);
+            Order order = RetrieveOrder(request);
+            ValidateOrderIsReadyForPayment(order);
 
-                PerformPay(order);
-                SetOrderAsPayed(order);
+            PerformPay(order);
+            SetOrderAsPayed(order);
 
-                unitOfWork.Complete();
-            }, cancellationToken);
+            await unitOfWork.CompleteAsync(cancellationToken);
         }
 
         private Order RetrieveOrder(CompletePaymentRequest request)

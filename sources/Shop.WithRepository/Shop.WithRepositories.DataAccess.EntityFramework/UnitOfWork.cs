@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using Shop.WithRepositories.Domain.DataAccess;
 
 namespace Shop.WithRepositories.DataAccess.EntityFramework
@@ -10,38 +12,11 @@ namespace Shop.WithRepositories.DataAccess.EntityFramework
         private IProductRepository productRepository;
         private IOrderRepository orderRepository;
 
-        public IProductRepository ProductRepository
-        {
-            get
-            {
-                if (productRepository == null)
-                    productRepository = new ProductRepository(dbContext);
+        public IProductRepository ProductRepository => productRepository ??= new ProductRepository(dbContext);
 
-                return productRepository;
-            }
-        }
+        public IPaymentRepository PaymentRepository => paymentRepository ??= new PaymentRepository(dbContext);
 
-        public IPaymentRepository PaymentRepository
-        {
-            get
-            {
-                if (paymentRepository == null)
-                    paymentRepository = new PaymentRepository(dbContext);
-
-                return paymentRepository;
-            }
-        }
-
-        public IOrderRepository OrderRepository
-        {
-            get
-            {
-                if (orderRepository == null)
-                    orderRepository = new OrderRepository(dbContext);
-
-                return orderRepository;
-            }
-        }
+        public IOrderRepository OrderRepository => orderRepository ??= new OrderRepository(dbContext);
 
         public UnitOfWork(ShopDbContext dbContext)
         {
@@ -51,6 +26,11 @@ namespace Shop.WithRepositories.DataAccess.EntityFramework
         public void Complete()
         {
             dbContext.SaveChanges();
+        }
+
+        public Task CompleteAsync(CancellationToken cancellationToken = default)
+        {
+            return dbContext.SaveChangesAsync(cancellationToken);
         }
     }
 }

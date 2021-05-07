@@ -1,4 +1,6 @@
-﻿using Shop.WithRepositories.Domain.DataAccess;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Shop.WithRepositories.Domain.DataAccess;
 
 namespace Shop.WithRepositories.DataAccess.InMemory
 {
@@ -8,41 +10,19 @@ namespace Shop.WithRepositories.DataAccess.InMemory
         private IPaymentRepository paymentRepository;
         private IOrderRepository orderRepository;
 
-        public IProductRepository ProductRepository
-        {
-            get
-            {
-                if (productRepository == null)
-                    productRepository = new ProductRepository();
+        public IProductRepository ProductRepository => productRepository ??= new ProductRepository();
 
-                return productRepository;
-            }
-        }
+        public IPaymentRepository PaymentRepository => paymentRepository ??= new PaymentRepository();
 
-        public IPaymentRepository PaymentRepository
-        {
-            get
-            {
-                if (paymentRepository == null)
-                    paymentRepository = new PaymentRepository();
-
-                return paymentRepository;
-            }
-        }
-
-        public IOrderRepository OrderRepository
-        {
-            get
-            {
-                if (orderRepository == null)
-                    orderRepository = new OrderRepository();
-
-                return orderRepository;
-            }
-        }
+        public IOrderRepository OrderRepository => orderRepository ??= new OrderRepository();
 
         public void Complete()
         {
+        }
+
+        public Task CompleteAsync(CancellationToken cancellationToken = default)
+        {
+            return Task.CompletedTask;
         }
     }
 }

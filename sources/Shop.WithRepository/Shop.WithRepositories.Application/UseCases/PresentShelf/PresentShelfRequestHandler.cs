@@ -20,7 +20,8 @@ namespace Shop.WithRepositories.Application.UseCases.PresentShelf
 
         public Task<List<ProductWithReservations>> Handle(PresentShelfRequest request, CancellationToken cancellationToken)
         {
-            return Task.Run(() => unitOfWork.ProductRepository.GetAvailable().ToList(), cancellationToken);
+            List<ProductWithReservations> products = unitOfWork.ProductRepository.GetAvailable().ToList();
+            return Task.FromResult(products);
         }
     }
 }
