@@ -35,7 +35,7 @@ namespace Shop.WithRepositories.Presentation.Pages
                 .ToList();
         }
 
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPostBuy()
         {
             try
             {

@@ -46,7 +46,7 @@
                     <td>
                         @if (product.CanBuy)
                         {
-                            <input class="btn btn-primary" type="submit" value="Buy" asp-route-productid="@product.Id" />
+                            <input class="btn btn-primary" type="submit" value="Buy" asp-page-handler="Buy" asp-route-productid="@product.Id" />
                         }
                         else
                         {
