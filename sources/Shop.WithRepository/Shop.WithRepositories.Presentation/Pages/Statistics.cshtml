@@ -1,0 +1,40 @@
+﻿@page
+@using Shop.WithRepositories.Application.UseCases.PresentStatistics
+@model Shop.WithRepositories.Presentation.Pages.StatisticsModel
+@{
+    ViewData["Title"] = "Statistics";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="page-description">
+    This page displays how many products were sold.
+</div>
+
+@if (Model.SalesStatisticsItems == null || Model.SalesStatisticsItems.Count == 0)
+{
+    <text>There are no items.</text>
+}
+else
+{
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th>
+                    Product
+                </th>
+                <th>
+                    Quantity
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (SalesStatisticsItemViewModel item in Model.SalesStatisticsItems)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.Quantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

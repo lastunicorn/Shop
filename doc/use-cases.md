@@ -139,3 +139,14 @@
 
 - Retrieve the list of orders from the data storage.
 - Display the list of orders to the user.
+
+## 8) Present statistics
+
+**Actor**: user
+
+**Action**: Ask to display selling statistics
+
+**Steps**:
+
+- Retrieve the count of orders for each product from the data storage.
+- Display the list to the user.

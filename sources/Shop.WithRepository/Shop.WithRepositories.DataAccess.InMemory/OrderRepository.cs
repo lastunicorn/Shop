@@ -35,5 +35,13 @@ namespace Shop.WithRepositories.DataAccess.InMemory
             return Collection
                 .Where(x => x.Product.Id == productId && x.State != OrderState.Done && x.State != OrderState.Canceled);
         }
+
+        public Dictionary<Product, int> GetFinishedCountByProduct()
+        {
+            return Collection
+                .Where(x => x.IsFinished)
+                .GroupBy(x => x.Product)
+                .ToDictionary(x => x.Key, x => x.Count());
+        }
     }
 }

@@ -37,5 +37,15 @@ namespace Shop.WithRepositories.DataAccess.EntityFramework
                 .Include(x => x.Product)
                 .Where(x => x.Product.Id == productId && x.State != OrderState.Done && x.State != OrderState.Canceled);
         }
+
+        public Dictionary<Product, int> GetFinishedCountByProduct()
+        {
+            return DbContext.Orders
+                .Include(x => x.Product)
+                .Where(x => x.State == OrderState.Done)
+                .AsEnumerable()
+                .GroupBy(x => x.Product)
+                .ToDictionary(x => x.Key, x => x.Count());
+        }
     }
 }

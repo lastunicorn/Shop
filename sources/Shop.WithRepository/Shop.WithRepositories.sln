@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.WithRepositories.Domai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.WithRepositories.Application", "Shop.WithRepositories.Application\Shop.WithRepositories.Application.csproj", "{AFEC291A-12E9-4DA9-B204-3201B9C12E98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.WithRepositories.Presentation", "Shop.WithRepositories.Presentation\Shop.WithRepositories.Presentation.csproj", "{6AE421F2-6F1B-4526-9C00-3DE0ACC215A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.WithRepositories.Presentation", "Shop.WithRepositories.Presentation\Shop.WithRepositories.Presentation.csproj", "{6AE421F2-6F1B-4526-9C00-3DE0ACC215A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

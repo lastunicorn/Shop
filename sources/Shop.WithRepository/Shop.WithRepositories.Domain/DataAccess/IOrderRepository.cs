@@ -10,5 +10,7 @@ namespace Shop.WithRepositories.Domain.DataAccess
         List<Order> GetAllFullByDate();
 
         IEnumerable<Order> GetInProgressFor(int productId);
+        
+        Dictionary<Product, int> GetFinishedCountByProduct();
     }
 }
