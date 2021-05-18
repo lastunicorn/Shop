@@ -49,7 +49,7 @@ namespace Shop.WithRepositories.Application.UseCases.BeginPayment
                     break;
 
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(order), "Invalid value for the state of the order.");
             }
         }
     }
