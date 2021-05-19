@@ -18,9 +18,9 @@ namespace Shop.WithRepositories.Application.UseCases.CompleteOrder
 
         public async Task<CompleteOrderResponse> Handle(CompleteOrderRequest request, CancellationToken cancellationToken)
         {
-            Order order = RetrieveOrder(request);
-            ValidateOrderIsReadyForCompletion(order);
-            CompleteOrder(order);
+            Order order = RetrieveOrder(request.OrderId);
+            order.ValidateOrderIsReadyForCompletion();
+            order.CompleteOrder();
 
             await unitOfWork.CompleteAsync(cancellationToken);
 
@@ -30,41 +30,14 @@ namespace Shop.WithRepositories.Application.UseCases.CompleteOrder
             };
         }
 
-        private Order RetrieveOrder(CompleteOrderRequest request)
+        private Order RetrieveOrder(Guid orderId)
         {
-            Order order = unitOfWork.OrderRepository.GetFull(request.OrderId);
+            Order order = unitOfWork.OrderRepository.GetFull(orderId);
 
             if (order == null)
-                throw new OrderMissingException(request.OrderId);
+                throw new OrderMissingException(orderId);
 
             return order;
-        }
-
-        private static void ValidateOrderIsReadyForCompletion(Order order)
-        {
-            switch (order.State)
-            {
-                case OrderState.New:
-                    throw new OrderNotPayedException(order.Id);
-
-                case OrderState.Payed:
-                    break;
-
-                case OrderState.Done:
-                    throw new ProductAlreadyDispensedException(order.Product.Name);
-
-                case OrderState.Canceled:
-                    throw new OrderCanceledException(order.Id);
-
-                default:
-                    throw new InvalidOrderStateException(order.Id);
-            }
-        }
-
-        private static void CompleteOrder(Order order)
-        {
-            order.Product.Quantity--;
-            order.State = OrderState.Done;
         }
     }
 }
