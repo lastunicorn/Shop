@@ -31,7 +31,7 @@ namespace Shop.WithRepositories.Domain
                     break;
 
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new InvalidOrderStateException(Id);
             }
         }
 
@@ -56,6 +56,25 @@ namespace Shop.WithRepositories.Domain
             }
         }
 
+        public void ValidateOrderIsReadyForCanceling()
+        {
+            switch (State)
+            {
+                case OrderState.Payed:
+                case OrderState.Done:
+                    throw new PaymentCompletedException(Id);
+
+                case OrderState.Canceled:
+                    throw new OrderCanceledException(Id);
+
+                case OrderState.New:
+                    break;
+
+                default:
+                    throw new InvalidOrderStateException(Id);
+            }
+        }
+
         public void CompleteOrder()
         {
             Product.Quantity--;
@@ -72,6 +91,11 @@ namespace Shop.WithRepositories.Domain
 
             Payment = payment;
             State = OrderState.Payed;
+        }
+
+        public void Cancel()
+        {
+            State = OrderState.Canceled;
         }
     }
 }

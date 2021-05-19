@@ -19,7 +19,7 @@ namespace Shop.WithRepositories.Application.UseCases.BeginPayment
         public Task<Order> Handle(BeginPaymentRequest request, CancellationToken cancellationToken)
         {
             Order order = RetrieveOrder(request);
-            ValidateOrderIsReadyForPayment(order);
+            order.ValidateOrderIsReadyForPayment();
 
             return Task.FromResult(order);
         }
@@ -32,25 +32,6 @@ namespace Shop.WithRepositories.Application.UseCases.BeginPayment
                 throw new OrderMissingException(request.OrderId);
 
             return order;
-        }
-
-        private static void ValidateOrderIsReadyForPayment(Order order)
-        {
-            switch (order.State)
-            {
-                case OrderState.Payed:
-                case OrderState.Done:
-                    throw new PaymentCompletedException(order.Id);
-
-                case OrderState.Canceled:
-                    throw new OrderCanceledException(order.Id);
-
-                case OrderState.New:
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(order), "Invalid value for the state of the order.");
-            }
         }
     }
 }
