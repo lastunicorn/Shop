@@ -42,19 +42,5 @@ namespace Shop.WithRepositories.Application.UseCases.CompletePayment
             // Here, the application should call the bank and perform the money transfer.
             // Maybe a separate module will be created that encapsulates the details of accessing the bank's system.
         }
-
-        //private void SetOrderAsPayed(Order order)
-        //{
-        //    Payment payment = new Payment
-        //    {
-        //        Date = DateTime.UtcNow,
-        //        Value = order.Product.Price
-        //    };
-
-        //    order.Payment = payment;
-        //    order.State = OrderState.Payed;
-
-        //    unitOfWork.PaymentRepository.Add(payment);
-        //}
     }
 }
