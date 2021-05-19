@@ -1,6 +1,6 @@
 namespace Shop.WithRepositories.Presentation.Pages
 {
-    internal class SalesStatisticsItemViewModel
+    public class SalesStatisticsItemViewModel
     {
         public string ProductName { get; set; }
         

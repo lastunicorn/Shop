@@ -30,7 +30,8 @@ namespace Shop.WithRepositories.Presentation.Pages
                 {
                     ProductName = x.Product.Name,
                     Quantity = x.Quantity
-                });
+                })
+                .ToList();
         }
     }
 }
