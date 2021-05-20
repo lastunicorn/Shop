@@ -19,8 +19,8 @@ namespace Shop.WithRepositories.Application.UseCases.CompleteOrder
         public async Task<CompleteOrderResponse> Handle(CompleteOrderRequest request, CancellationToken cancellationToken)
         {
             Order order = RetrieveOrder(request.OrderId);
-            order.ValidateOrderIsReadyForCompletion();
-            order.CompleteOrder();
+            ValidateOrderIsReadyForCompletion(order);
+            order.Complete();
 
             await unitOfWork.CompleteAsync(cancellationToken);
 
@@ -38,6 +38,27 @@ namespace Shop.WithRepositories.Application.UseCases.CompleteOrder
                 throw new OrderMissingException(orderId);
 
             return order;
+        }
+
+        private void ValidateOrderIsReadyForCompletion(Order order)
+        {
+            switch (order.State)
+            {
+                case OrderState.New:
+                    throw new OrderNotPayedException(order.Id);
+
+                case OrderState.Payed:
+                    break;
+
+                case OrderState.Done:
+                    throw new ProductAlreadyDispensedException(order.Product.Name);
+
+                case OrderState.Canceled:
+                    throw new OrderCanceledException(order.Id);
+
+                default:
+                    throw new InvalidOrderStateException(order.Id);
+            }
         }
     }
 }

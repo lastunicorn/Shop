@@ -19,10 +19,10 @@ namespace Shop.WithRepositories.Application.UseCases.CompletePayment
         protected override async Task Handle(CompletePaymentRequest request, CancellationToken cancellationToken)
         {
             Order order = RetrieveOrder(request);
-            order.ValidateOrderIsReadyForPayment();
+            ValidateOrderIsReadyForPayment(order);
 
             PerformPay(order);
-            order.SetOrderAsPayed();
+            order.SetAsPayed();
 
             await unitOfWork.CompleteAsync(cancellationToken);
         }
@@ -41,6 +41,25 @@ namespace Shop.WithRepositories.Application.UseCases.CompletePayment
         {
             // Here, the application should call the bank and perform the money transfer.
             // Maybe a separate module will be created that encapsulates the details of accessing the bank's system.
+        }
+
+        private static void ValidateOrderIsReadyForPayment(Order order)
+        {
+            switch (order.State)
+            {
+                case OrderState.Payed:
+                case OrderState.Done:
+                    throw new PaymentCompletedException(order.Id);
+
+                case OrderState.Canceled:
+                    throw new OrderCanceledException(order.Id);
+
+                case OrderState.New:
+                    break;
+
+                default:
+                    throw new InvalidOrderStateException(order.Id);
+            }
         }
     }
 }
