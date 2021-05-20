@@ -19,7 +19,7 @@ namespace Shop.WithRepositories.Application.UseCases.CancelOrder
         protected override async Task Handle(CancelOrderRequest request, CancellationToken cancellationToken)
         {
             Order order = RetrieveOrder(request);
-            order.ValidateOrderIsReadyForCanceling();
+            ValidateOrderIsReadyForCanceling(order);
 
             order.Cancel();
 
@@ -34,6 +34,25 @@ namespace Shop.WithRepositories.Application.UseCases.CancelOrder
                 throw new OrderMissingException(request.OrderId);
 
             return order;
+        }
+
+        public void ValidateOrderIsReadyForCanceling(Order order)
+        {
+            switch (order.State)
+            {
+                case OrderState.Payed:
+                case OrderState.Done:
+                    throw new PaymentCompletedException(order.Id);
+
+                case OrderState.Canceled:
+                    throw new OrderCanceledException(order.Id);
+
+                case OrderState.New:
+                    break;
+
+                default:
+                    throw new InvalidOrderStateException(order.Id);
+            }
         }
     }
 }
