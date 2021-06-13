@@ -21,9 +21,9 @@
 
 - Retrieve product from data storage.
 - Checks the availability of the Product
-  - The quantity minus the products that are already reserved by other Orders must be greater or equal to 1
+  - Technical details: The quantity minus the products that are already reserved by other Orders must be greater or equal to 1
 - Create a new Order for the product with state New.
-  - This action automatically reserves the product.
+  - Technical note: This action automatically reserves the product.
 - Redirects the user to the payment interface.
 
 **Alternate flows**:
