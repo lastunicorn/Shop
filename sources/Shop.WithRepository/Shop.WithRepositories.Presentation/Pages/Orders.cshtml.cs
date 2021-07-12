@@ -33,7 +33,7 @@ namespace Shop.WithRepositories.Presentation.Pages
                 .ToList();
         }
 
-        public async Task OnPostClose(Guid orderId)
+        public async Task<IActionResult> OnPostClose(Guid orderId)
         {
             CancelOrderRequest cancelOrderRequest = new CancelOrderRequest
             {
@@ -42,13 +42,7 @@ namespace Shop.WithRepositories.Presentation.Pages
 
             await mediator.Send(cancelOrderRequest);
 
-            PresentOrdersRequest presentOrdersRequest = new PresentOrdersRequest();
-
-            List<Order> orders = await mediator.Send(presentOrdersRequest);
-
-            Orders = orders
-                .Select(x => new OrderViewModel(x))
-                .ToList();
+            return RedirectToPage("Orders");
         }
 
         public IActionResult OnPostPay(Guid orderId)
